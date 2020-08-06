@@ -1,0 +1,14 @@
+.login-nav-box {
+    background-color: #405D99;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    height: 10vh;
+    .login-logo-box {
+        img{
+            height: 30px;
+        }
+    }
+}
+

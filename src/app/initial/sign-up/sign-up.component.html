@@ -1,0 +1,23 @@
+<div class="sign-up-container">
+    <h2>Create a new account</h2>
+    <h4>It's quick and easy</h4>
+    <form action="" class="sign-up-form">
+        <input type="text" id="firstname" name="firstname" placeholder="First name">
+        <input type="text" id="surname" name="surname" placeholder="Surname"><br>
+        <input type="email" id="email" name="email" placeholder="Email address"><br>
+        <input type="password" placeholder="Password"><br>
+        <label for="">Date of birth</label><br>
+        <select id="day" name="day">
+            <option value="day">Day</option>
+            <option value="{{ day }}" *ngFor="let day of days">{{ day }}</option>
+        </select>
+        <select id="month" name="month">
+            <option value="month">Month</option>
+            <option value="{{ month }}" *ngFor="let month of months">{{ month }}</option>
+        </select>
+        <select id="year" name="year">
+            <option value="year">Year</option>
+            <option value="{{ year }}" *ngFor="let year of years">{{ year }}</option>
+        </select>
+    </form>
+</div>
