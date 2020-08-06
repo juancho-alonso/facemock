@@ -11,6 +11,19 @@ export class SignUpComponent implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'];
   years = [];
+  pronouns = [{
+                subject: 'She',
+                object: 'her'
+              },
+              {
+                subject: 'He',
+                object: 'him'
+              },
+              {
+                subject: 'They',
+                object: 'them'
+              }  
+  ]
   constructor() { }
 
   ngOnInit(): void {

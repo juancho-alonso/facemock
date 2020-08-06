@@ -7,6 +7,7 @@ import { WallComponent } from './wall/wall.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './initial/login/login.component';
 import { SignUpComponent } from './initial/sign-up/sign-up.component';
+import { FooterComponent } from './initial/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SignUpComponent } from './initial/sign-up/sign-up.component';
     WallComponent,
     ProfileComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
