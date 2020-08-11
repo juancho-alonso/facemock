@@ -1,37 +1,35 @@
 <div class="sign-up-container">
     <h2>Create a new account</h2>
     <h4>It's quick and easy</h4>
-    <form action="" class="sign-up-form">
-        <input type="text" id="firstname" name="firstname" placeholder="First name">
-        <input type="text" id="surname" name="surname" placeholder="Surname"><br>
-        <input type="email" id="email" name="email" placeholder="Email address"><br>
-        <input type="password" placeholder="Password"><br>
+    <form class="sign-up-form" (ngSubmit)="onSubmit(formSignUp)" #formSignUp="ngForm">
+        <input type="text" id="firstname" name="firstname" placeholder="First name" ngModel required>
+        <input type="text" id="surname" name="surname" placeholder="Surname" ngModel required><br>
+        <input type="email" id="email" name="email-signup" placeholder="Email address" ngModel required email><br>
+        <input type="password" name="password-signup" placeholder="Password" ngModel required><br>
         <label for="birth-date">Date of birth</label><br>
-        <select id="day" name="day">
-            <option value="day">Day</option>
+        <select id="day" name="day" [ngModel]="defaultDay" required>
+            <option value="day" disabled >Day</option>
             <option value="{{ day }}" *ngFor="let day of days">{{ day }}</option>
         </select>
-        <select id="month" name="month">
-            <option value="month">Month</option>
+        <select id="month" name="month" [ngModel]="defaultMonth" required>
+            <option value="month" disabled >Month</option>
             <option value="{{ month }}" *ngFor="let month of months">{{ month }}</option>
         </select>
-        <select id="year" name="year">
-            <option value="year">Year</option>
+        <select id="year" name="year" [ngModel]="defaultYear" required>
+            <option value="year" disabled >Year</option>
             <option value="{{ year }}" *ngFor="let year of years">{{ year }}</option>
         </select><br>
-        <label for="gender">Gender</label><br>
-        <input type="radio" id="female">
-        <label for="female">Female</label>
-        <input type="radio" id="male">
-        <label for="male">Male</label>
-        <input type="radio" id="custom">
-        <label for="custom">Custom</label><br>
-        <select id="year" name="year">
-            <option value="pronoun">Select your pronoun</option>
+        <div *ngFor="let gender of genders" class="gender-input">
+            <label><input type="radio" name="gender" ngModel required [value]='gender'>
+                {{ gender }}
+            </label>
+        </div>
+        <select id="pronoun" name="pronoun" [ngModel]="defaultPronoun" required>
+            <option value="pronoun" disabled >Select your pronoun</option>
             <option value="{{ pronoun.subject }}" *ngFor="let pronoun of pronouns">
                  {{ pronoun.subject }}: "Wish {{ pronoun.object }} a happy birthday!"</option>
         </select><br>
-        <input type="text" id="gender" name="gender" placeholder="Gender (optional)"><br>
+        <input type="text" id="gender" name="gender" placeholder="Gender (optional)" ngModel required><br>
         <button>Sign Up</button>
     </form>
 </div>

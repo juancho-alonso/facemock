@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -24,6 +25,14 @@ export class SignUpComponent implements OnInit {
                 object: 'them'
               }  
   ]
+
+  genders = ['Female', 'Male', 'Custom']
+  
+  defaultDay = "day";
+  defaultMonth = "month";
+  defaultYear = "year";
+  defaultPronoun = "pronoun";
+
   constructor() { }
 
   ngOnInit(): void {
@@ -35,4 +44,7 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  onSubmit(form: NgForm){
+    console.log(form);
+  }
 }

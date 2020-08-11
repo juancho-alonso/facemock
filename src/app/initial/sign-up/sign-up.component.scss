@@ -12,3 +12,19 @@
         margin-top: 20px;
     }
 }
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+.gender-input{
+    display: inline;
+}
+
+input:focus{
+    outline: none;
+}
+
+select:focus{
+    outline: none;
+}
