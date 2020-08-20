@@ -1,6 +1,41 @@
 * {
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    outline: none;
 }
+
+@font-face {
+    font-family: 'FreightSans-Light';
+      src: url('../src/assets/fonts/Freight-SansLight.eot'); /* IE9 Compat Modes */
+      src: url('../src/assets/fonts/Freight-SansLight.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../src/assets/fonts/Freight-SansLight.woff') format('woff'), /* Pretty Modern Browsers */
+          url('../src/assets/fonts/Freight-SansLight.ttf')  format('truetype'), /* Safari, Android, iOS */
+          url('../src/assets/fonts/Freight-SansLight.svg') format('svg'); /* Legacy iOS */
+      font-weight: 400;
+      font-style: normal;
+  }
+
+@font-face {
+    font-family: 'FreightSans-Bold';
+      src: url('../src/assets/fonts/Freight-SansBold.eot'); /* IE9 Compat Modes */
+      src: url('../src/assets/fonts/Freight-SansBold.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../src/assets/fonts/Freight-SansBold.woff') format('woff'), /* Pretty Modern Browsers */
+          url('../src/assets/fonts/Freight-SansBold.ttf')  format('truetype'), /* Safari, Android, iOS */
+          url('../src/assets/fonts/Freight-SansBold.svg') format('svg'); /* Legacy iOS */
+      font-weight: 700;
+      font-style: normal;
+  } 
+
+@font-face {
+    font-family: 'FreightSans-Medium';
+      src: url('../src/assets/fonts/Freight-SansBook.eot'); /* IE9 Compat Modes */
+      src: url('../src/assets/fonts/Freight-SansBook.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../src/assets/fonts/Freight-SansBook.woff') format('woff'), /* Pretty Modern Browsers */
+          url('../src/assets/fonts/Freight-SansBook.ttf')  format('truetype'), /* Safari, Android, iOS */
+          url('../src/assets/fonts/Freight-SansBook.svg') format('svg'); /* Legacy iOS */
+      font-weight: 400;
+      font-style: normal;
+  }
 
 body {
     margin: 0;

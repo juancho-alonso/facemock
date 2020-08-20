@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,13 +7,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
+  newRegister = false;
+  @ViewChild('formSignUp') signupForm: NgForm;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(form: NgForm){
+  public onNewRegister(){
+    this.newRegister = !this.newRegister
+  };
+
+
+  public onSubmit(form: NgForm){
     console.log(form);
   }
 }

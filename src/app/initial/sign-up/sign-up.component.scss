@@ -21,10 +21,6 @@ input.ng-invalid.ng-touched{
     display: inline;
 }
 
-input:focus{
-    outline: none;
-}
-
-select:focus{
-    outline: none;
+.error{
+    border: 1px solid red;
 }

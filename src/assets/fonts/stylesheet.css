@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Freight';
+    src: url('Freight-SansBook.eot');
+    src: url('Freight-SansBook.eot?#iefix') format('embedded-opentype'),
+        url('Freight-SansBook.woff2') format('woff2'),
+        url('Freight-SansBook.woff') format('woff'),
+        url('Freight-SansBook.ttf') format('truetype'),
+        url('Freight-SansBook.svg#Freight-SansBook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Freight';
+    src: url('Freight-SansBold.eot');
+    src: url('Freight-SansBold.eot?#iefix') format('embedded-opentype'),
+        url('Freight-SansBold.woff2') format('woff2'),
+        url('Freight-SansBold.woff') format('woff'),
+        url('Freight-SansBold.ttf') format('truetype'),
+        url('Freight-SansBold.svg#Freight-SansBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Freight';
+    src: url('Freight-SansLight.eot');
+    src: url('Freight-SansLight.eot?#iefix') format('embedded-opentype'),
+        url('Freight-SansLight.woff2') format('woff2'),
+        url('Freight-SansLight.woff') format('woff'),
+        url('Freight-SansLight.ttf') format('truetype'),
+        url('Freight-SansLight.svg#Freight-SansLight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
