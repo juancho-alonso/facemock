@@ -1,26 +1,35 @@
-.sign-up-container{
-    background-color: #EAEBEE;
-    height: 90vh;
-    padding: 40px 100px;
-    h2 {
-        margin-top: 0;
-    }
-    input {
-        margin: 20px 0px;
-    }
-    button {
-        margin-top: 20px;
-    }
+.sign-up-container {
+    display: none;
 }
 
-input.ng-invalid.ng-touched{
-    border: 1px solid red;
+@media screen and (min-width: 768px){
+    .sign-up-container{
+        background-color: #EAEBEE;
+        height: 90vh;
+        padding: 40px 100px;
+        display: block;
+        h2 {
+            margin-top: 0;
+        }
+        input {
+            margin: 20px 0px;
+        }
+        button {
+            margin-top: 20px;
+        }
+    }
+    
+    input.ng-invalid.ng-touched{
+        border: 1px solid red;
+    }
+    
+    .gender-input{
+        display: inline;
+    }
+    
+    .error{
+        border: 1px solid red;
+    }
+    
 }
 
-.gender-input{
-    display: inline;
-}
-
-.error{
-    border: 1px solid red;
-}
