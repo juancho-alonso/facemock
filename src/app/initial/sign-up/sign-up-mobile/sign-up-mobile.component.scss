@@ -37,14 +37,25 @@
     }
 }
 
-p {
+.subheading {
     text-align: center;
     font-size: 15px;
+    padding: 0 15px;
 }
 
-h3 {
+.heading {
     text-align: center;
     margin-top: 12px;
+}
+
+.date-box {
+    padding: 0px 15px;
+    select {
+        height: 35px;
+        margin: 12px 12px 12px 0px;
+        padding: 6px;
+        font-size: 16px;
+    }
 }
 
 .btn-box {
@@ -60,7 +71,7 @@ h3 {
 }
 
 span {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 16px;
     margin-bottom: 30px;
 }

@@ -2,20 +2,65 @@
     <p>Join Facemock</p>
 </div>
 <div class="page-container">
-    <h3>What's your name?</h3>
-    <p>Enter the name you use in real life.</p>
-    <form class="sign-up-m-form">
-        <div class="firstname-container">
-            <label for="firstname">First name</label>
-            <input type="text" name="firstname" id="firstname">    
+    <div *ngIf="namesOk === 1">
+        <h3 class="heading">What's your name?</h3>
+        <p class="subheading">Enter the name you use in real life.</p>
+        <form class="sign-up-m-form" (ngSubmit)="onSubmit(formNames)" #formNames="ngForm">
+            <div class="firstname-container">
+                <label for="firstname">First name</label>
+                <input class="input-names" type="text" name="firstname" id="firstname" ngModel required>    
+            </div>
+            <div class="surname-container">
+                <label for="surname">Surname</label>
+                <input class="input-names" type="text" name="surname" id="surname" ngModel required>    
+            </div>
+        </form>
+    </div>
+    <div *ngIf="namesOk === 2">
+        <h3 class="heading">What's your date of birth?</h3>
+        <p class="subheading">Choose your date of birth. You can always make this private later.</p>
+        <span>Date of birth</span><br>
+        <form (ngSubmit)="onSubmit(formDate)" #formDate="ngForm">
+            <div class="date-box">
+                <select class="date-input" id="day" name="day" [ngModel]="defaultDay" required>
+                    <option value="day" disabled >Day</option>
+                    <option value="{{ day }}" *ngFor="let day of days">{{ day }}</option>
+                </select>
+                <select class="date-input" id="month" name="month" [ngModel]="defaultMonth" required>
+                    <option value="month" disabled >Month</option>
+                    <option value="{{ month }}" *ngFor="let month of months">{{ month }}</option>
+                </select>
+                <select class="date-input" id="year" name="year" [ngModel]="defaultYear" required>
+                    <option value="year" disabled >Year</option>
+                    <option value="{{ year }}" *ngFor="let year of years">{{ year }}</option>
+                </select><br>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="namesOk === 3">
+        <h3 class="heading">What's your gender?</h3>
+        <p class="subheading">You can change who sees your gender on your profile later.</p>
+        <div *ngFor="let gender of genders" class="gender-input radio-input">
+            <label>{{ gender }}</label>
+            <input type="radio" name="gender" ngModel required [value]='gender'> 
         </div>
-        <div class="surname-container">
-            <label for="surname">Surname</label>
-            <input type="text" name="surname" id="surname">    
+        <label>Custom</label>
+        <input class="custom-input" id='custom' type="radio" 
+            name="gender" ngModel (change)="onCustomChange()" required value='custom'>
+        
+        <p *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
+        <div *ngIf='displayGender'>
+            <p>Your pronoun is visible to everyone</p>
+            <select class="" id="pronoun" name="pronoun" [ngModel]="defaultPronoun" required >
+                <option value="pronoun" disabled >Select your pronoun</option>
+                <option value="{{ pronoun.subject }}" *ngFor="let pronoun of pronouns">
+                     {{ pronoun.subject }}: "Wish {{ pronoun.object }} a happy birthday!"</option>
+            </select><br>
+            <input type="text" id="gender" name="gender" placeholder="Gender (optional)" ngModel><br>
         </div>
-    </form>
+    </div>
     <div class="btn-box">
-        <button>Next</button>
+        <button (click)='onNextReg()'>Next</button>
     </div>
     <a routerLink="/"><span>Already have an account?</span></a>  
 </div>
