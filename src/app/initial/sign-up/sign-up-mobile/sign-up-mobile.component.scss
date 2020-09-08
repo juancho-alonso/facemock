@@ -48,6 +48,10 @@
     margin-top: 12px;
 }
 
+.gender-box {
+    margin: 0 56px;
+}
+
 .date-box {
     padding: 0px 15px;
     select {
@@ -80,7 +84,19 @@ a {
     text-decoration: none;
 }
 
+.custom-input {
+    height: 36px;
+    margin-bottom: 15px;
+}
 
+.pronoun-title {
+    color: #8E8E8E;
+    font-size: 12px;
+}
 
-
+.radio-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
 

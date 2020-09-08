@@ -40,22 +40,26 @@
     <div *ngIf="namesOk === 3">
         <h3 class="heading">What's your gender?</h3>
         <p class="subheading">You can change who sees your gender on your profile later.</p>
-        <div *ngFor="let gender of genders" class="gender-input radio-input">
-            <label>{{ gender }}</label>
-            <input (change)="onGenderChange()" type="radio" name="gender" ngModel required [value]='gender'> 
-        </div>
-        <label>Custom</label>
-        <input class="custom-input" #customInput type="radio" 
-            name="gender" ngModel (change)="onCustomChange()" required value='custom'>
-        <p *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
-        <div *ngIf='displayGender'>
-            <p>Your pronoun is visible to everyone</p>
-            <select class="" id="pronoun" name="pronoun" [ngModel]="defaultPronoun" required >
-                <option value="pronoun" disabled >Select your pronoun</option>
-                <option value="{{ pronoun.subject }}" *ngFor="let pronoun of pronouns">
-                     {{ pronoun.subject }}: "Wish {{ pronoun.object }} a happy birthday!"</option>
-            </select><br>
-            <input type="text" id="gender" name="gender" placeholder="Gender (optional)" ngModel><br>
+        <div class="gender-box">
+            <div *ngFor="let gender of genders" class="gender-input radio-input">
+                <label>{{ gender }}</label>
+                <input (change)="onGenderChange()" type="radio" name="gender" ngModel required [value]='gender'> 
+            </div>
+            <div class="gender-input radio-input">
+                <label>Custom</label>
+                <input #customInput type="radio" 
+                    name="gender" ngModel (change)="onCustomChange()" required value='custom'>    
+            </div>
+            <p class="pronoun-title" *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
+            <div *ngIf='displayGender'>
+                <p class="pronoun-title">Your pronoun is visible to everyone</p>
+                <select class="custom-input" id="pronoun" name="pronoun" [ngModel]="defaultPronoun" required >
+                    <option value="pronoun" disabled >Select your pronoun</option>
+                    <option value="{{ pronoun.subject }}" *ngFor="let pronoun of pronouns">
+                         {{ pronoun.subject }}: "Wish {{ pronoun.object }} a happy birthday!"</option>
+                </select><br>
+                <input class="custom-input" type="text" id="gender" name="gender" placeholder="Gender (optional)" ngModel><br>
+            </div>    
         </div>
     </div>
     <div class="btn-box">
