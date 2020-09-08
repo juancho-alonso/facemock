@@ -11,6 +11,7 @@ export class SignUpMobileComponent implements OnInit {
 
   @ViewChild('formNames') formNames: NgForm;
   @ViewChild('formDate') formDate: NgForm;
+  @ViewChild('customInput') customInput;
 
 
   namesOk = 1;
@@ -29,8 +30,7 @@ export class SignUpMobileComponent implements OnInit {
   {
     subject: 'They',
     object: 'them'
-  }  
-]
+  }]
 
 genders = ['Female', 'Male']
 
@@ -42,6 +42,7 @@ genders = ['Female', 'Male']
 customGender = true;
 displayGender = false;
 
+
   constructor() { }
 
   ngOnInit(): void {
@@ -52,6 +53,8 @@ displayGender = false;
     for (let j = 2020; j > 1900; j--){
       this.years.push(j);
     }
+    console.log(this.customInput)
+
   }
 
   onNextReg(){
@@ -92,6 +95,11 @@ displayGender = false;
   onCustomChange() {
     this.customGender = !this.customGender;
     this.displayGender = !this.displayGender;
+    
+  }
+
+  onGenderChange() {
+    console.log(this.customInput)
   }
 
   onSubmit(form: NgForm){

@@ -2,13 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { InitialComponent } from './initial/initial.component';
 import { WallComponent } from './wall/wall.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './initial/login/login.component';
 import { SignUpComponent } from './initial/sign-up/sign-up.component';
 import { FooterComponent } from './initial/footer/footer.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { SignUpMobileComponent } from './initial/sign-up/sign-up-mobile/sign-up-mobile.component'
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { FormsModule } from '@angular/forms'
     ProfileComponent,
     LoginComponent,
     SignUpComponent,
-    FooterComponent
+    FooterComponent,
+    SignUpMobileComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

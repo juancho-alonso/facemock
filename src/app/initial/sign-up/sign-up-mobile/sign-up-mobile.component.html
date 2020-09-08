@@ -42,12 +42,11 @@
         <p class="subheading">You can change who sees your gender on your profile later.</p>
         <div *ngFor="let gender of genders" class="gender-input radio-input">
             <label>{{ gender }}</label>
-            <input type="radio" name="gender" ngModel required [value]='gender'> 
+            <input (change)="onGenderChange()" type="radio" name="gender" ngModel required [value]='gender'> 
         </div>
         <label>Custom</label>
-        <input class="custom-input" id='custom' type="radio" 
+        <input class="custom-input" #customInput type="radio" 
             name="gender" ngModel (change)="onCustomChange()" required value='custom'>
-        
         <p *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
         <div *ngIf='displayGender'>
             <p>Your pronoun is visible to everyone</p>

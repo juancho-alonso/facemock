@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +10,28 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   
+  mobile: boolean;
   newRegister = false;
   @ViewChild('formSignUp') signupForm: NgForm;
 
-  constructor() { }
+  constructor(private router: Router,
+              private bpo: BreakpointObserver) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if (this.bpo.isMatched('(max-width: 768px)')) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   }
 
   public onNewRegister(){
-    this.newRegister = !this.newRegister
+    if (this.mobile) {
+    this.router.navigate(['/sign-up-mobile'])
+    } else if (!this.mobile){
+      this.newRegister = !this.newRegister
+      this.router.navigate(['/'])
+    }
   };
 
 
