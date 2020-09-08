@@ -62,8 +62,11 @@ displayGender = false;
       var namesArr = Array.from(nameInputs)
       var dateInputs = document.querySelectorAll<HTMLSelectElement>(".date-input")
       var dateArr = Array.from(dateInputs);
-      var genderInputs = document.querySelectorAll<HTMLElement>(".gender-input");
+      var genderInputs = document.querySelectorAll<HTMLInputElement>(".radio-gender");
       var genderArr = Array.from(genderInputs);
+      var emailInput = document.querySelector<HTMLInputElement>(".email-input");
+      var passInput = document.querySelector<HTMLInputElement>(".pass-input");
+
       console.log(genderArr[2]);
 
       for (const cur of namesArr) {
@@ -77,7 +80,7 @@ displayGender = false;
       } 
       }
       
-      for (const cur of dateArr){
+      for (const cur of dateArr) {
         cur.style.borderColor = "1px solid lightgray";
         if (cur.value != "day" && cur.value != "month" && cur.value != "year"){
           console.log(cur.value + ' IF')
@@ -89,7 +92,34 @@ displayGender = false;
           this.namesOk = 2;
       } 
       }
+
+      for (const cur of genderArr) {
+        cur.style.borderColor = "1px solid lightgray";
+        if (cur.className.includes('ng-invalid')){
+          cur.style.border = "1px solid red"
+          this.namesOk = 3;
+      } else if (cur.className.includes('ng-valid')){
+          cur.style.borderColor = "1px solid lightgray";
+          this.namesOk = 4;
+      } 
+      }
+
+      if (emailInput.className.includes('ng-invalid')){
+          emailInput.style.border = "1px solid red"
+          this.namesOk = 4;
+      } else if (emailInput.className.includes('ng-valid')){
+          emailInput.style.borderColor = "1px solid lightgray";
+          this.namesOk = 5;
+      } 
       
+      if (passInput.className.includes('ng-invalid')){
+        passInput.style.border = "1px solid red"
+        this.namesOk = 4;
+      } else if (passInput.className.includes('ng-valid')){
+        passInput.style.borderColor = "1px solid lightgray";
+        this.namesOk = 5;
+      } 
+
   }
 
   onCustomChange() {

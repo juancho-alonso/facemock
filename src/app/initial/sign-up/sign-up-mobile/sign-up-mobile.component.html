@@ -1,4 +1,5 @@
 <div class="header">
+    <i class="fas fa-chevron-left"></i>
     <p>Join Facemock</p>
 </div>
 <div class="page-container">
@@ -43,12 +44,12 @@
         <div class="gender-box">
             <div *ngFor="let gender of genders" class="gender-input radio-input">
                 <label>{{ gender }}</label>
-                <input (change)="onGenderChange()" type="radio" name="gender" ngModel required [value]='gender'> 
+                <input class="radio-gender" (change)="onGenderChange()" type="radio" name="gender" ngModel required [value]='gender'> 
             </div>
             <div class="gender-input radio-input">
                 <label>Custom</label>
                 <input #customInput type="radio" 
-                    name="gender" ngModel (change)="onCustomChange()" required value='custom'>    
+                    name="gender" ngModel (change)="onCustomChange()" class="radio-gender" required value='custom'>    
             </div>
             <p class="pronoun-title" *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
             <div *ngIf='displayGender'>
@@ -62,6 +63,23 @@
             </div>    
         </div>
     </div>
+    <div *ngIf="namesOk === 4">
+        <h3 class="heading">What's your email address?</h3>
+        <p class="subheading">Enter the email address at which you can be contacted. You can hide this from your profile later.</p>
+            <div class="email-container">
+                <label for="email">Email address</label>
+                <input class="email-input" type="email" name="email" id="email" ngModel required>    
+            </div>
+    </div>
+    <div *ngIf="namesOk === 5">
+        <h3 class="heading">What's your email address?</h3>
+        <p class="subheading">Create a password with at least 6 characters. It should be something that others couldn't guess.</p>
+            <div class="email-container">
+                <label for="email">New password</label>
+                <input class="pass-input" type="password" name="password" id="password" ngModel required>    
+            </div>
+    </div>
+
     <div class="btn-box">
         <button (click)='onNextReg()'>Next</button>
     </div>
