@@ -41,6 +41,10 @@
             height: 36px;
         }
     }
+    input.ng-invalid.ng-touched,
+    option.ng-invalid {
+        border: 1px red solid;
+    }
 }
 
 .subheading {
@@ -115,3 +119,15 @@ a {
         height: 36px;
     }
 }
+
+.section {
+    display: none;
+}
+
+.section-first {
+    display: block;
+}
+
+
+ 
+

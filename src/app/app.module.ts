@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './initial/login/login.component';
 import { SignUpComponent } from './initial/sign-up/sign-up.component';
 import { FooterComponent } from './initial/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpMobileComponent } from './initial/sign-up/sign-up-mobile/sign-up-mobile.component'
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -26,7 +26,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     LayoutModule
   ],
