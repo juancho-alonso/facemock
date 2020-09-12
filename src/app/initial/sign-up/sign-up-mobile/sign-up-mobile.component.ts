@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -40,7 +41,7 @@ submitOk = false;
 public screen:number = 0;
 
 
-  constructor() {   }
+  constructor(private router: Router) {   }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -248,8 +249,9 @@ public screen:number = 0;
     if(this.screen > 0){
       this.screen--;
       this.nextSection();
+    } else {
+      this.router.navigate(['/'])
     }
-    // AGREGAR UN ELSE PARA DIRIGIR A LA RUTA DE INICIO
   }
 
   onCustomChange() {
