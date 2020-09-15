@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 
 @Component({
@@ -41,7 +42,8 @@ submitOk = false;
 public screen:number = 0;
 
 
-  constructor(private router: Router) {   }
+  constructor(private router: Router,
+    private bpo: BreakpointObserver) {   }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -241,8 +243,10 @@ public screen:number = 0;
   }
 
   goForward(){
+    
     this.screen++;
     this.nextSection();
+    
   }
 
   goBack(){

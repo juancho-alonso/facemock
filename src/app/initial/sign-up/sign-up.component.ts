@@ -11,8 +11,8 @@ export class SignUpComponent implements OnInit {
   @Input() newRegister = false;
   @ViewChild('formSignUp') signupForm: NgForm;
   days = [];
-  months = ['January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December'];
+  months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   years = [];
   pronouns = [{
                 subject: 'She',
@@ -28,13 +28,14 @@ export class SignUpComponent implements OnInit {
               }  
   ]
 
-  genders = ['Female', 'Male', 'Custom']
+  genders = ["Female", "Male"];
   
   defaultDay = "day";
   defaultMonth = "month";
   defaultYear = "year";
   defaultPronoun = "pronoun";
-  
+  customGender = true;
+  displayGender = false;
   
 
   constructor() { }
@@ -51,6 +52,11 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form);
+  }
+
+  onCustomChange() {
+    this.customGender = !this.customGender;
+    this.displayGender = !this.displayGender;
   }
 
   onValidateForm(){
