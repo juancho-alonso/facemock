@@ -56,11 +56,11 @@
             padding: 5px;
         }
         .form-inputs {
-            width: 100%;
+            width: 400px;
             background: #f5f6f7;
         }
         #firstname {
-            margin-right: 8px;
+            margin-right: 10px;
         }
         #pronoun {
             background: white;
@@ -107,6 +107,7 @@
         justify-content: space-between;
         input {
             background: #f5f6f7;
+            width: 194px;
         }
     }
 
@@ -118,6 +119,9 @@
         display: flex;
         justify-content: space-between;
         margin-top: 3px;
+        select {
+            width: 125px;
+        }
     }
 
     .genders-box {
@@ -132,7 +136,7 @@
         padding: 10px;
         border-radius: 4px;
         position: relative;
-        width: 108px;
+        width: 125px;
         display: flex;
         align-items: center;
         justify-content: space-between;
