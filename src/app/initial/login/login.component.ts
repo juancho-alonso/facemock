@@ -12,7 +12,12 @@ export class LoginComponent implements OnInit {
   
   mobile: boolean;
   newRegister = false;
+  wrongPass = false;
   @ViewChild('formSignUp') signupForm: NgForm;
+  @ViewChild('email') email;
+  @ViewChild('pass') pass;
+
+
 
   constructor(private router: Router,
               private bpo: BreakpointObserver) { }
@@ -34,6 +39,35 @@ export class LoginComponent implements OnInit {
     }
   };
 
+  onLogin(){
+    var curEmail = this.email.nativeElement.value;
+    var curPass = this.pass.nativeElement.value;
+    var local = JSON.parse(localStorage.getItem(curEmail))
+    var localPass = local.password
+
+    if(local != null){
+      // Existe el usuario
+      if(curPass == localPass) {
+        console.log('Login exitoso')
+        // Navegar al componente 'wall'
+        this.router.navigate(['/wall'])
+      } else if(curPass !== localPass){
+        // Contrasena incorrecta
+        if(this.mobile){
+          this.wrongPass = true
+        } else if(!this.mobile){
+          // this.router.navigate(['/ERROR'])
+        }
+        console.log('Login FALLIDO MAL AHI MONO')
+        // Mostrar pagina o mensaje de error
+      } 
+    } else if (local == null){
+      // No existe el mail (usuario inexistente)
+    }
+
+
+    console.log(local.password)
+  }
 
   // public onSubmit(form: NgForm){
   //   console.log(form);

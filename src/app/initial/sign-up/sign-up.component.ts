@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +9,9 @@ import { NgForm } from '@angular/forms';
 export class SignUpComponent implements OnInit {
 
   @Input() newRegister = false;
-  @ViewChild('formSignUp') signupForm: NgForm;
+  @ViewChild('customInput') customInput;
+
+  signupForm: FormGroup;
   days = [];
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -41,6 +43,20 @@ export class SignUpComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.signupForm = new FormGroup({
+        'firstname': new FormControl(null, Validators.required),
+        'surname': new FormControl(null, Validators.required),
+        'day': new FormControl('day', Validators.required),
+        'month': new FormControl('month', Validators.required),
+        'year': new FormControl('year', Validators.required),
+        'gender': new FormControl('Female', Validators.required),
+        'pronoun': new FormControl('pronoun', Validators.required),
+        'customGender': new FormControl(null),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'password': new FormControl(null, Validators.required),
+    })
+
+
     for (let i = 1; i < 32; i++){
       this.days.push(i);
     };
@@ -50,38 +66,54 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  onSubmit(form: NgForm){
-    console.log(form);
+  onSubmit(){
+    console.log(this.signupForm);
+    localStorage.setItem(this.signupForm.value.email, JSON.stringify(this.signupForm.value));
+    // var local = JSON.parse(localStorage.getItem(this.signupForm.value.email))
+    // console.log(local)
   }
 
-  onCustomChange() {
-    this.customGender = !this.customGender;
-    this.displayGender = !this.displayGender;
+  onGenderChange() {
+    if(this.customInput.nativeElement.value === 'custom'){
+      this.customGender = !this.customGender;
+      this.displayGender = !this.displayGender;
+  
+    }
+    console.log(this.customInput.nativeElement.value)
   }
 
   onValidateForm(){
-      var inputs = document.querySelectorAll<HTMLInputElement>(".signup-input");
-        for (let i = 0; i < inputs.length; i++) { 
-          console.log(inputs);   
-          console.log(this.signupForm.form.controls.month.value)  
-            if (inputs[i].classList.contains('ng-invalid') || this.signupForm.form.controls.gender.status == "INVALID" ||
-                this.signupForm.form.controls.day.value == "day" ||
-                this.signupForm.form.controls.month.value == "month" ||
-                this.signupForm.form.controls.year.value == "year"){
-                  console.log(this.signupForm.form.controls.day.value)  
-                inputs[i].style.border = "1px solid red";
-            } else if (inputs[i].classList.contains('ng-valid') 
-            // || this.signupForm.form.controls.gender.status == "VALID" 
-            // ||
-            //     this.signupForm.form.controls.day.value != "day" ||
-            //     this.signupForm.form.controls.month.value != "month" ||
-            //     this.signupForm.form.controls.year.value != "year"
-            
-                )
-                {console.log("else if")
-                inputs[i].style.border = "none";
-            } 
+    var inputs = document.querySelectorAll<HTMLInputElement>(".signup-input");
+    var inputsArr = Array.from(inputs)
+    var dateInputs = document.querySelectorAll<HTMLOptionElement>(".date-input")
+    var dateArr = Array.from(dateInputs);
+
+      for (const cur of inputsArr) { 
+        if (cur.classList.contains('ng-invalid')){
+            cur.style.border = "1px solid red";
+          } else if (cur.classList.contains('ng-valid')) {
+              cur.style.border = "none";
+          } 
+      }
+      for (const cur of dateArr) {
+        if (this.signupForm.get('day').dirty
+            && this.signupForm.get('month').dirty
+            && this.signupForm.get('year').dirty){
+              cur.style.border = "1px solid rgb(118, 118, 118)";
+          } else if ( 
+            this.signupForm.get('day').pristine
+            || this.signupForm.get('month').pristine
+            || this.signupForm.get('year').pristine){
+                  for (const cur of dateArr) {
+                  cur.style.border = "1px solid rgb(118, 118, 118)";
+                      if (cur.className.includes('ng-pristine')){
+                    cur.style.border = "1px solid red"
+                      } else if (cur.className.includes('ng-dirty')){
+                    cur.style.border = "1px solid rgb(118, 118, 118)";
+                      } 
+                    }
           }
+      }      
   }
 
   

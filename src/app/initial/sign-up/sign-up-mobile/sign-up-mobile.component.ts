@@ -13,7 +13,7 @@ export class SignUpMobileComponent implements OnInit {
 
   @ViewChild('form') form: NgForm;
   @ViewChild('customInput') customInput;
-  signupForm: FormGroup;
+  signupFormMbl: FormGroup;
 
 
   days = [];
@@ -46,7 +46,7 @@ public screen:number = 0;
     private bpo: BreakpointObserver) {   }
 
   ngOnInit(): void {
-    this.signupForm = new FormGroup({
+    this.signupFormMbl = new FormGroup({
       'names': new FormGroup({
         'firstname': new FormControl(null, Validators.required),
         'surname': new FormControl(null, Validators.required),
@@ -86,11 +86,11 @@ public screen:number = 0;
       var nameInputs = document.querySelectorAll<HTMLInputElement>(".input-names");
       var namesArr = Array.from(nameInputs)
 
-      if(this.screen === 0 && this.signupForm.get('names').valid){
+      if(this.screen === 0 && this.signupFormMbl.get('names').valid){
         this.goForward();
       } else if(this.screen === 0 
-        && this.signupForm.get('names.firstname').invalid
-        || this.signupForm.get('names.surname').invalid
+        && this.signupFormMbl.get('names.firstname').invalid
+        || this.signupFormMbl.get('names.surname').invalid
         ){
           for (const cur of namesArr) {
             cur.style.border = "1px solid rgb(118, 118, 118)";
@@ -102,14 +102,14 @@ public screen:number = 0;
              }
 
         } else if (this.screen === 1 
-          && this.signupForm.get('date.day').dirty
-          && this.signupForm.get('date.month').dirty
-          && this.signupForm.get('date.year').dirty){
+          && this.signupFormMbl.get('date.day').dirty
+          && this.signupFormMbl.get('date.month').dirty
+          && this.signupFormMbl.get('date.year').dirty){
             this.goForward()
           } else if ( this.screen === 1 &&
-            this.signupForm.get('date.day').pristine
-            || this.signupForm.get('date.month').pristine
-            || this.signupForm.get('date.year').pristine){
+            this.signupFormMbl.get('date.day').pristine
+            || this.signupFormMbl.get('date.month').pristine
+            || this.signupFormMbl.get('date.year').pristine){
                   for (const cur of dateArr) {
                   cur.style.border = "1px solid rgb(118, 118, 118)";
                       if (cur.className.includes('ng-pristine')){
@@ -120,16 +120,16 @@ public screen:number = 0;
                     }
           } else if (this.screen === 2) {
               this.goForward()
-            } else if (this.screen === 3 && this.signupForm.get('email').valid){
+            } else if (this.screen === 3 && this.signupFormMbl.get('email').valid){
               this.goForward()
               this.submitOk = true;
               } else if (this.screen === 3 
-                && this.signupForm.get('email').invalid
-                && this.signupForm.get('email').dirty){
+                && this.signupFormMbl.get('email').invalid
+                && this.signupFormMbl.get('email').dirty){
                  emailInput.style.border = "1px solid red"
-                 } else if (this.screen === 4 && this.signupForm.get('password').valid){
+                 } else if (this.screen === 4 && this.signupFormMbl.get('password').valid){
                 this.onSubmit()
-                  } else if (this.screen === 4 && this.signupForm.get('password').invalid) {
+                  } else if (this.screen === 4 && this.signupFormMbl.get('password').invalid) {
                     passInput.style.border = "1px solid red";
                   }
       
@@ -268,6 +268,6 @@ public screen:number = 0;
   }
 
   onSubmit(){
-    console.log(this.signupForm);
+    console.log(this.signupFormMbl);
   }
 }

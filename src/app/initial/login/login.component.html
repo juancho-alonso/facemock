@@ -21,9 +21,9 @@
     </div>
     <div class="login-form-box">
         <form class="login-form">
-            <input type="email" id="email-login" placeholder="Email address"  name="email">
-            <input type="password" id="password-login" placeholder="Password" name="password">
-            <button class="login-btn">Log In</button>
+            <input type="email" id="email-login" placeholder="Email address"  name="email" #email>
+            <input type="password" id="password-login" placeholder="Password" name="password" #pass>
+            <button (click)="onLogin()" class="login-btn">Log In</button>
         </form>
         <div class="division-box">
             <span class="division-text">or</span>
