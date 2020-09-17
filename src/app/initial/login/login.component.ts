@@ -1,12 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
   
@@ -16,11 +18,12 @@ export class LoginComponent implements OnInit {
   @ViewChild('formSignUp') signupForm: NgForm;
   @ViewChild('email') email;
   @ViewChild('pass') pass;
-
-
+  
 
   constructor(private router: Router,
-              private bpo: BreakpointObserver) { }
+              private bpo: BreakpointObserver,
+              private route: ActivatedRoute,
+              private loginService:LoginService) { }
 
   ngOnInit() {
     if (this.bpo.isMatched('(max-width: 768px)')) {
@@ -42,10 +45,16 @@ export class LoginComponent implements OnInit {
   onLogin(){
     var curEmail = this.email.nativeElement.value;
     var curPass = this.pass.nativeElement.value;
-    var local = JSON.parse(localStorage.getItem(curEmail))
-    var localPass = local.password
+    var curUser = JSON.parse(localStorage.getItem(curEmail))
+    localStorage.setItem("curUser", JSON.stringify(curUser))
+    
+    var localPass = curUser.password
+    this.loginService.user.firstname = curUser.firstname
+    console.log(this.loginService.user.firstname)
 
-    if(local != null){
+
+
+    if(curUser != null){
       // Existe el usuario
       if(curPass == localPass) {
         console.log('Login exitoso')
@@ -56,17 +65,18 @@ export class LoginComponent implements OnInit {
         if(this.mobile){
           this.wrongPass = true
         } else if(!this.mobile){
+          this.router.navigate(['/login-failed'])
           // this.router.navigate(['/ERROR'])
         }
         console.log('Login FALLIDO MAL AHI MONO')
         // Mostrar pagina o mensaje de error
       } 
-    } else if (local == null){
+    } else if (curUser == null){
       // No existe el mail (usuario inexistente)
     }
 
 
-    console.log(local.password)
+    console.log(curUser + "USUARIO ACTUAL")
   }
 
   // public onSubmit(form: NgForm){

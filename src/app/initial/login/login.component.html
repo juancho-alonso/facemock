@@ -1,6 +1,13 @@
-<div class="promote-app">
-    <i class="fas fa-mobile-alt"></i>
-    <span>Get Facemock for Android and browse faster.</span>
+<div *ngIf="!wrongPass">
+    <div class="promote-app">
+        <i class="fas fa-mobile-alt"></i>
+        <span>Get Facemock for Android and browse faster.</span>
+    </div>
+</div>
+<div *ngIf="wrongPass">
+    <div class="wrong-pass">
+        <span>Incorrect password. Please try again.</span>
+    </div>
 </div>
 <div class="login-nav-box">
     <div class="login-logo-box">
@@ -12,7 +19,7 @@
         </div>
         <h3>Recent logins</h3>
         <span>Click your picture or add an account.</span>
-        <div class="account">
+        <div (click)="onNewRegister()" class="account">
             <div class="picture-box">
                 <i class="fas fa-plus-circle"></i>
             </div>

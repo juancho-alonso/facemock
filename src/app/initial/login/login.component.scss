@@ -114,6 +114,19 @@
     }
 }
 
+.wrong-pass {
+    background: #fa3e3e;;
+    color: white;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    span {
+        font-size: 14px;
+    }
+}
+
 @media screen and (min-width: 768px) {
     body {
         background-color: #F0F2F5;

@@ -12,6 +12,7 @@ import { FooterComponent } from './initial/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpMobileComponent } from './initial/sign-up/sign-up-mobile/sign-up-mobile.component'
 import { LayoutModule } from '@angular/cdk/layout';
+import { LoginFailedComponent } from './initial/login/login-failed/login-failed.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     SignUpComponent,
     FooterComponent,
     SignUpMobileComponent,
+    LoginFailedComponent,
   ],
   imports: [
     BrowserModule,
