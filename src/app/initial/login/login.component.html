@@ -10,33 +10,35 @@
     </div>
 </div>
 <div class="login-nav-box">
-    <div class="login-logo-box">
-        <img src="../assets/facemock-blue-logo.png">
-    </div>
-    <div class="recent-container">
+    <div class="content-login-box">
         <div class="login-logo-box">
             <img src="../assets/facemock-blue-logo.png">
         </div>
-        <h3>Recent logins</h3>
-        <span>Click your picture or add an account.</span>
-        <div (click)="onNewRegister()" class="account">
-            <div class="picture-box">
-                <i class="fas fa-plus-circle"></i>
+        <div class="recent-container">
+            <div class="login-logo-box">
+                <img src="../assets/facemock-blue-logo.png">
             </div>
-            <div class="account-text">Add Account</div>
+            <h3>Recent logins</h3>
+            <span>Click your picture or add an account.</span>
+            <div (click)="onNewRegister()" class="account">
+                <div class="picture-box">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="account-text">Add Account</div>
+            </div>
         </div>
-    </div>
-    <div class="login-form-box">
-        <form class="login-form">
-            <input type="email" id="email-login" placeholder="Email address"  name="email" #email>
-            <input type="password" id="password-login" placeholder="Password" name="password" #pass>
-            <button (click)="onLogin()" class="login-btn">Log In</button>
-        </form>
-        <div class="division-box">
-            <span class="division-text">or</span>
-        </div>
-        <div class="division-line"></div>
-        <button routerLink="/sign-up-mobile" (click)="onNewRegister()" class="sign-up-btn">Create New Account</button>
+        <div class="login-form-box">
+            <form class="login-form">
+                <input type="email" id="email-login" placeholder="Email address"  name="email" #email>
+                <input type="password" id="password-login" placeholder="Password" name="password" #pass>
+                <button (click)="onLogin()" class="login-btn">Log In</button>
+            </form>
+            <div class="division-box">
+                <span class="division-text">or</span>
+            </div>
+            <div class="division-line"></div>
+            <button routerLink="/sign-up-mobile" (click)="onNewRegister()" class="sign-up-btn">Create New Account</button>
+        </div>    
     </div>
 </div>
 <div *ngIf="newRegister" >
