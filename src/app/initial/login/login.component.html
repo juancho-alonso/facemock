@@ -9,6 +9,11 @@
         <span>Incorrect password. Please try again.</span>
     </div>
 </div>
+<div *ngIf="unexistingUser">
+    <div class="no-user">
+        <span>The email address that you've entered doesn't match any account. Please try again or create an account</span>
+    </div>
+</div>
 <div class="login-nav-box">
     <div class="content-login-box">
         <div class="login-logo-box">

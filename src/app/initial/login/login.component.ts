@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   mobile: boolean;
   newRegister = false;
   wrongPass = false;
+  unexistingUser = false;
   @ViewChild('formSignUp') signupForm: NgForm;
   @ViewChild('email') email;
   @ViewChild('pass') pass;
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (this.mobile) {
     this.router.navigate(['/sign-up-mobile'])
     } else if (!this.mobile){
-      this.newRegister = !this.newRegister
+      this.newRegister = !this.newRegister;
       this.router.navigate(['/'])
     }
   };
@@ -47,6 +48,15 @@ export class LoginComponent implements OnInit {
     var curPass = this.pass.nativeElement.value;
     var curUser = JSON.parse(localStorage.getItem(curEmail))
     localStorage.setItem("curUser", JSON.stringify(curUser))
+
+    if (this.mobile && curEmail === '' || this.mobile && curEmail !== curUser){
+      this.unexistingUser = true;
+      this.email.nativeElement.style.border = "1px red solid";
+    } else if (!this.mobile && curEmail === '' || !this.mobile && curEmail !== curUser) {
+      this.router.navigate(['/user-not-found']);
+    }
+
+    
     
     var localPass = curUser.password
     this.loginService.user.firstname = curUser.firstname
@@ -64,6 +74,9 @@ export class LoginComponent implements OnInit {
         // Contrasena incorrecta
         if(this.mobile){
           this.wrongPass = true
+          this.unexistingUser = false;
+          this.pass.nativeElement.style.border = "1px red solid"
+          this.email.nativeElement.style.border = "1px #ededed solid"
         } else if(!this.mobile){
           this.router.navigate(['/login-failed'])
           // this.router.navigate(['/ERROR'])
@@ -71,10 +84,7 @@ export class LoginComponent implements OnInit {
         console.log('Login FALLIDO MAL AHI MONO')
         // Mostrar pagina o mensaje de error
       } 
-    } else if (curUser == null){
-      // No existe el mail (usuario inexistente)
-    }
-
+    } 
 
     console.log(curUser + "USUARIO ACTUAL")
   }

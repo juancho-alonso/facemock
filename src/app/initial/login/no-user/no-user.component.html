@@ -1,0 +1,13 @@
+<body>
+    <div class="logo-box">
+        <img src="../assets/facemock-blue-logo.png">
+    </div>
+    <div class="main-container">
+        <span class="title">Log in to Facebook</span>
+        <input type="email" name="email" id="email" placeholder="Email address" #retryEmail>
+        <span>The email address that you've entered doesn't match any account. Sign up for an account</span>
+        <input type="password" name="pass" id="password" placeholder="Password" #retryPass>
+        <button (click)="onLogin()">Log In</button>
+    </div>
+</body>
+<app-footer></app-footer>
