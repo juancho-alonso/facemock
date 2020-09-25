@@ -1,0 +1,13 @@
+<div class="header">
+    <i class="fab fa-facebook"></i>
+    <div class="header-box">
+        <div class="name-and-avatar" (click)="navProfile()">
+            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+            <div class="username">{{ currentUser.firstname }}</div>
+        </div>
+        <div class="home" (click)="navHome()">Home</div>
+        <div class="dropdown box">
+            <i class="fas fa-caret-down"></i>
+        </div>
+    </div>  
+</div>

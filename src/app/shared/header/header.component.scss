@@ -1,0 +1,46 @@
+.header {
+    background: #1A77F2;
+    height: 44px;
+    margin: 0 auto;
+    padding: 0px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white; 
+    p {
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .header {
+        padding: 0px 20px;
+        height: 6vh;
+        .fa-facebook {
+            font-size: 25px;
+        }
+        .header-box {
+            display: flex;
+            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+            .home {
+                cursor: pointer;
+            }
+            .name-and-avatar {
+                display: flex;
+                align-items: center;
+                .username {
+                    cursor: pointer;
+                }
+                img {
+                    height: 25px;
+                    width: 25px;
+                    border-radius: 50%;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
