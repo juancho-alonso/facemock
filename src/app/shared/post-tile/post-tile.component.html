@@ -4,9 +4,9 @@
             <div class="avatar-box">
                 <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
             </div>
-            <span class="publisher-name">Juancho</span>
+            <span class="publisher-name">{{ currentUser.firstname }}</span>
         </div>
-        <p class="post-content">Today I sprayed immigrants to fight COVID. Go USA!</p>
+        <p class="post-content">{{ post }}</p>
     </div>
     <div class="comment-btn-box">
         <i class="far fa-comment-alt"></i>
@@ -27,6 +27,7 @@
         <div class="avatar-box">
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
         </div>
-        <input type="text" name="" id="input" placeholder="What's on your mind?">
+        <input type="text" name="" id="inputUser" placeholder="What's on your mind?">
     </div>
 </main>
+

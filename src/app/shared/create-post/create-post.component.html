@@ -3,6 +3,7 @@
         <div class="avatar-box">
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
         </div>
-        <input type="text" name="" id="input" placeholder="What's on your mind, {{ currentUser.firstname }}?">
+        <input type="text" name="" id="input" placeholder="What's on your mind, {{ currentUser.firstname }}?" #inputPost>
+        <button (click)="onComment($event)">Enter</button>
     </div>
 </div>
