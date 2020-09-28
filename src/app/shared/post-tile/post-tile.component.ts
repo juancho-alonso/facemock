@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-post-tile',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class PostTileComponent implements OnInit, OnChanges {
 
+  @ViewChild('postComment') postComment: any;
   @Input('userComment') userComment: any;
   @Input('post') post: any;
   currentUser = JSON.parse(localStorage.getItem('curUser')); 
@@ -19,11 +20,15 @@ export class PostTileComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     console.log(this.userComment + " Recibio data")
-    
   }
 
-  // newPost() {
-    
-  // }
-
+  newComment() {
+    console.log(this.postComment.nativeElement.dataname + " post comment")
+    for (let i = 0; i < this.userComment.length; i++) {
+        if(this.postComment.nativeElement.dataname == this.userComment[i].id){
+          this.userComment[i].comments.push(this.postComment.nativeElement.value);
+          console.log(this.userComment[i])
+        }      
+    }
+  }
 }

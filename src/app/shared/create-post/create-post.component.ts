@@ -7,25 +7,52 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 })
 export class CreatePostComponent implements OnInit {
 
+  // Get the input element
   @ViewChild('inputPost') inputPost;
+  // Access local storage for current User
   currentUser = JSON.parse(localStorage.getItem('curUser')); 
+  // Expose the posts Array
   @Output() comment = new EventEmitter<any>();
+  // Store the posts Array
   userInput = [];
-  input;
+  // Keep count of the current post id
+  idCount:number = 0;
+  
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
-  onComment(message){
-    // Saves the input content
-    // this.comment = ;
-    this.input = this.inputPost.nativeElement.value
-    this.userInput.push(this.input)
+  
 
-    console.log(this.comment)
+  onComment(event){ 
+    if(event.key === "Enter") {
+    // Create a post model
+    var model = { 
+      id:0,
+      post:'',
+      comments:[]
+    };
 
+    // Increment id Counter  
+    this.idCount++
+
+    // Assign input value to the current post
+    model.post = this.inputPost.nativeElement.value;
+
+    // Assign id to the current post
+    model.id = this.idCount;
+
+    // Push object to posts Array
+    this.userInput.push(model)
+
+    // Emit posts Array
     this.comment.emit(this.userInput)
+
+    // Clean input value
+    this.inputPost.nativeElement.value = ''
+    }
   }
 }

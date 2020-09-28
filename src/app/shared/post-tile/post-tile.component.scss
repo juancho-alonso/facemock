@@ -68,8 +68,10 @@ main {
 .comment-display-box {
     display: flex;
     padding: 20px 0;
+    flex-direction: column;
     .comment-main-box {
         display: flex;
+        margin-bottom: 15px;
     }
 }
 

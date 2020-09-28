@@ -2,7 +2,7 @@ main {
     display: flex;
     justify-content: center;
     background-color: #F0F2F5;
-    height: 94vh;
+    min-height: 94vh;
 }
 
 .main-container {
@@ -23,7 +23,6 @@ main {
 
 .col-2 {
     width: 53%;
-    height: 400px;
 }
 
 .col-3 {
