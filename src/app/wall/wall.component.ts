@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WallComponent implements OnInit {
 
+  userComment:any;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onComment(message){
+    this.userComment = message;
+    console.log(this.userComment + ' User Comment in Wall component')
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,7 @@ import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  @Input() newRegister = false;
+  toggleRegister = true;
   @ViewChild('customInput') customInput;
 
   signupForm: FormGroup;
@@ -40,7 +41,7 @@ export class SignUpComponent implements OnInit {
   displayGender = false;
   
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -67,8 +68,10 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.signupForm);
+    console.log(JSON.stringify(this.signupForm.value)+ 'Sign up form');
     localStorage.setItem(this.signupForm.value.email, JSON.stringify(this.signupForm.value));
+    localStorage.setItem('curUser', JSON.stringify(this.signupForm.value));
+
     // var local = JSON.parse(localStorage.getItem(this.signupForm.value.email))
     // console.log(local)
   }
@@ -113,9 +116,20 @@ export class SignUpComponent implements OnInit {
                       } 
                     }
           }
+      }
+      if (this.signupForm.valid && this.signupForm.get('day').dirty
+      && this.signupForm.get('month').dirty
+      && this.signupForm.get('year').dirty) {
+        this.onSubmit();
+        this.router.navigate(["/add-friends"]);
       }      
   }
 
+  closeForm(){
+    this.toggleRegister = !this.toggleRegister
+  }
   
 
 }
+
+

@@ -129,14 +129,12 @@ public screen:number = 0;
                  emailInput.style.border = "1px solid red"
                  } else if (this.screen === 4 && this.signupFormMbl.get('password').valid){
                 this.onSubmit()
+                this.router.navigate(["/add-friends"])
                   } else if (this.screen === 4 && this.signupFormMbl.get('password').invalid) {
                     passInput.style.border = "1px solid red";
                   }
       
       
-     
-
-
       // if(this.screen === 1){
       //   section1.style.display = "none";
       //   section2.style.display = "block";

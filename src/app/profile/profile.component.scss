@@ -1,0 +1,27 @@
+main {
+    display: flex;
+    justify-content: center;
+    background-color: #F0F2F5;
+    height: 94vh;
+}
+
+.main-container {
+    width: 65%;
+    display: flex;
+}
+
+.col {
+    padding: 20px;
+}
+
+.col-1 {
+    width: 45%;
+    height: 400px;
+    background-color: #c9c9c9;
+    height: auto;
+}
+
+.col-2 {
+    width: 55%;
+    height: 400px;
+}

@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { LoginService } from 'src/app/login.service';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService]
+  providers: [UsersService]
 })
 export class LoginComponent implements OnInit {
   
@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private bpo: BreakpointObserver,
-              private route: ActivatedRoute,
-              private loginService:LoginService) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     if (this.bpo.isMatched('(max-width: 768px)')) {
@@ -59,9 +58,7 @@ export class LoginComponent implements OnInit {
     
     
     var localPass = curUser.password
-    this.loginService.user.firstname = curUser.firstname
-    console.log(this.loginService.user.firstname)
-
+    
 
 
     if(curUser != null){

@@ -13,6 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpMobileComponent } from './initial/sign-up/sign-up-mobile/sign-up-mobile.component'
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginFailedComponent } from './initial/login/login-failed/login-failed.component';
+import { NoUserComponent } from './initial/login/no-user/no-user.component';
+import { AddFriendsComponent } from './initial/sign-up/add-friends/add-friends.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { CreatePostComponent } from './shared/create-post/create-post.component';
+import { PostTileComponent } from './shared/post-tile/post-tile.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import { LoginFailedComponent } from './initial/login/login-failed/login-failed.
     FooterComponent,
     SignUpMobileComponent,
     LoginFailedComponent,
+    NoUserComponent,
+    AddFriendsComponent,
+    HeaderComponent,
+    CreatePostComponent,
+    PostTileComponent,
   ],
   imports: [
     BrowserModule,

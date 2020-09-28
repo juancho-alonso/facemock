@@ -25,6 +25,7 @@
         .signup-btn-box{
             display: flex;
             justify-content: center;
+            cursor: pointer;
         }
         .form-labels {
             font-size: 12px;
@@ -45,6 +46,7 @@
             padding-left: 32px;
             padding-right: 32px;
             text-shadow: none;
+            cursor: pointer;
         }
         select {
             border: 1px solid #ccd0d5;
@@ -88,6 +90,7 @@
             .fa-times {
                 font-size: 24px;
                 color: #606770;
+                cursor: pointer;
             }
         } 
     }

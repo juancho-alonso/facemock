@@ -1,1 +1,13 @@
-<p>wall works!</p>
+<app-header></app-header>
+<main>
+    <div class="main-container">
+        <div class="col col-1"></div>
+        <div class="col col-2">
+            <app-create-post (comment)="onComment($event)"></app-create-post>
+            <div *ngFor="let post of userComment" >
+                <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+            </div>
+        </div>
+        <div class="col col-3"></div>
+    </div>
+</main>
