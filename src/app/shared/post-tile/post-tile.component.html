@@ -29,8 +29,8 @@
         <div class="avatar-box">
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
         </div>
-        <input type="text" id="inputUser" placeholder="What's on your mind?" #postComment data="{{ post.id }}">
-        <button (click)="newComment()">Comment</button>
+        <input (keypress)="newComment($event)" type="text" id="inputUser" placeholder="What's on your mind?" #postComment attr.data-n="{{ post.id }}">
+        <!-- <button (click)="newComment($event)">Comment</button> -->
     </div>
 </main>
 

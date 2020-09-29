@@ -22,13 +22,18 @@ export class PostTileComponent implements OnInit, OnChanges {
     console.log(this.userComment + " Recibio data")
   }
 
-  newComment() {
-    console.log(this.postComment.nativeElement.data + " post comment")
-    for (let i = 0; i < this.userComment.length; i++) {
-        if(this.postComment.nativeElement.data == this.userComment[i].id){
+  newComment(event) {
+
+    if(event.key === "Enter"){
+      // console.log(this.postComment.nativeElement.attr.data + " post comment")
+      console.log(event.target.dataset.n)
+      for (let i = 0; i < this.userComment.length; i++) {
+        if(event.target.dataset.n == this.userComment[i].id){
           this.userComment[i].comments.push(this.postComment.nativeElement.value);
           console.log(this.userComment[i])
         }      
+      }
     }
+
   }
 }
