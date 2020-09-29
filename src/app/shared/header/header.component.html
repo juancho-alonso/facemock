@@ -1,9 +1,9 @@
 <div class="header">
     <i class="fab fa-facebook"></i>
     <div class="header-box">
-        <div class="name-and-avatar" (click)="navProfile()">
+        <div class="name-and-avatar" >
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-            <div class="username">{{ currentUser.firstname }}</div>
+            <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">{{ currentUser.firstname }}</a>
         </div>
         <div class="home" (click)="navHome()">Home</div>
         <div class="dropdown box">

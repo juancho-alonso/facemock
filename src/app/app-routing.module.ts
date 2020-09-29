@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     {path: "sign-up-mobile", component: SignUpMobileComponent},
     {path: "wall", component: WallComponent},
     {path: "login-failed", component: LoginFailedComponent},
-    {path: "profile", component: ProfileComponent},
+    {path: "profile/:name", component: ProfileComponent},
     {path:"user-not-found", component: NoUserComponent},
     {path:"add-friends", component: AddFriendsComponent}];  
 

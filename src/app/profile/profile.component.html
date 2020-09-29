@@ -1,10 +1,17 @@
 <app-header></app-header>
 <main>
+    <div class="profile-header">
+
+    </div>
     <div class="main-container">
         <div class="col col-1"></div>
         <div class="col col-2">
-            <app-create-post></app-create-post>
-            <app-post-tile></app-post-tile>
+            <app-create-post (comment)="onComment($event)"></app-create-post>
+            <div *ngFor="let post of userComment" >
+                <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
+                    <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                </div>
+            </div>
         </div>
     </div>
 </main>

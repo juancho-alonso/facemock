@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-tile',
@@ -12,8 +13,9 @@ export class PostTileComponent implements OnInit, OnChanges {
   @Input('post') post: any;
   currentUser = JSON.parse(localStorage.getItem('curUser')); 
 
+  parsedUrl:any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,17 +25,30 @@ export class PostTileComponent implements OnInit, OnChanges {
   }
 
   newComment(event) {
-
-    if(event.key === "Enter"){
-      // console.log(this.postComment.nativeElement.attr.data + " post comment")
+    if(event.key === "Enter" && this.postComment.nativeElement.value !== ''){
       console.log(event.target.dataset.n)
+      var comment = {
+        message:'',
+        publisher:''
+      }
+
       for (let i = 0; i < this.userComment.length; i++) {
         if(event.target.dataset.n == this.userComment[i].id){
-          this.userComment[i].comments.push(this.postComment.nativeElement.value);
+          comment.message = this.postComment.nativeElement.value;
+          comment.publisher = this.currentUser.firstname + ' ' + this.currentUser.surname;
+          this.userComment[i].comments.push(comment);
           console.log(this.userComment[i])
         }      
       }
     }
 
   }
+
+  parseURL(url){
+    var urlSplit = url.split(" ")
+    urlSplit.splice(1, 0, '.')
+    this.parsedUrl = urlSplit.join('')
+    this.router.navigate([`profile/${this.parsedUrl}`])
+  }
+
 }

@@ -4,7 +4,7 @@
             <div class="avatar-box">
                 <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
             </div>
-            <span class="publisher-name">{{ currentUser.firstname }}</span>
+            <span class="publisher-name">{{ post.author }}</span>
         </div>
         <p class="post-content">{{ post.post }}</p>
     </div>
@@ -19,8 +19,8 @@
                     <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
                 </div>
                 <div class="comment-text-box">
-                    <p class="comment-user">{{ currentUser.firstname }} {{ currentUser.surname }}</p>
-                    <p class="comment-content">{{ com }}</p>
+                    <p class="comment-user"> <a (click)='parseURL(com.publisher)'>{{ com.publisher }}</a></p>
+                    <p class="comment-content">{{ com.message }}</p>
                 </div>
             </div>
         </div>
