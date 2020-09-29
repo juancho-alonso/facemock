@@ -23,9 +23,9 @@ export class PostTileComponent implements OnInit, OnChanges {
   }
 
   newComment() {
-    console.log(this.postComment.nativeElement.dataname + " post comment")
+    console.log(this.postComment.nativeElement.data + " post comment")
     for (let i = 0; i < this.userComment.length; i++) {
-        if(this.postComment.nativeElement.dataname == this.userComment[i].id){
+        if(this.postComment.nativeElement.data == this.userComment[i].id){
           this.userComment[i].comments.push(this.postComment.nativeElement.value);
           console.log(this.userComment[i])
         }      
