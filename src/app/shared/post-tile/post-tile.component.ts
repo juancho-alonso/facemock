@@ -26,7 +26,6 @@ export class PostTileComponent implements OnInit, OnChanges {
 
   newComment(event) {
     if(event.key === "Enter" && this.postComment.nativeElement.value !== ''){
-      console.log(event.target.dataset.n)
       var comment = {
         message:'',
         publisher:''
@@ -37,7 +36,6 @@ export class PostTileComponent implements OnInit, OnChanges {
           comment.message = this.postComment.nativeElement.value;
           comment.publisher = this.currentUser.firstname + ' ' + this.currentUser.surname;
           this.userComment[i].comments.push(comment);
-          console.log(this.userComment[i])
         }      
       }
     }

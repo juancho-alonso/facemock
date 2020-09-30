@@ -19,7 +19,8 @@ export class UsersService {
         relationship:'Divorced',
         about:"I really don't like to take the easy way out, if I can help it, on anything I do, I like to really make it a challenge. I don't know how to create by taking the easy routes. I've tried, you know, I've tried to let myself, but I always struggle to compensate.",
         friends:[],
-        request: false
+        request: false,
+        isFriend: false
         }, {
         firstname:'Alanis',
         surname:'Morissette',
@@ -39,7 +40,8 @@ export class UsersService {
         relationship:'Married',
         about:"I want to walk through life instead of being dragged through it.",
         friends:[],
-        request: false
+        request: false,
+        isFriend: false
         }, {
         firstname:'Thom',
         surname:'Yorke',
@@ -59,7 +61,8 @@ export class UsersService {
         relationship:'Married',
         about:'I believe that any great work of art is, in itself, a form of resistance against a sense of powerlessness.',
         friends:[],
-        request: true        
+        request: true,
+        isFriend: false        
         },{
         firstname:'Lady',
         surname:'Gaga',
@@ -79,7 +82,8 @@ export class UsersService {
         relationship:'In a relationship',
         about:'Fight and push harder for what you believe in, you’d be surprised, you are much stronger than you think.',
         friends:[],
-        request: true
+        request: true,
+        isFriend: false
         },{
         firstname:'Paul',
         surname:'McCartney',
@@ -99,6 +103,7 @@ export class UsersService {
         relationship:'Married',
         about:"I'm not religious, but I'm very spiritual.",
         friends:[],
-        request: true
+        request: true,
+        isFriend: false
         }];
 }

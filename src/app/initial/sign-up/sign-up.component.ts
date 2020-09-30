@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
+  providers:[UsersService]
 })
 export class SignUpComponent implements OnInit {
 
@@ -41,7 +43,8 @@ export class SignUpComponent implements OnInit {
   displayGender = false;
   
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              public usersList: UsersService) {}
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -68,12 +71,10 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(JSON.stringify(this.signupForm.value)+ 'Sign up form');
     localStorage.setItem(this.signupForm.value.email, JSON.stringify(this.signupForm.value));
     localStorage.setItem('curUser', JSON.stringify(this.signupForm.value));
-
-    // var local = JSON.parse(localStorage.getItem(this.signupForm.value.email))
-    // console.log(local)
+    var currentUser = JSON.parse(localStorage.getItem('curUser')); 
+    this.usersList.users.push(currentUser)
   }
 
   onGenderChange() {

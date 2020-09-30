@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private userList:UsersService) { }
+              public usersList:UsersService) { }
 
   ngOnInit(): void {
     this.name = this.route.snapshot.params['name'];
@@ -27,11 +27,9 @@ export class ProfileComponent implements OnInit {
     var urlSplit = changedUrl.split(".")
     urlSplit.splice(1, 0, ' ')
     this.profileUrl = urlSplit.join('')
-    console.log(this.profileUrl)
   }
 
   onComment(message){
     this.userComment = message;
-    console.log(this.userComment + ' User Comment in Wall component')
   }
 }

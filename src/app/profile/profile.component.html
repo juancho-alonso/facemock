@@ -4,7 +4,26 @@
 
     </div>
     <div class="main-container">
-        <div class="col col-1"></div>
+        <div class="col col-1">
+            <div class="bio">
+                <h6>Work </h6>
+                <h6>Education </h6>
+                <h6>Current City </h6>
+                <h6>Hometown </h6>
+                <h6>Relationship </h6>
+            </div>
+            <div class="friends">
+                <h3>Friends</h3>
+                <div *ngFor="let contact of usersList.users">
+                    <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
+                        <div class="name-and-avatar" >
+                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                            <div>{{ contact.firstname }}</div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
         <div class="col col-2">
             <app-create-post (comment)="onComment($event)"></app-create-post>
             <div *ngFor="let post of userComment" >

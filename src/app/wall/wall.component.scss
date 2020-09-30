@@ -31,3 +31,25 @@ main {
     background-color: #c9c9c9;
     height: auto;
 }
+
+.name-and-avatar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    .username {
+        cursor: pointer;
+        color: black;
+        text-decoration: none;
+    }
+    img {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    i {
+        font-size: 20px;
+        margin-right: 5px;
+        color: #1A77F2;
+    }
+}

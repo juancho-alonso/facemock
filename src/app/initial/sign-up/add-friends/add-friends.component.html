@@ -14,7 +14,7 @@
                     <span>{{ usersArray.users[1].firstname }} {{ usersArray.users[1].surname }}</span><br>
                     <span>{{ usersArray.users[1].school }}</span>
                     <div class="btn-box">
-                        <button class="btn btn-confirm">Confirm</button>
+                        <button class="btn btn-confirm" (click)="addFriend()">Confirm</button>
                         <button class="btn btn-delete">Delete</button>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <span>{{ usersArray.users[0].firstname }} {{ usersArray.users[0].surname }}</span><br>
                     <span>{{ usersArray.users[0].school }}</span>
                     <div class="btn-box">
-                        <button class="btn btn-confirm">Confirm</button>
+                        <button class="btn btn-confirm" (click)="addFriend()">Confirm</button>
                         <button class="btn btn-delete">Delete</button>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                                     </div>
                                 </div>   
                                 <div class="btn-box">
-                                    <button class="btn btn-confirm">Confirm</button>
+                                    <button class="btn btn-confirm" (click)="addFriend(friend)">Confirm</button>
                                     <button class="btn btn-delete">Delete Request</button>
                                 </div>
                             </div>  
