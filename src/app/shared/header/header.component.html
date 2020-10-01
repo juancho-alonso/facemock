@@ -12,9 +12,9 @@
         </div>
     </div>
     <div class="header-box">
-        <div class="name-and-avatar" [ngClass]="!wall ? 'name-and-avatar-active name-and-avatar' : 'name-and-avatar'">
+        <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]" [ngClass]="!wall ? 'name-and-avatar-active name-and-avatar' : 'name-and-avatar'">
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-            <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">{{ currentUser.firstname }}</a>
+            <a class="username" >{{ currentUser.firstname }}</a>
         </div> 
         <div class="dropdown-box">
             <i class="fas fa-caret-down"></i>
