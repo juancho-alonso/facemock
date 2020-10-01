@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   wall = window.location.href.indexOf('wall') > -1;
+  showDrop = false;
 
   constructor(private router:Router) { }
 
@@ -22,5 +23,9 @@ export class HeaderComponent implements OnInit {
 
   navProfile() {
     this.router.navigate(["/profile"])
+  }
+
+  onDropdown(){
+    this.showDrop = !this.showDrop
   }
 }
