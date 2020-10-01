@@ -1,6 +1,9 @@
+@import "../../styles.scss";
+
+
 main {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #F0F2F5;
     min-height: 94vh;
 }
@@ -8,6 +11,7 @@ main {
 .main-container {
     width: 100%;
     display: flex;
+    margin-top: 9vh;
 }
 
 .col {
@@ -15,37 +19,53 @@ main {
 }
 
 .col-1 {
-    width: 25%;
+    width: 30%;
+    max-width: 350px;
     height: 400px;
-    background-color: #c9c9c9;
     height: auto;
+}
+
+#friends-img {
+    border-radius: 0%;
+    height:24px;
+    width: auto;
+    margin-right: 7px;
 }
 
 .col-2 {
     width: 53%;
+    max-width: 700px;
 }
 
 .col-3 {
     width: 22%;
+    max-width: 300px;
     height: 400px;
-    background-color: #c9c9c9;
     height: auto;
+    p {
+        color: $main-dark-gray;
+        font-size: 17px;
+        margin-bottom: 8px;
+        margin-top: 0;
+    }
 }
 
 .name-and-avatar {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    color: #050505;
+    font-size: 15px;
     .username {
         cursor: pointer;
         color: black;
         text-decoration: none;
     }
     img {
-        height: 25px;
-        width: 25px;
+        height: 28px;
+        width: 28px;
         border-radius: 50%;
-        margin-right: 5px;
+        margin-right: 10px;
     }
     i {
         font-size: 20px;

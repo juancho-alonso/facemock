@@ -1,15 +1,24 @@
+@import "../../../styles.scss";
+
+
 .flex-container {
     display: flex;
     align-items: center;
-    
+}
+
+.post-header {
+    img {
+        height: 40px !important;
+        width: 40px !important;
+    }
 }
 
 .avatar-box {
     display: flex;
     align-items: center;
     img {
-        height: 45px;
-        width: 45px;
+        height: 32px;
+        width: 32px;
         border-radius: 50%;
         margin-right: 5px;
     }
@@ -38,10 +47,6 @@ main {
     font-size: 15px;
 }
 
-.flex-container {
-    display: flex;
-    align-items: flex-start;
-}
 
 .comment-btn-box {
     border-top: 1px solid #CED0D4;
@@ -55,12 +60,12 @@ main {
     p {
         margin: 0;
         font-size: 15px;
-        color: #65676B;
+        color: $main-dark-gray;
     }
     .fa-comment-alt {
         font-size: 18px;
         margin-right: 5px;
-        color: #65676B;
+        color: $main-dark-gray;
 
     }
 }

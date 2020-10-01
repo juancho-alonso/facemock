@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   currentUser = JSON.parse(localStorage.getItem('curUser'));
+  wall = window.location.href.indexOf('wall') > -1;
 
   constructor(private router:Router) { }
 
