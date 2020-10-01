@@ -2,30 +2,36 @@
 <main>
     <div class="main-container">
         <div class="col col-1">
-            <div class="name-and-avatar" >
-                <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">{{ currentUser.firstname }} {{ currentUser.surname }}</a>
-            </div>
-            <div class="name-and-avatar">
-                <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
-                <a class="username" >Friends</a>
+            <div class="col-box-1">
+                <div class="name-and-avatar" >
+                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                    <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">{{ currentUser.firstname }} {{ currentUser.surname }}</a>
+                </div>
+                <div class="name-and-avatar">
+                    <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
+                    <a class="username" >Friends</a>
+                </div>    
             </div>
         </div>
         <div class="col col-2">
-            <app-create-post (comment)="onComment($event)"></app-create-post>
-            <div *ngFor="let post of userComment" >
-                <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+            <div class="col-box-2">
+                <app-create-post (comment)="onComment($event)"></app-create-post>
+                <div *ngFor="let post of userComment" >
+                    <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                </div>    
             </div>
         </div>
         <div class="col col-3">
-            <p>Contacts</p>
-            <div *ngFor="let contact of usersList.users">
-                <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
-                    <div class="name-and-avatar" >
-                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                        <div>{{ contact.firstname }} {{ contact.surname }}</div>
+            <div class="col-box-3">
+                <p>Contacts</p>
+                <div *ngFor="let contact of usersList.users">
+                    <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
+                        <div class="name-and-avatar" >
+                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                            <div>{{ contact.firstname }} {{ contact.surname }}</div>
+                        </div>
                     </div>
-                </div>
+                </div>    
             </div>
         </div>
     </div>

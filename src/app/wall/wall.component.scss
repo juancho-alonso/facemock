@@ -33,6 +33,13 @@ main {
 
 .col-2 {
     width: 53%;
+    display: flex;
+    justify-content: center;
+}
+
+.col-box-2 {
+    width: 100%;
+    max-width: 600px;
 }
 
 .col-3 {
