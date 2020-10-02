@@ -18,6 +18,8 @@ import { AddFriendsComponent } from './initial/sign-up/add-friends/add-friends.c
 import { HeaderComponent } from './shared/header/header.component';
 import { CreatePostComponent } from './shared/create-post/create-post.component';
 import { PostTileComponent } from './shared/post-tile/post-tile.component';
+import { UploadComponent } from './shared/upload/upload.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { PostTileComponent } from './shared/post-tile/post-tile.component';
     HeaderComponent,
     CreatePostComponent,
     PostTileComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     LayoutModule

@@ -1,0 +1,15 @@
+<!-- <form action="uploads.php" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" id="">
+    <button type="submit" name="submit">UPLOAD</button>
+</form> -->
+
+ <h5>File Upload</h5> 
+ <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <input 
+    formControlName="file"
+    id="file" 
+    type="file" 
+    multiple
+    (change)="onFileChange($event)">
+    <button type="submit">Submit</button>
+ </form>

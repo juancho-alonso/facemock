@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="header-box">
-        <div [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]" [ngClass]="!wall ? 'name-and-avatar-active name-and-avatar' : 'name-and-avatar'">
+        <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]" [ngClass]="!wall ? 'name-and-avatar-active name-and-avatar' : 'name-and-avatar'">
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
             <a class="username" >{{ currentUser.firstname }}</a>
         </div> 

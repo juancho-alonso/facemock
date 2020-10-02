@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
     var urlSplit = changedUrl.split(".")
     urlSplit.splice(1, 0, ' ')
     this.profileUrl = urlSplit.join('')
+    
   }
 
   onComment(message){
