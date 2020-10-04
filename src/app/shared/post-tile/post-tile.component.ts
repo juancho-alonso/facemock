@@ -11,7 +11,8 @@ export class PostTileComponent implements OnInit, OnChanges {
   @ViewChild('postComment') postComment: any;
   @Input('userComment') userComment: any;
   @Input('post') post: any;
-  currentUser = JSON.parse(localStorage.getItem('curUser')); 
+  currentUser = JSON.parse(localStorage.getItem('curUser'));
+  like = false; 
 
   parsedUrl:any;
 
@@ -49,4 +50,7 @@ export class PostTileComponent implements OnInit, OnChanges {
     this.router.navigate([`profile/${this.parsedUrl}`])
   }
 
+  onLike(){
+    this.like = !this.like;
+  }
 }

@@ -1,0 +1,17 @@
+
+ <h5>File Upload</h5> 
+    <!-- <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+        <img [src]="imgSrc" (click)="fileUploader.click()">
+        <input type="file" accept="image/*" #fileUploader formControlName="imageUrl" (change)="showPreview($event)">
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <input type="text" placeholder="Save with Key" name="id" [(ngModel)]="id">
+    <br><br>
+    <input type="file" (change)="showPreview($event)">
+    <button (click)="save()">Save</button>
+    <h2>File View</h2>
+    <input type="text" name="file" [(ngModel)]="file" placeholder="Enter Unique Search Key">
+    <button (click)="view()">View</button>
+      
+ 

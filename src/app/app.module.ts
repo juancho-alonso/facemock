@@ -18,8 +18,15 @@ import { AddFriendsComponent } from './initial/sign-up/add-friends/add-friends.c
 import { HeaderComponent } from './shared/header/header.component';
 import { CreatePostComponent } from './shared/create-post/create-post.component';
 import { PostTileComponent } from './shared/post-tile/post-tile.component';
-import { UploadComponent } from './shared/upload/upload.component';
+import { UploadComponent } from './shared/images/upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+
+import { environment} from '../environments/environment';
+import { ImagesComponent } from './shared/images/images.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     CreatePostComponent,
     PostTileComponent,
     UploadComponent,
+    ImagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

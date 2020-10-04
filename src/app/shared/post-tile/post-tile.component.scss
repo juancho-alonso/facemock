@@ -47,12 +47,53 @@ main {
     font-size: 15px;
 }
 
+.publisher-name {
+    cursor: pointer;
+    font-weight: bold;
+}
 
-.comment-btn-box {
+.publisher-name:hover {
+    text-decoration: underline;
+}
+
+.comment-like-btn-box {
     border-top: 1px solid #CED0D4;
     border-bottom: 1px solid #CED0D4;
     margin: 10px 0;
-    height: 36px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.comment-btn-box, .like-btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    height: calc(100% - 8px);
+    width: 40%;
+    cursor: pointer;
+    p {
+        margin: 0;
+        font-size: 15px;
+        color: $main-dark-gray;
+    }
+    .far {
+        font-size: 18px;
+        margin-right: 5px;
+        color: $main-dark-gray;
+
+    }
+}
+
+.comment-btn-box:hover, .like-btn-box:hover {
+        background-color: $hover-gray;
+        border-radius: 8px;
+
+    }
+
+.unlike-btn-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,14 +101,24 @@ main {
     p {
         margin: 0;
         font-size: 15px;
-        color: $main-dark-gray;
+        color: $main-blue;
     }
-    .fa-comment-alt {
+    .far {
         font-size: 18px;
         margin-right: 5px;
-        color: $main-dark-gray;
+        color: $main-blue;
 
     }
+}
+
+.hide {
+    display: none;
+}
+
+.filled-like {
+    color: $main-blue;
+    font-size: 18px;
+    margin-right: 5px;
 }
 
 .comment-display-box {
@@ -90,6 +141,13 @@ main {
     display: inline;
     p {
         margin: 0;
+        a {
+            color: $text-color;
+        }
+        a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
     .comment-user {
         font-size: 13px;
@@ -98,4 +156,5 @@ main {
     .comment-content {
         font-size: 15px;
     }
+    
 }
