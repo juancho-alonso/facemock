@@ -8,11 +8,7 @@ main {
     min-height: 94vh;
 }
 
-.main-container {
-    width: 100%;
-    display: flex;
-    margin-top: 9vh;
-}
+
 
 .col {
     padding: 20px;
@@ -51,15 +47,20 @@ main {
         font-size: 17px;
         margin-bottom: 8px;
         margin-top: 0;
+        font-weight: 600;
+        padding-left: 8px;
     }
 }
 
 .name-and-avatar {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
     color: #050505;
     font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
     .username {
         cursor: pointer;
         color: black;
@@ -76,4 +77,10 @@ main {
         margin-right: 5px;
         color: #1A77F2;
     }
+}
+
+.name-and-avatar:hover {
+    background-color: $hover-dark-gray;
+    border-radius: 8px;
+    transition: ease-in-out .2s;
 }

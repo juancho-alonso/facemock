@@ -54,6 +54,8 @@ main {
 
 .publisher-name:hover {
     text-decoration: underline;
+    transition: ease-in-out .2s;
+
 }
 
 .comment-like-btn-box {
@@ -90,6 +92,7 @@ main {
 .comment-btn-box:hover, .like-btn-box:hover {
         background-color: $hover-gray;
         border-radius: 8px;
+        transition: ease-in-out .2s;
 
     }
 
@@ -147,6 +150,7 @@ main {
         a:hover {
             text-decoration: underline;
             cursor: pointer;
+            transition: ease-in-out .2s;
         }
     }
     .comment-user {

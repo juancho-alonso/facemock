@@ -86,7 +86,7 @@
 .inactive-home:hover {
         background-color: $hover-gray;
         border-radius: 8px;
-
+        transition: ease-in-out .2s;
     }
 
 .show-drop {
@@ -150,6 +150,7 @@
 
     .name-and-avatar:hover {
         background-color: $hover-gray;
+        transition: ease-in-out .2s;
     }
 
     .name-and-avatar-active {
@@ -161,6 +162,7 @@
 
     .name-and-avatar-active:hover {
         background-color: #DBE7F2;
+        transition: ease-in-out .2s;
     }
 }
 
