@@ -16,9 +16,11 @@
         <div class="col col-2">
             <div class="col-box-2">
                 <app-create-post (comment)="onComment($event)"></app-create-post>
-                <div *ngFor="let post of userComment" >
-                    <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
-                </div>    
+                <div class="posts-container"> 
+                    <div *ngFor="let post of userComment" >
+                        <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                    </div>        
+                </div>
             </div>
         </div>
         <div class="col col-3">
