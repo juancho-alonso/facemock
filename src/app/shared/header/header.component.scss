@@ -115,6 +115,9 @@
     .header {
         padding: 0px 20px;
         height: 60px;
+        position: fixed;
+        top: 0;
+        left: 0;
         .fa-facebook {
             font-size: 25px;
         }

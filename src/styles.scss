@@ -11,6 +11,7 @@ $main-dark-gray: #65676B;
 $text-color:  #050505;
 $hover-gray: #F1F1F1;
 $hover-dark-gray: #E4E6E9;
+$background-color: #F0F2F5;
 
 @mixin card {
     background-color: white;
@@ -90,6 +91,7 @@ a {
     .col {
         overflow: auto;
         height: -webkit-fill-available;
+        padding-bottom: 0;
     } 
 }
 

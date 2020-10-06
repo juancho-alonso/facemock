@@ -99,4 +99,112 @@ div:empty {
     display: none;
 }
 
+.cover-box {
+    position: relative;
+    padding: 0 35px;
+}
 
+.cover-pic {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0px 0px max(0px, min(8px, ((100vw - 4px) - 100%) * 9999)) max(0px, min(8px, ((100vw - 4px) - 100%) * 9999)) / 0px 0px 8px 8px;
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.profile-box {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: -20px;
+    left: -100px;
+    border-radius: 50%;
+    margin-left: 50%;
+}
+
+.profile-pic {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid white;
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.icon-profile-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: absolute;
+    background: $background-color;
+    right: 12px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+        font-size: 20px;
+        color: $text-color;
+    }
+}
+
+.icon-profile-box:hover {
+    background: $hover-dark-gray;
+    cursor: pointer;
+}
+
+.profile-pic-content {
+    position: absolute;
+}
+
+.profile-header {
+    h2 {
+        text-align: center;
+        margin-bottom: 11px;
+    }
+    p {
+        text-align: center;
+        cursor: pointer;
+        margin-top: 0px;
+    }
+    p:hover {
+        text-decoration: underline;
+    }
+}
+
+.edit-cover-box {
+    position: absolute;
+    right: 66px;
+    bottom: 20px;
+    background: $background-color;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    i {
+        font-size: 16px;
+        color: $text-color;
+        margin-right: 8px;
+    }
+    span {
+        font-weight: 600;
+        font-size: .9375rem;
+        color: $text-color;
+    }
+}
+
+.edit-cover-box:hover {
+    background: $hover-dark-gray;
+    cursor: pointer;
+}
+
+.edit-cover-box:hover {
+    background: $hover-dark-gray;
+    cursor: pointer;
+}
