@@ -118,10 +118,46 @@ main {
     display: none;
 }
 
+
+
 .filled-like {
     color: $main-blue;
     font-size: 18px;
     margin-right: 5px;
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    -ms-transition: -ms-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    // transition: cubic-bezier(0,1,1,1);
+    transform:rotate(-20deg) scale(1.1,1.1) !important;
+    -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
+    -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
+}
+
+@keyframes animation-like {
+    0% {
+        transform:rotate(0deg) scale(1,1) !important;
+        -ms-transform:rotate(0deg) scale(1,1)!important;
+        -webkit-transform:rotate(0deg) scale(1,1)!important;
+        }
+    /* Adding a step in the middle */
+    50% {
+        transform:rotate(-20deg) scale(1.1,1.1) !important;
+        -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
+        -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
+        }
+    100% {
+        transform:rotate(0deg) scale(1,1) !important;
+        -ms-transform:rotate(0deg) scale(1,1)!important;
+        -webkit-transform:rotate(0deg) scale(1,1)!important;
+    }
+  }
+
+.animated-like .filled-like{
+    transform:rotate(-20deg) scale(1.1,1.1) !important;
+    -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
+    -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
+    //animation: animation-like .4s ;
+
 }
 
 .comment-display-box {

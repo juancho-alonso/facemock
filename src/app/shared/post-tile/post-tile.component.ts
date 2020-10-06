@@ -12,7 +12,9 @@ export class PostTileComponent implements OnInit, OnChanges {
   @Input('userComment') userComment: any;
   @Input('post') post: any;
   currentUser = JSON.parse(localStorage.getItem('curUser'));
-  like = false; 
+  like = false;
+  likeElement = document.querySelector("#like-box");
+  likeIcon = document.querySelector("#like-icon");
 
   parsedUrl:any;
 
@@ -50,7 +52,18 @@ export class PostTileComponent implements OnInit, OnChanges {
     this.router.navigate([`profile/${this.parsedUrl}`])
   }
 
-  onLike(){
+  onLike(e){
     this.like = !this.like;
+    console.log(this.likeElement.classList)
+    if(!this.likeElement.classList.contains('filled-like')){
+      console.log(123)
+    //   setTimeout(() => {this.likeIcon.classList.add('animated-like')
+    // }, 1500);
+
+    }
+    setTimeout(() => {this.likeElement.classList.add('animated-like')
+    }, 100);
+    //this.likeIcon.classList.add('animated-like');
+    console.log(this.likeIcon.classList)
   }
 }

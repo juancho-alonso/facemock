@@ -9,8 +9,8 @@
         <p class="post-content">{{ post.post }}</p>
     </div>
     <div class="comment-like-btn-box">
-        <div (click)="onLike()" [ngClass]="!like ? 'like-btn-box' : 'unlike-btn-box'" class="like-btn-box">
-            <i [ngClass]="!like ? 'far fa-thumbs-up' : 'hide'" class="far fa-thumbs-up"></i><i [ngClass]="!like ? 'hide' : 'fas fa-thumbs-up'" class="fas fa-thumbs-up filled-like"></i>
+        <div (click)="onLike($event)" [ngClass]="!like ? 'like-btn-box' : 'unlike-btn-box'" class="like-btn-box" id="like-box">
+            <i [ngClass]="!like ? 'far fa-thumbs-up' : 'hide'" class="far fa-thumbs-up"></i><i id="like-icon" [ngClass]="!like ? 'hide' : 'fas fa-thumbs-up'" class="fas fa-thumbs-up filled-like"></i>
             <p>Like</p>
         </div>
         <div class="comment-btn-box">

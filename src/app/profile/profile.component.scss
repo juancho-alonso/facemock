@@ -1,3 +1,6 @@
+@import "../../styles.scss";
+
+
 main {
     display: flex;
     justify-content: center;
@@ -26,18 +29,77 @@ main {
 }
 
 .name-and-avatar {
-    display: flex;
-    align-items: center;
     margin-bottom: 15px;
     .username {
         cursor: pointer;
         color: black;
         text-decoration: none;
     }
-    img {
-        height: 25px;
-        width: 25px;
-        border-radius: 50%;
-        margin-right: 5px;
+    .img-box {
+        height: 102px;
+        width: 102px;
+        img {      
+            height: 100%; 
+            border-radius: 8px;
+ 
+        }
+    }
+    
+}
+
+
+    h3 {
+        margin: 0;
+        @include card-info-title;
+    } 
+    h6 {
+        font-size: .9375rem;
+        line-height: 1.333;
+        color: $text-color;
+        font-weight: normal;
+        margin: 5px 0;
+        margin-left: 5px;
+        padding: 6px;
+    }
+    .icon-box {
+        width: 20px;
+        text-align: center;
+    }
+
+
+.icon-title-box {
+    display: flex;
+    align-items: center;
+    i {
+        font-size: 20px;
+        color: #8C939D;
     }
 }
+
+.friends {
+    p {
+        line-height: 1.1765;
+        font-size: 1.0625rem;
+        color: $main-dark-gray;
+        margin: 6px 0;
+    }
+    .friends-grid {
+        display: grid;
+        grid-template-columns: max-content max-content max-content;
+        grid-template-rows: auto;
+        gap: 0px 14px;
+
+    }
+
+    .friend-name {
+        font-size: .8125rem;
+        font-weight: 600;
+        color: $text-color;
+        line-height: 1.2308;
+    }
+}
+
+div:empty {
+    display: none;
+}
+
