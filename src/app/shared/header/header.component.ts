@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   wall = window.location.href.indexOf('wall') > -1;
   showDrop = false;
+  showCreateDrop = false;
 
   constructor(private router:Router) { }
 
@@ -27,5 +28,9 @@ export class HeaderComponent implements OnInit {
 
   onDropdown(){
     this.showDrop = !this.showDrop
+  }
+
+  onCreateDropdown(){
+    this.showCreateDrop = !this.showCreateDrop;
   }
 }

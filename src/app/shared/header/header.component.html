@@ -1,6 +1,6 @@
 <div class="header">
     <div class="logo-box">
-        <svg viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4" fill="url(#jsc_s_2)" height="40" width="40"><defs><linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2"><stop offset="0%" stop-color="#0062E0"></stop><stop offset="100%" stop-color="#19AFFF"></stop></linearGradient></defs><path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"></path><path class="p361ku9c" d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"></path></svg>
+        <svg [routerLink]="['/wall']" viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4" fill="url(#jsc_s_2)" height="40" width="40"><defs><linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2"><stop offset="0%" stop-color="#0062E0"></stop><stop offset="100%" stop-color="#19AFFF"></stop></linearGradient></defs><path d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8z"></path><path class="p361ku9c" d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z"></path></svg>
         <input type="text" placeholder="Search in Facemock" id="search">
         <div class="search-box">
             <i class="fas fa-search"></i>
@@ -21,10 +21,24 @@
             <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
             <a class="username" >{{ currentUser.firstname }}</a>
         </div> 
-        <div class="dropdown-box">
+        <div class="dropdown-box" (click)="onCreateDropdown()" [ngClass]="showCreateDrop ? 'drop-active' : 'dropdown-box'">
             <i class="fas fa-plus"></i>
         </div>
-        <div class="dropdown-box" (click)="onDropdown()">
+        <div [ngClass]="showCreateDrop ? 'show-drop show-create-drop' : 'hide-drop'">
+            <div class="main-drop">
+                <h3>Create</h3>
+                <div class="logout-box create-drop-box">
+                    <div class="logout-icon-box">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="username-drop-box">
+                        <p>Create a post</p>
+                        <span>Share a post on News Feed</span>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown-box" (click)="onDropdown()" [ngClass]="showDrop ? 'drop-active' : 'dropdown-box'">
             <i class="fas fa-caret-down"></i>
         </div>
         <div [ngClass]="showDrop ? 'show-drop' : 'hide-drop'">

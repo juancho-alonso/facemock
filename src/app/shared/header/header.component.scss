@@ -120,6 +120,12 @@
     display: none;
 }
 
+.drop-active {
+    color: #0073F5;
+    background-color: #E7F3FF!important;
+}
+
+
 .main-drop {
     .name-and-avatar{
         margin-top: 32px;
@@ -192,6 +198,30 @@
         border-radius: 50%;
         i {
             font-size: 18px;
+        }
+    }
+}
+
+.show-create-drop {
+    width: 222px;
+    height: 128px;
+    padding: 7px;
+    h3 {
+        font-size: 24px;
+        margin: 8px 0px 12px 8px;
+    }
+}
+
+.create-drop-box {
+    .username-drop-box{
+        margin-left: 8px;
+        width: 140px;
+        p {
+            margin: 0;
+            font-size: 15px;
+        }
+        span {
+            font-size: 13px;
         }
     }
 }
