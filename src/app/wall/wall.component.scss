@@ -1,6 +1,5 @@
 @import "../../styles.scss";
 
-
 main {
     display: flex;
     justify-content: space-between;
@@ -8,16 +7,14 @@ main {
     min-height: 94vh;
 }
 
-
-
-.col {
-    padding: 20px;
+.col-main {
+    height: 100%;
 }
 
 .col-1 {
     width: 25%;
-    height: 400px;
     height: auto;
+    display: none;
 }
 
 #friends-img {
@@ -28,7 +25,11 @@ main {
 }
 
 .col-2 {
-    width: 53%;
+    width: 100%;
+}
+
+.col-2-pre {
+    display: none;
 }
 
 .col-box-2 {
@@ -37,6 +38,7 @@ main {
 }
 
 .col-3 {
+    display: none;
     width: 22%;
     height: 400px;
     height: auto;
@@ -49,6 +51,7 @@ main {
         padding-left: 8px;
     }
 }
+
 
 .name-and-avatar {
     display: flex;
@@ -77,8 +80,88 @@ main {
     }
 }
 
-.name-and-avatar:hover {
-    background-color: $hover-dark-gray;
-    border-radius: 8px;
-    transition: ease-in-out .2s;
+@media screen and (min-width: 768px) {
+
+    main {
+        display: flex;
+        justify-content: space-between;
+        background-color: #F0F2F5;
+        min-height: 94vh;
+    }
+
+    .col {
+        padding: 20px;
+    }
+
+    .col-1 {
+        display: flex;
+        width: 25%;
+        height: 400px;
+        height: auto;
+    }
+
+    #friends-img {
+        border-radius: 0%;
+        height:24px;
+        width: auto;
+        margin-right: 7px;
+    }
+
+    .col-2 {
+        width: 53%;
+    }
+
+    .col-box-2 {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .col-3 {
+        display: flex;
+        width: 22%;
+        height: 400px;
+        height: auto;
+        p {
+            color: $main-dark-gray;
+            font-size: 17px;
+            margin-bottom: 8px;
+            margin-top: 0;
+            font-weight: 600;
+            padding-left: 8px;
+        }
+    }
+
+    .name-and-avatar {
+        display: flex;
+        align-items: center;
+        color: #050505;
+        font-size: 15px;
+        font-weight: 500;
+        width: 100%;
+        padding: 8px;
+        cursor: pointer;
+        .username {
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+        }
+        img {
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        i {
+            font-size: 20px;
+            margin-right: 5px;
+            color: #1A77F2;
+        }
+    }
+
+    .name-and-avatar:hover {
+        background-color: $hover-dark-gray;
+        border-radius: 8px;
+        transition: ease-in-out .2s;
+    }
+
 }

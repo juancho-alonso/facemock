@@ -19,6 +19,7 @@
             </div>
             <div class="col-main">
                 <div class="col-box-2">
+                    <app-create-post (comment)="onComment($event)"></app-create-post>
                     <div class="posts-container scroll"> 
                         <div *ngFor="let post of userComment" >
                             <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>

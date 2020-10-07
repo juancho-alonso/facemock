@@ -7,36 +7,39 @@
             <span class="publisher-name">{{ post.author }}</span>
         </div>
         <p class="post-content">{{ post.post }}</p>
+        <p (click)="onCommentToggle()" class="comments-amount">{{ post.comments.length }} Comments</p>
     </div>
-    <div class="comment-like-btn-box">
+    <div class="comment-like-btn-box" [ngClass]="insertComment? 'comment-like-btn-box' : 'no-border'">
         <div (click)="onLike($event)" [ngClass]="!like ? 'like-btn-box' : 'unlike-btn-box'" class="like-btn-box" id="like-box">
             <i [ngClass]="!like ? 'far fa-thumbs-up' : 'hide'" class="far fa-thumbs-up"></i><i id="like-icon" [ngClass]="!like ? 'hide' : 'fas fa-thumbs-up'" class="fas fa-thumbs-up filled-like"></i>
             <p>Like</p>
         </div>
-        <div class="comment-btn-box">
+        <div class="comment-btn-box" (click)="onCommentToggle()">
             <i class="far fa-comment-alt"></i>
             <p>Comment</p>
         </div>    
     </div>
-    <div class="comment-display-box">
-        <div *ngFor="let com of post.comments" >
-            <div class="comment-main-box">
+        <div *ngIf="insertComment">
+            <div class="comment-display-box">
+                <div *ngFor="let com of post.comments" >
+                    <div class="comment-main-box">
+                        <div class="avatar-box">
+                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                        </div>
+                        <div class="comment-text-box">
+                            <p class="comment-user"> <a (click)='parseURL(com.publisher)'>{{ com.publisher }}</a></p>
+                            <p class="comment-content">{{ com.message }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-container new-comment">
                 <div class="avatar-box">
                     <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
                 </div>
-                <div class="comment-text-box">
-                    <p class="comment-user"> <a (click)='parseURL(com.publisher)'>{{ com.publisher }}</a></p>
-                    <p class="comment-content">{{ com.message }}</p>
-                </div>
+                <input (keypress)="newComment($event)" type="text" id="inputUser" placeholder="Write a comment..." #postComment attr.data-n="{{ post.id }}">
+                <!-- <button (click)="newComment($event)">Comment</button> -->
             </div>
         </div>
-    </div>
-    <div class="flex-container">
-        <div class="avatar-box">
-            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-        </div>
-        <input (keypress)="newComment($event)" type="text" id="inputUser" placeholder="Write a comment..." #postComment attr.data-n="{{ post.id }}">
-        <!-- <button (click)="newComment($event)">Comment</button> -->
-    </div>
 </main>
 

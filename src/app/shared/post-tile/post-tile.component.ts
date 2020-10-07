@@ -15,6 +15,7 @@ export class PostTileComponent implements OnInit, OnChanges {
   like = false;
   likeElement = document.querySelector("#like-box");
   likeIcon = document.querySelector("#like-icon");
+  insertComment = false;
 
   parsedUrl:any;
 
@@ -65,5 +66,9 @@ export class PostTileComponent implements OnInit, OnChanges {
     }, 100);
     //this.likeIcon.classList.add('animated-like');
     console.log(this.likeIcon.classList)
+  }
+
+  onCommentToggle(){
+    this.insertComment = !this.insertComment;
   }
 }
