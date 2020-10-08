@@ -1,87 +1,87 @@
-<app-header></app-header>
-<div class="profile-header">
-    <div class="cover-box">
-        <div class="cover-pic">
-            <img src="../../assets/cover.jpg" alt="">
-        </div>
-        <div class="profile-box">
-            <div class="profile-pic-content">
-                <div class="profile-pic">
-                    <img src="../../assets/juancho.png" alt="">
-                </div>
-                <div class="icon-profile-box">
-                    <i class="fas fa-camera"></i>
+<div class="profile-main-box">
+    <app-header></app-header>
+    <div class="profile-header">
+        <div class="cover-box">
+            <div class="cover-pic">
+                <img src="../../assets/cover.jpg" alt="">
+            </div>
+            <div class="profile-box">
+                <div class="profile-pic-content">
+                    <div class="profile-pic">
+                        <img src="../../assets/juancho.png" alt="">
+                    </div>
+                    <div class="icon-profile-box">
+                        <i class="fas fa-camera"></i>
+                    </div>
                 </div>
             </div>
+            <div class="edit-cover-box">
+                <i class="fas fa-camera"></i>
+                <span>Edit Cover Photo</span>
+            </div>
         </div>
-        <div class="edit-cover-box">
-            <i class="fas fa-camera"></i>
-            <span>Edit Cover Photo</span>
+        <div class="profile-bio-box">
+            <h2>Nombre Usuario</h2>
+            <p><a>Add Bio</a></p>    
         </div>
     </div>
-    <h2>Nombre Usuario</h2>
-    <p><a>Add Bio</a></p>
-</div>
-<main>
-    <div class="main-container">
-        <div class="col col-1 scroll">
-            <div class="bio">
-                <div class="intro-box main-tile">
-                <h3>Intro</h3>
-                    <div class="icon-title-box">
-                        <div class="icon-box">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h6>Works at Disney Company</h6>
-                    </div>
-                    <div class="icon-title-box">
-                        <div class="icon-box">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h6>Went to London College </h6>
-                    </div>
-                    <div class="icon-title-box">
-                        <div class="icon-box">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h6>Lives in <b>Sydney</b></h6>
-                    </div>
-                    <div class="icon-title-box">
-                        <div class="icon-box">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h6>From <b>Buenos Aires</b></h6>
-                    </div>
-                    <div class="icon-title-box">
-                        <div class="icon-box">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h6>Divorced </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="friends main-tile">
-                <h3>Friends</h3>
-                <p>{{ currentUser.friends.length }}</p>
-                <div class="friends-grid">
-                    <div *ngFor="let contact of usersList.users">
-                        <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
-                            <div class="name-and-avatar" >
-                                <div class="img-box">
-                                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                                </div>
-                                <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
+    <main>
+        <div class="main-container">
+            <div class="col col-1 scroll">
+                <div class="bio">
+                    <div class="intro-box main-tile">
+                    <h3>Intro</h3>
+                        <div class="icon-title-box">
+                            <div class="icon-box">
+                                <i class="fas fa-briefcase"></i>
                             </div>
+                            <h6>Works at Disney Company</h6>
                         </div>
-                    </div>        
+                        <div class="icon-title-box">
+                            <div class="icon-box">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h6>Went to London College </h6>
+                        </div>
+                        <div class="icon-title-box">
+                            <div class="icon-box">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h6>Lives in <b>Sydney</b></h6>
+                        </div>
+                        <div class="icon-title-box">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h6>From <b>Buenos Aires</b></h6>
+                        </div>
+                        <div class="icon-title-box">
+                            <div class="icon-box">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h6>Divorced </h6>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-2 col">
-            <div class="col-2-pre">
-                <app-create-post (comment)="onComment($event)"></app-create-post>
-            </div>
-            <div class="col-main">
+                <div class="friends main-tile">
+                    <h3>Friends</h3>
+                    <p>{{ currentUser.friends.length }}</p>
+                    <div class="friends-grid">
+                        <div *ngFor="let contact of usersList.users">
+                            <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
+                                <div class="name-and-avatar" >
+                                    <div class="img-box">
+                                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                                    </div>
+                                    <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+                <div class="create-box-mobile">
+                    <app-create-post (comment)="onComment($event)"></app-create-post>
+                </div>
                 <div class="posts-container scroll">
                     <div *ngFor="let post of userComment" >
                         <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
@@ -90,6 +90,21 @@
                     </div>    
                 </div>
             </div>
+            <div class="col-2 col">
+                <div class="col-2-pre">
+                    <app-create-post (comment)="onComment($event)"></app-create-post>
+                </div>
+                <div class="col-main">
+                    <div class="posts-container scroll">
+                        <div *ngFor="let post of userComment" >
+                            <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
+                                <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+
+</div>

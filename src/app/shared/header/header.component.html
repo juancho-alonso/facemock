@@ -43,12 +43,12 @@
         </div>
         <div [ngClass]="showDrop ? 'show-drop' : 'hide-drop'">
             <div class="main-drop">
-                <div class="name-and-avatar" >
+                <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
                     <div class="avatar-box">
                         <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
                     </div>
                     <div class="username-drop-box">
-                        <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]"><b>{{ currentUser.firstname }} {{ currentUser.surname }}</b></a>
+                        <a class="username"><b>{{ currentUser.firstname }} {{ currentUser.surname }}</b></a>
                         <span>See your profile</span>    
                     </div>
                 </div>

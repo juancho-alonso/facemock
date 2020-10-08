@@ -2,7 +2,7 @@
 
 .header {
     background: white;
-    height: 44px;
+    height: 60px;
     margin: 0 auto;
     padding: 0px 10px;
     width: 100%;
@@ -10,9 +10,9 @@
     justify-content: space-between;
     align-items: center;
     color: #050505;
-    height: 9vh;
     box-shadow: $main-shadow;
-    position: fixed;
+    position: absolute;
+    top: 0;
     z-index: 1; 
     p {
         font-size: 13px;
@@ -229,7 +229,6 @@
 @media screen and (min-width: 768px){
     .header {
         padding: 0px 20px;
-        height: 60px;
         position: fixed;
         top: 0;
         left: 0;
@@ -266,9 +265,14 @@
         }
     }
 
+    .menu-box {
+        display: none;
+    }
+
     #search {
         border-radius: 50px;
         border: none;
+        display: flex;
         width: 100%;
         background-color: #F0F2F5;
         min-height: 40px;
