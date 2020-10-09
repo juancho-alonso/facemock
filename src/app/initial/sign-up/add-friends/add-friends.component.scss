@@ -107,8 +107,7 @@
 
     .friends-desktop-container {
         display: block;
-        body {
-            padding: 50px 100px 80px 100px;
+        section {
             background: #E9EBEE;
             display: flex;
             justify-content: center;
@@ -117,6 +116,7 @@
             background: white;
             border-radius: 8px;
             padding: 20px 40px;
+            margin: 50px 100px 80px 100px;
             max-width: 900px;
             min-width: 650px;
             .btn {

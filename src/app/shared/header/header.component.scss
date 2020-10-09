@@ -57,7 +57,7 @@
 }
 
 .logo-box {
-    width: 45%;
+    width: 100%;
     display: flex;
 }
 
@@ -72,6 +72,21 @@
     margin-left: 8px;
     background-color: #E4E6EB;
     border: none;
+}
+
+.results-box {
+    height: auto;
+    width: 245px;
+    position: absolute;
+    left: 67px;
+    top: 60px;
+    @include card;
+}
+
+.results-drop {
+    .name-and-avatar{
+        height: auto;
+    }
 }
 
 #search {
@@ -224,6 +239,11 @@
             font-size: 13px;
         }
     }
+}
+
+.logo-search-box {
+    position: relative;
+    width: 45%;
 }
 
 @media screen and (min-width: 768px){

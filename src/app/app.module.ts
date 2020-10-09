@@ -26,7 +26,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 
 import { environment} from '../environments/environment';
-import { ImagesComponent } from './shared/images/images.component'
+import { ImagesComponent } from './shared/images/images.component';
 
 @NgModule({
   declarations: [
