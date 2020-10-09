@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/users.service';
 import { SearchService } from 'src/app/shared/header/search-view/search.service';
@@ -11,7 +11,7 @@ import { ApplicationRef } from '@angular/core'
   styleUrls: ['./header.component.scss'],
   providers:[UsersService, SearchService]
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
 
 
   @ViewChild('search') searchInput;
@@ -33,18 +33,7 @@ export class HeaderComponent implements OnInit, OnChanges {
               public ref: ApplicationRef) { }
 
   ngOnInit(): void {
-    // this.searchService.searchValue.subscribe(query =>{
-    //   this.result = query;
-    // })
-    // console.log(this.result + 'event')
-  }
-
-  ngOnChanges(){
-    // this.searchService.searchValue.subscribe(query =>{
-    //   this.result = query;
-    // })
-    // console.log(this.result + 'event')
-    // this.searchCall();
+    
   }
 
   searchCall(e){
@@ -52,11 +41,8 @@ export class HeaderComponent implements OnInit, OnChanges {
     if (this.searchInput.nativeElement.value == "") {
       this.show = false;
     }
-    // this.ref.tick()
     this.result = this.searchInput.nativeElement.value
     console.log(this.result)
-    // this.searchService.onSearch(this.searchInput.nativeElement.value);
-    // console.log(this.searchService.getQuery())
     this.searchService.searchValue.next(this.searchInput.nativeElement.value)
   }
 
@@ -69,7 +55,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   onDropdown(){
-    // this.showDrop = !this.showDrop;
+    this.showDrop = !this.showDrop;
   }
 
   onCreateDropdown(){

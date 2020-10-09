@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
     var curEmail = this.email.nativeElement.value;
     var curPass = this.pass.nativeElement.value;
     var curUser = JSON.parse(localStorage.getItem(curEmail))
-    localStorage.setItem("curUser", JSON.stringify(curUser))
 
     if (this.mobile && curEmail === '' || this.mobile && curEmail !== curUser){
       this.unexistingUser = true;

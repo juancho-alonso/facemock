@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="profile-bio-box">
-            <h2>Nombre Usuario</h2>
+            <h2>{{ curProfile.firstname }} {{ curProfile.surname }}</h2>
             <p><a>Add Bio</a></p>    
         </div>
     </div>
@@ -35,37 +35,37 @@
                             <div class="icon-box">
                                 <i class="fas fa-briefcase"></i>
                             </div>
-                            <h6>Works at Disney Company</h6>
+                            <h6>Works at {{ curProfile.work }}</h6>
                         </div>
                         <div class="icon-title-box">
                             <div class="icon-box">
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
-                            <h6>Went to London College </h6>
+                            <h6>Went to {{ curProfile.school }}</h6>
                         </div>
                         <div class="icon-title-box">
                             <div class="icon-box">
                                 <i class="fas fa-home"></i>
                             </div>
-                            <h6>Lives in <b>Sydney</b></h6>
+                            <h6>Lives in <b>{{ curProfile.currentCity }}</b></h6>
                         </div>
                         <div class="icon-title-box">
                             <div class="icon-box">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <h6>From <b>Buenos Aires</b></h6>
+                            <h6>From <b>{{ curProfile.birthplace }}</b></h6>
                         </div>
                         <div class="icon-title-box">
                             <div class="icon-box">
                                 <i class="fas fa-heart"></i>
                             </div>
-                            <h6>Divorced </h6>
+                            <h6>{{ curProfile.relationship }}</h6>
                         </div>
                     </div>
                 </div>
                 <div class="friends main-tile">
                     <h3>Friends</h3>
-                    <p>{{ currentUser.friends.length }}</p>
+                    <p>{{ curProfile.friends.length }}</p>
                     <div class="friends-grid">
                         <div *ngFor="let contact of usersList.users">
                             <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">

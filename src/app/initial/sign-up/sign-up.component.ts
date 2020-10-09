@@ -74,7 +74,15 @@ export class SignUpComponent implements OnInit {
     localStorage.setItem(this.signupForm.value.email, JSON.stringify(this.signupForm.value));
     localStorage.setItem('curUser', JSON.stringify(this.signupForm.value));
     var currentUser = JSON.parse(localStorage.getItem('curUser')); 
-    this.usersList.users.push(currentUser)
+    currentUser.relationship = "";
+    currentUser.birthplace = "";
+    currentUser.work = "";
+    currentUser.school = "";
+    currentUser.about = "";
+    currentUser.currentCity = "";
+    currentUser.friends = [];
+    localStorage.setItem("curUser", JSON.stringify(currentUser))
+
   }
 
   onGenderChange() {

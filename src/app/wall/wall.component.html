@@ -3,9 +3,9 @@
     <div class="main-container">
         <div class="col col-1 scroll">
             <div class="col-box-1">
-                <div class="name-and-avatar" >
+                <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
                     <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                    <a class="username" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">{{ currentUser.firstname }} {{ currentUser.surname }}</a>
+                    <a class="username" >{{ currentUser.firstname }} {{ currentUser.surname }}</a>
                 </div>
                 <div class="name-and-avatar">
                     <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
