@@ -26,7 +26,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 
 import { environment} from '../environments/environment';
-import { ImagesComponent } from './shared/images/images.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +44,6 @@ import { ImagesComponent } from './shared/images/images.component';
     CreatePostComponent,
     PostTileComponent,
     UploadComponent,
-    ImagesComponent,
   ],
   imports: [
     BrowserModule,

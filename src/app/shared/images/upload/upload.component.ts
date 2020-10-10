@@ -14,6 +14,8 @@ export class UploadComponent implements OnInit {
   url:string;
   id:string;
   file:string;
+  currentUser = JSON.parse(localStorage.getItem('curUser'));
+
 
   constructor( @Inject(AngularFireStorage) private storage: AngularFireStorage, @Inject(UploadingService) private fileService: UploadingService) { }
   
@@ -23,12 +25,15 @@ export class UploadComponent implements OnInit {
 
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
+    this.save();
   }
 
   save() {
     var name = this.selectedImage.name;
-    const fileRef = this.storage.ref(name);
-    this.storage.upload(name, this.selectedImage).snapshotChanges().pipe(
+    var filePath = `${this.currentUser.firstname}${this.currentUser.surname}/${name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`
+
+    const fileRef = this.storage.ref(filePath);
+    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.url = url;

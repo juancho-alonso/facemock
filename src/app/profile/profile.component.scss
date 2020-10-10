@@ -4,6 +4,17 @@
     overflow: auto;
 }
 
+.input-upload {
+    position: absolute;
+    right: -2px !important;
+    bottom: -2px !important;
+    opacity: 0;
+}
+
+.input-upload::before {
+    cursor: pointer;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -177,6 +188,13 @@ div:empty {
 
 .profile-header {
     margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to top, #FFFFFF, rgba(255,255,255.9), rgba(255,255,255,0.7), rgba(255,255,255,0.4), rgba(255,255,255,0));
+    background-color: #204071;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     h2 {
         text-align: center;
         margin-bottom: 11px;
@@ -649,6 +667,7 @@ div:empty {
     
     .col-1 {
         width: 45%;
+        min-width: 300px;
         height: auto;
     }
     
@@ -658,6 +677,7 @@ div:empty {
 
     .col-2.col {
         display: block;
+        min-width: 350px;
     }
     
     .name-and-avatar {
@@ -738,6 +758,7 @@ div:empty {
     .cover-box {
         position: relative;
         padding: 0 35px;
+        max-width: 900px;
     }
     
     .cover-pic {

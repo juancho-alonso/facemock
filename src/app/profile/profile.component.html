@@ -3,19 +3,21 @@
     <div class="profile-header">
         <div class="cover-box">
             <div class="cover-pic">
-                <img src="../../assets/cover.jpg" alt="">
+                <img [src]="coverPic" alt="">
             </div>
             <div class="profile-box">
                 <div class="profile-pic-content">
                     <div class="profile-pic">
-                        <img src="../../assets/juancho.png" alt="">
+                        <img [src]="profilePic">
                     </div>
-                    <div class="icon-profile-box">
+                    <div class="icon-profile-box" >
+                        <input data-id="profile" type="file" class="icon-profile-box input-upload" (change)="showPreview($event)">
                         <i class="fas fa-camera"></i>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div class="edit-cover-box">
+                <input data-id="cover" type="file" class="icon-profile-box input-cover" (change)="showPreview($event)">
                 <i class="fas fa-camera"></i>
                 <span>Edit Cover Photo</span>
             </div>
