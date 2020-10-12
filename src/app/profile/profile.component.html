@@ -84,7 +84,7 @@
                 <div class="create-box-mobile">
                     <app-create-post (comment)="onComment($event)"></app-create-post>
                 </div>
-                <div class="posts-container scroll">
+                <div class="posts-container scroll posts-box-mobile">
                     <div *ngFor="let post of userComment" >
                         <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
                             <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
