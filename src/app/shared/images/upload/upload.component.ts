@@ -45,7 +45,6 @@ export class UploadComponent implements OnInit {
   }
 
   view(){
-    console.log(this.url)
     this.fileService.getImage(this.file);
   }
 

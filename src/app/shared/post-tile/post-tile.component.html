@@ -2,7 +2,7 @@
     <div class="post-header">
         <div class="flex-container">
             <div class="avatar-box">
-                <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                <img [src]="profilePic[j]" alt="Anonymous avatar">
             </div>
             <span class="publisher-name">{{ post.author }}</span>
         </div>
@@ -21,10 +21,10 @@
     </div>
         <div *ngIf="insertComment">
             <div class="comment-display-box">
-                <div *ngFor="let com of post.comments" >
+                <div *ngFor="let com of post.comments; let i = index" >
                     <div class="comment-main-box">
                         <div class="avatar-box">
-                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                            <img [src]="com.avatar" alt="Anonymous avatar">
                         </div>
                         <div class="comment-text-box">
                             <p class="comment-user"> <a (click)='parseURL(com.publisher)'>{{ com.publisher }}</a></p>

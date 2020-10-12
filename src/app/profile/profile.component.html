@@ -11,13 +11,13 @@
                         <img [src]="profilePic">
                     </div>
                     <div class="icon-profile-box" >
-                        <input data-id="profile" type="file" class="icon-profile-box input-upload" (change)="showPreview($event)">
+                        <input data-id="profile" type="file" class="icon-profile-box input-upload" (change)="showPreview($event)" >
                         <i class="fas fa-camera"></i>
                     </div> 
                 </div>
             </div>
             <div class="edit-cover-box">
-                <input data-id="cover" type="file" class="icon-profile-box input-cover" (change)="showPreview($event)">
+                <input data-id="cover" type="file" class="icon-profile-box input-cover" (change)="showPreview($event)" id="cover-input">
                 <i class="fas fa-camera"></i>
                 <span>Edit Cover Photo</span>
             </div>

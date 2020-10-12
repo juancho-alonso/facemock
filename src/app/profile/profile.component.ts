@@ -26,7 +26,6 @@ export class ProfileComponent implements OnInit {
   file:string;
   profilePic:any;
   coverPic:any;
-
  
 
 
@@ -37,15 +36,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.fileService.getImageDetailList();
-    // console.log(this.currentUser)
-    // console.log(this.usersList.users[0])
     this.name = this.route.snapshot.params['name'];
     var url = window.location.href;
     var changedUrl = url.substring(url.lastIndexOf('/') + 1)
     var urlSplit = changedUrl.split(".")
     urlSplit.splice(1, 0, ' ')
     this.profileUrl = urlSplit.join('')
-    console.log(this.profileUrl)
     if (this.profileUrl == this.currentUser.firstname + " " + this.currentUser.surname) {
       this.curProfile = this.currentUser;
     } else {
@@ -59,19 +55,14 @@ export class ProfileComponent implements OnInit {
 
     for (let i = 0; i < this.usersList.users.length; i++) {
       if (this.profileUrl == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
-        console.log(123)
         this.profilePic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/profile.jpg"
         this.coverPic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/cover.jpg"
-        console.log(this.profilePic + " RUTA")
         return
       } else {
-        console.log(456)
         this.profilePic = "../../assets/avatar-anonym.jpg"
         this.coverPic = "../../assets/avatar-anonym.jpg"
-      }
+      } 
     }
-
-    console.log(this.profileUrl)
 
   }
 
@@ -82,7 +73,6 @@ export class ProfileComponent implements OnInit {
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
     var dataId = event.target.dataset.id;
-    console.log(dataId + ' DATA ID')
     this.save(dataId);
     setTimeout(() => {
       this.view(dataId)
@@ -106,14 +96,11 @@ export class ProfileComponent implements OnInit {
   }
 
   view(id){
-    console.log("URL IMAGEN " + this.fileService.msg)
-    console.log(this.fileService.getImage(id))
-    if (id == 'profile') {
+    if (id == 'profile' && this.url != undefined) {
       this.profilePic = this.url;
     } else if (id === 'cover') {
       this.coverPic = this.url
     }
-    console.log(this.url)
   }
   
 }

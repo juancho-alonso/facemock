@@ -19,7 +19,6 @@ export class AddFriendsComponent implements OnInit {
 
   ngOnInit(): void {
     this.arrayF()
-    console.log(this.userList.users)
   }
 
   usersArray = new UsersService
@@ -54,19 +53,14 @@ export class AddFriendsComponent implements OnInit {
 
   addFriend(friend){
     var addedFriend = `${friend.firstname} ${friend.surname}`;
-    console.log(addedFriend)
-    console.log(this.currentUser)
     
     // Avoids duplicating friends
     if(!this.arrFriends.includes(addedFriend)){
       this.arrFriends.push(addedFriend)
     }
     
-    console.log(this.arrFriends)
-
     this.currentUser.friends = this.arrFriends
     var userFriends = this.currentUser
-    console.log(userFriends)
     localStorage.setItem("curUser", JSON.stringify(userFriends))
     
   }

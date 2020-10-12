@@ -169,7 +169,6 @@ public screen:number = 0;
   }
 
   onSubmit(){
-    console.log(this.signupFormMbl);
     localStorage.setItem(this.signupFormMbl.value.email, JSON.stringify(this.signupFormMbl.value));
     localStorage.setItem('curUser', JSON.stringify(this.signupFormMbl.value));
     var currentUser = JSON.parse(localStorage.getItem('curUser')); 
@@ -180,11 +179,6 @@ public screen:number = 0;
     currentUser.about = "";
     currentUser.currentCity = "";
     currentUser.friends = [];
-    // currentUser.firstname = this.signupFormMbl.get('names.firstname');
-    // currentUser.surname = this.signupFormMbl.get('names.surname');
-    // currentUser.day = this.signupFormMbl.get('date.day');
-    // currentUser.month = this.signupFormMbl.get('date.month');
-    // currentUser.year = this.signupFormMbl.get('date.year');
 
     localStorage.setItem("curUser", JSON.stringify(currentUser))
 

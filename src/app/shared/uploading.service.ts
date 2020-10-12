@@ -57,7 +57,6 @@ export class UploadingService {
           alert('No record found');
         else {
           //window.open(this.msg);
-          console.log(this.msg)
           this.msg = 'error';
         }
       }

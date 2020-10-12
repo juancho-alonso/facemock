@@ -17,6 +17,5 @@ export class InitialComponent implements OnInit {
 
   toggleSignUp(event){
     this.showSignUp = !this.showSignUp;
-    console.log(event)
   }
 }

@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
     if(curUser != null){
       // Existe el usuario
       if(curPass == localPass) {
-        console.log('Login exitoso')
         // Navegar al componente 'wall'
         this.router.navigate(['/wall'])
       } else if(curPass !== localPass){
@@ -77,15 +76,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/login-failed'])
           // this.router.navigate(['/ERROR'])
         }
-        console.log('Login FALLIDO MAL AHI MONO')
         // Mostrar pagina o mensaje de error
       } 
     } 
-
-    console.log(curUser + "USUARIO ACTUAL")
   }
 
-  // public onSubmit(form: NgForm){
-  //   console.log(form);
-  // }
 }

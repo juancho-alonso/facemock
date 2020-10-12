@@ -1,45 +1,79 @@
-import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ɵCodegenComponentFactoryResolver } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserContextService } from '../user-context.service';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-post-tile',
   templateUrl: './post-tile.component.html',
-  styleUrls: ['./post-tile.component.scss']
+  styleUrls: ['./post-tile.component.scss'],
+  providers: [UserContextService, UsersService]
 })
-export class PostTileComponent implements OnInit, OnChanges {
+export class PostTileComponent implements OnInit {
 
   @ViewChild('postComment') postComment: any;
   @Input('userComment') userComment: any;
   @Input('post') post: any;
+  @Input('j') j:any;
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   like = false;
   likeElement = document.querySelector("#like-box");
   likeIcon = document.querySelector("#like-icon");
   insertComment = false;
+  currentAvatar: any;
+  commentAvatar:any;
+  profilePic = [];
+  commentPic = [];
+
 
   parsedUrl:any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private userCtx: UserContextService,
+              private usersList: UsersService) { }
 
   ngOnInit(): void {
+    this.assignPhotos()
   }
 
-  ngOnChanges() {
-    console.log(this.userComment + " Recibio data")
+  assignPhotos() {
+            //Go through current friends array
+            for (let i = 0; i < this.userComment.length; i++) {
+              //Passes array's elements one by one to the service
+              this.currentAvatar = this.userCtx.createProfilePic(this.userComment[i].author);
+    
+              this.profilePic.push(this.currentAvatar)
+              //crear nuevo array con id del post y pushear a commentPic
+              //Luego en el for, pushear el resultado a ese array en particular
+              for (let h = 0; h < this.userComment[i].comments.length; h++) {
+            
+                this.commentAvatar = this.userCtx.createProfilePic(this.userComment[i].comments[h].publisher);
+                this.userComment[i].comments[h].avatar = this.commentAvatar;    
+            }
+  
+
+            }
   }
 
   newComment(event) {
     if(event.key === "Enter" && this.postComment.nativeElement.value !== ''){
       var comment = {
         message:'',
-        publisher:''
+        publisher:'',
+        avatar: ''
       }
 
       for (let i = 0; i < this.userComment.length; i++) {
         if(event.target.dataset.n == this.userComment[i].id){
+          // Chimi
           comment.message = this.postComment.nativeElement.value;
           comment.publisher = this.currentUser.firstname + ' ' + this.currentUser.surname;
           this.userComment[i].comments.push(comment);
+          for (let h = 0; h < this.userComment[i].comments.length; h++) {
+            
+            this.commentAvatar = this.userCtx.createProfilePic(this.userComment[i].comments[h].publisher);
+            this.userComment[i].comments[h].avatar = this.commentAvatar;
+        }
         }      
       }
     }
@@ -55,9 +89,7 @@ export class PostTileComponent implements OnInit, OnChanges {
 
   onLike(e){
     this.like = !this.like;
-    console.log(this.likeElement.classList)
     if(!this.likeElement.classList.contains('filled-like')){
-      console.log(123)
     //   setTimeout(() => {this.likeIcon.classList.add('animated-like')
     // }, 1500);
 
@@ -65,7 +97,6 @@ export class PostTileComponent implements OnInit, OnChanges {
     setTimeout(() => {this.likeElement.classList.add('animated-like')
     }, 100);
     //this.likeIcon.classList.add('animated-like');
-    console.log(this.likeIcon.classList)
   }
 
   onCommentToggle(){

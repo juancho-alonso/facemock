@@ -91,7 +91,6 @@ export class SignUpComponent implements OnInit {
       this.displayGender = !this.displayGender;
   
     }
-    console.log(this.customInput.nativeElement.value)
   }
 
   onValidateForm(){

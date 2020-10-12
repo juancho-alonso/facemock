@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/users.service';
+import { NG_ASYNC_VALIDATORS } from '@angular/forms';
 
 @Component({
   selector: 'app-create-post',
@@ -23,10 +24,12 @@ export class CreatePostComponent implements OnInit {
       author: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname,
       comments:[{
         message:'Amazing sunshine',
-        publisher: this.usersList.users[1].firstname + ' ' + this.usersList.users[1].surname
+        publisher: this.usersList.users[1].firstname + ' ' + this.usersList.users[1].surname,
+        avatar: ''
       },{
         message:'I totally agree!',
-        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname
+        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname,
+        avatar: ''
       }]
     },
     { 
@@ -35,7 +38,8 @@ export class CreatePostComponent implements OnInit {
       author: this.usersList.users[3].firstname + ' ' + this.usersList.users[3].surname,
       comments:[{
         message:'No kidding...',
-        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname
+        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname,
+        avatar: ''
       }]
     },
     { 
@@ -44,7 +48,8 @@ export class CreatePostComponent implements OnInit {
       author: this.usersList.users[4].firstname + ' ' + this.usersList.users[4].surname,
       comments:[{
         message:'Hi there!',
-        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname
+        publisher: this.usersList.users[0].firstname + ' ' + this.usersList.users[0].surname,
+        avatar: ''
       }]
     }
   ];
@@ -66,7 +71,7 @@ export class CreatePostComponent implements OnInit {
       id:0,
       post:'',
       author:'',
-      comments:[]
+      comments:[],
     };
 
     // Increment id Counter  
@@ -77,7 +82,6 @@ export class CreatePostComponent implements OnInit {
 
     // Assign current user to posts
     model.author = this.currentUser.firstname + ' ' + this.currentUser.surname;
-    console.log('This is the author ' + model.author)
 
     // Assign id to the current post
     model.id = this.idCount;

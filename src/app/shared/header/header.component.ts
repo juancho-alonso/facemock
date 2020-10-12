@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
       this.show = false;
     }
     this.result = this.searchInput.nativeElement.value
-    console.log(this.result)
     this.searchService.searchValue.next(this.searchInput.nativeElement.value)
   }
 
@@ -63,8 +62,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggleSearch(){
-    this.activeSearch = !this.activeSearch;
-    console.log(this.searchInput.nativeElement.value)
-    
+    this.activeSearch = !this.activeSearch;    
   }
 }
