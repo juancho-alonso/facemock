@@ -29,7 +29,6 @@ main {
     overflow: visible;
     height: 100%;
     .col {
-        padding: 20px;
         overflow: unset;
     }
 }
@@ -60,6 +59,10 @@ main {
         }
     }
     
+}
+
+.bio {
+    margin-top: 16px; 
 }
 
     h3 {
@@ -253,12 +256,6 @@ div:empty {
 }
 
 @media screen and (min-width: 375px) {
-    main {
-        display: flex;
-        justify-content: center;
-        background-color: #F0F2F5;
-        height: calc(100% - 60px);
-    }
     
     .name-and-avatar {
         margin-bottom: 15px;
@@ -449,14 +446,7 @@ div:empty {
     }
 }
 
-@media screen and (min-width: 576px) {
-    main {
-        display: flex;
-        justify-content: center;
-        background-color: #F0F2F5;
-        height: calc(100% - 60px);
-    }
-    
+@media screen and (min-width: 576px) {    
     
     .col {
         padding: 20px;
@@ -482,7 +472,10 @@ div:empty {
         
     }
     
-    
+    .bio {
+        margin-top: 0; 
+    }
+
         h3 {
             margin: 0;
             @include card-info-title;
@@ -655,18 +648,11 @@ div:empty {
 }
 
 @media screen and (min-width: 768px) {
-
-
-    main {
-        display: flex;
-        justify-content: center;
-        background-color: #F0F2F5;
-        height: calc(100% - 60px);
-    }
     
     .main-container {
-        width: 65%;
+        width: 100%;
         display: flex;
+        justify-content: center;
     }
     
     .col {
@@ -675,7 +661,8 @@ div:empty {
     
     .col-1 {
         width: 45%;
-        min-width: 300px;
+        min-width: 285px;
+        max-width: 380px;
         height: auto;
     }
     
@@ -686,6 +673,8 @@ div:empty {
     .col-2.col {
         display: block;
         min-width: 350px;
+        max-width: 500px;
+        padding-left: 0;
     }
     
     .name-and-avatar {
@@ -765,8 +754,7 @@ div:empty {
     
     .cover-box {
         position: relative;
-        padding: 0 35px;
-        max-width: 900px;
+        max-width: 960px;
     }
     
     .cover-pic {
@@ -887,5 +875,15 @@ div:empty {
 
     .posts-box-mobile {
         display: none;
+    }
+}
+@media screen and (min-width: 900px) {
+    
+    .col.col-1.scroll {
+        padding-left: 0;
+    }
+    
+    .col-2.col {
+        padding-right: 0;
     }
 }
