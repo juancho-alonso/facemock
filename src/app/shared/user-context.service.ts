@@ -79,24 +79,24 @@ export class UserContextService {
     createCoverPic(user){
         var pic = [];
 
-        for (let i = 0; i < this.usersList.users.length; i++) {
-            if (user == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
-              this.profilePic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/profile.jpg"
-              this.coverPic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/cover.jpg"
-              pic = pic[this.profilePic, this.coverPic]
+        // for (let i = 0; i < this.usersList.users.length; i++) {
+        //     if (user == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
+        //       this.profilePic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/profile.jpg"
+        //       this.coverPic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/cover.jpg"
+        //       pic = pic[this.profilePic, this.coverPic]
   
-              return pic
+        //       return pic
              
-            } else {
-              this.profilePic = "../../assets/avatar-anonym.jpg"
-              this.coverPic = "../../assets/avatar-anonym.jpg"
-              pic.push(this.profilePic);
-              pic.push(this.coverPic);  
+        //     } else {
+        //       this.profilePic = "../../assets/avatar-anonym.jpg"
+        //       this.coverPic = "../../assets/avatar-anonym.jpg"
+        //       pic.push(this.profilePic);
+        //       pic.push(this.coverPic);  
 
-              return pic
+        //       return pic
 
-            }
-          }
+        //     }
+        //   }
       
     }
 
