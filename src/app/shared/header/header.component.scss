@@ -76,10 +76,11 @@
 
 .results-box {
     height: auto;
-    width: 245px;
+    width: -webkit-fill-available;
+    max-width: 280px;
     position: absolute;
-    left: 67px;
-    top: 60px;
+    left: 10px;
+    top: 41px;
     @include card;
 }
 
@@ -243,7 +244,7 @@
 
 .logo-search-box {
     position: relative;
-    width: 45%;
+    width: 33%;
 }
 
 @media screen and (min-width: 768px){
@@ -257,7 +258,7 @@
         }
         .header-box {
             display: flex;
-            width: 22%;
+            width: 33%;
             justify-content: flex-end;
             align-items: center;
             
@@ -294,6 +295,7 @@
         border: none;
         display: flex;
         width: 100%;
+        max-width: 280px;
         background-color: #F0F2F5;
         min-height: 40px;
         padding-left: 12px;
@@ -324,11 +326,16 @@
     }
 
     .home-container {
-        width: 53%;
+        width: 33%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .search-container {
+        width: -webkit-fill-available;
+        position: relative;
     }
 }
 

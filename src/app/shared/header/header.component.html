@@ -16,7 +16,31 @@
                     d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z">
                 </path>
             </svg>
-            <input (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
+            <div class="search-container">
+                <input (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
+                <div class="results-box">
+                    <div class="results-drop">
+                        <div *ngFor="let user of usersList.users">
+                            <div *ngIf="show">
+                                <div
+                                    *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
+                                user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
+                                    <div class="name-and-avatar">
+                                        <div class="avatar-box">
+                                            <img src="../../../../assets/avatar-anonym.jpg">
+                                        </div>
+                                        <div class="username-drop-box">
+                                            <a class="username">{{ user.firstname }} {{ user.surname }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+
+            </div>
             <div class="search-box">
                 <i class="fas fa-search"></i>
             </div>
@@ -26,27 +50,6 @@
                         d="M23.5 4a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0 18a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0-9a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19z">
                     </path>
                 </svg>
-            </div>
-        </div>
-    </div>
-    <div class="results-box">
-        <div class="results-drop">
-            <div *ngFor="let user of usersList.users">
-                <div *ngIf="show">
-                    <div
-                        *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
-                    user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
-                        <div class="name-and-avatar">
-                            <div class="avatar-box">
-                                <img src="../../../../assets/avatar-anonym.jpg">
-                            </div>
-                            <div class="username-drop-box">
-                                <a class="username">{{ user.firstname }} {{ user.surname }}</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
