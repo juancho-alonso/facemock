@@ -23,6 +23,10 @@ export class WallComponent implements OnInit {
               public userCtx: UserContextService) { }
 
   ngOnInit(): void {
+   this.assignPics();
+  }
+
+  assignPics(){
     //Go through current frineds array
     for (let i = 0; i < this.curFriends.length; i++) {
       //Passes array's elements one by one to the service

@@ -13,7 +13,7 @@ export class UserContextService {
 
     profileUrl;
     curProfile;
-    // profilePic;
+    profilePic;
     profileAvatar;
     coverPic;
     currentUser = JSON.parse(localStorage.getItem('curUser'));

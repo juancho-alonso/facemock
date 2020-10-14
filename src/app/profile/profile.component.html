@@ -85,9 +85,9 @@
                     <app-create-post (comment)="onComment($event)"></app-create-post>
                 </div>
                 <div class="posts-container scroll posts-box-mobile">
-                    <div *ngFor="let post of userComment" >
+                    <div *ngFor="let post of userComment; let j = index" >
                         <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
-                            <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                            <app-post-tile [userComment]="userComment" [post]='post' [j]="j"></app-post-tile>
                         </div>
                     </div>    
                 </div>
@@ -98,9 +98,9 @@
                 </div>
                 <div class="col-main">
                     <div class="posts-container scroll">
-                        <div *ngFor="let post of userComment" >
+                        <div *ngFor="let post of userComment; let j = index" >
                             <div *ngIf="post.author == profileUrl || post.author == currentUser.firstname + ' ' + currentUser.surname">
-                                <app-post-tile [userComment]="userComment" [post]='post'></app-post-tile>
+                                <app-post-tile [userComment]="userComment" [post]='post' [j]="j"></app-post-tile>
                             </div>
                         </div>    
                     </div>

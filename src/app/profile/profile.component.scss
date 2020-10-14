@@ -876,6 +876,15 @@ div:empty {
     .posts-box-mobile {
         display: none;
     }
+
+    .input-cover {
+        top: 1px;
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        border-radius: 8px;
+    }
 }
 @media screen and (min-width: 900px) {
     

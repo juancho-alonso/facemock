@@ -1,22 +1,23 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Inject, OnChanges, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent, Params } from '@angular/router';
 import { UsersService } from '../users.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { UploadingService } from '../shared/uploading.service';
 import { finalize } from "rxjs/operators";
+import { Subscription } from 'rxjs';
+import { UserContextService } from '../shared/user-context.service';
 
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  providers: [UsersService, UploadingService]
+  providers: [UsersService, UploadingService, UserContextService]
 })
 export class ProfileComponent implements OnInit {
 
-  name:any;
+  routeName:any;
   userComment:any;
-  userRouteName:any;
   profileUrl:any;
   curProfile:any;
   currentUser = JSON.parse(localStorage.getItem('curUser'));
@@ -26,22 +27,43 @@ export class ProfileComponent implements OnInit {
   file:string;
   profilePic:any;
   coverPic:any;
+  curFriends = this.currentUser.friends 
+  profilePicArr = [];
+  currentFriend: any;
  
-
+  
 
   constructor(private route: ActivatedRoute,
-              public usersList:UsersService, 
+              public router: Router,
+              public usersList:UsersService,
+              public userCtx: UserContextService, 
               @Inject(AngularFireStorage) private storage: AngularFireStorage,
-              @Inject(UploadingService) private fileService: UploadingService) { }
+              @Inject(UploadingService) private fileService: UploadingService) {
+                  this.route.paramMap.subscribe(params => {
+                    this.ngOnInit();
+                });
+               }
 
   ngOnInit(): void {
     this.fileService.getImageDetailList();
-    this.name = this.route.snapshot.params['name'];
-    var url = window.location.href;
-    var changedUrl = url.substring(url.lastIndexOf('/') + 1)
-    var urlSplit = changedUrl.split(".")
+    this.parseUrl();
+    this.assignImages();
+    this.assignAvatars();
+    window.scrollTo(0, 0);
+  }
+
+  parseUrl(){
+    this.routeName = this.route.snapshot.params['name'];
+    var urlSplit = this.routeName.split(".")
     urlSplit.splice(1, 0, ' ')
     this.profileUrl = urlSplit.join('')
+  }
+
+  onComment(message){
+    this.userComment = message;
+  }
+
+  assignImages(){
     if (this.profileUrl == this.currentUser.firstname + " " + this.currentUser.surname) {
       this.curProfile = this.currentUser;
     } else {
@@ -51,7 +73,6 @@ export class ProfileComponent implements OnInit {
        }    
       }
     }
-
 
     for (let i = 0; i < this.usersList.users.length; i++) {
       if (this.profileUrl == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
@@ -66,8 +87,13 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  onComment(message){
-    this.userComment = message;
+  assignAvatars(){
+    //Go through current frineds array
+    for (let i = 0; i < this.curFriends.length; i++) {
+      //Passes array's elements one by one to the service
+      this.currentFriend = this.userCtx.createProfilePic(this.curFriends[i]);
+      this.profilePicArr.push(this.currentFriend)
+    }
   }
 
   showPreview(event: any) {

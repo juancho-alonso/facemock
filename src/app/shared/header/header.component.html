@@ -25,7 +25,7 @@
                                 <div
                                     *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
                                 user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
-                                    <div class="name-and-avatar">
+                                    <div class="name-and-avatar"  [routerLink]="['/profile', user.firstname + '.' + user.surname]">
                                         <div class="avatar-box">
                                             <img src="../../../../assets/avatar-anonym.jpg">
                                         </div>
@@ -34,12 +34,10 @@
                                         </div>
                                     </div>
                                 </div>
-            
                             </div>
                         </div>
                     </div>
                 </div>        
-
             </div>
             <div class="search-box">
                 <i class="fas fa-search"></i>
