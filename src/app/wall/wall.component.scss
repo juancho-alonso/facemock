@@ -9,6 +9,8 @@ main {
 
 .col-main {
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .col-1 {
@@ -95,7 +97,7 @@ main {
 
     .col-1 {
         display: flex;
-        width: 25%;
+        width: 24%;
         height: 400px;
         height: auto;
     }

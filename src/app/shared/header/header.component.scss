@@ -244,7 +244,7 @@
 
 .logo-search-box {
     position: relative;
-    width: 45%;
+    width: 33%;
 }
 
 @media screen and (min-width: 768px){
@@ -290,24 +290,6 @@
         display: none;
     }
 
-    #search {
-        border-radius: 50px;
-        border: none;
-        display: flex;
-        width: 100%;
-        max-width: 280px;
-        background-color: #F0F2F5;
-        min-height: 40px;
-        padding-left: 12px;
-        overflow-y: hidden;
-        margin-left: 10px;
-    
-    }
-
-    .search-box {
-        display: none;
-    }
-
     .name-and-avatar:hover {
         background-color: $hover-gray;
         transition: ease-in-out .2s;
@@ -333,9 +315,32 @@
         align-items: center;
     }
 
+   
+
+}
+
+@media screen and (min-width: 1300px){
+    #search {
+        border-radius: 50px;
+        border: none;
+        display: flex;
+        width: 100%;
+        max-width: 280px;
+        background-color: #F0F2F5;
+        min-height: 40px;
+        padding-left: 12px;
+        overflow-y: hidden;
+        margin-left: 10px;
+    
+    }
+
     .search-container {
         width: -webkit-fill-available;
         position: relative;
     }
-}
 
+
+    .search-box {
+        display: none;
+    }
+}
