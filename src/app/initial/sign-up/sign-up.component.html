@@ -35,12 +35,12 @@
                         <div class="genders-box">
                             <div *ngFor="let gender of genders" class="gender-input">
                                 <label>{{ gender }}</label>
-                                <input class="radio-gender" (change)="onGenderChange()" type="radio" name="gender" formControlName="gender" [value]='gender'> 
+                                <input class="radio-gender" (change)="onGenderChange($event)" type="radio" name="gender" formControlName="gender" [value]='gender'> 
                             </div>
                             <div class="gender-input radio-input">
                                 <label>Custom</label>
                                 <input #customInput type="radio" 
-                                    name="gender" (change)="onGenderChange()" class="radio-gender" formControlName="gender" value='custom'>    
+                                    name="gender" (change)="onGenderChange($event)" class="radio-gender" formControlName="gender" value='custom'>    
                             </div>    
                         </div>
                     <div *ngIf='displayGender'>

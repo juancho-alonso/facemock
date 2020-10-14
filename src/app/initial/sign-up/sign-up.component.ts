@@ -39,7 +39,6 @@ export class SignUpComponent implements OnInit {
   defaultMonth = "month";
   defaultYear = "year";
   defaultPronoun = "pronoun";
-  customGender = true;
   displayGender = false;
   
 
@@ -85,11 +84,12 @@ export class SignUpComponent implements OnInit {
 
   }
 
-  onGenderChange() {
-    if(this.customInput.nativeElement.value === 'custom'){
-      this.customGender = !this.customGender;
+  onGenderChange(e) {
+    if(e.target.value === 'custom'){
       this.displayGender = !this.displayGender;
   
+    } else {
+      this.displayGender = false;
     }
   }
 
