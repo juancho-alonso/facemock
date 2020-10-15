@@ -72,6 +72,7 @@
     margin-left: 8px;
     background-color: #E4E6EB;
     border: none;
+    cursor: pointer;
 }
 
 .results-box {
@@ -92,6 +93,22 @@
 
 #search {
     display: none;
+    border-radius: 50px;
+    border: none;
+    width: 100%;
+    max-width: 280px;
+    background-color: #F0F2F5;
+    min-height: 40px;
+    padding-left: 12px;
+    overflow-y: hidden;
+    margin-left: 10px;
+
+}
+
+.toggle-search {
+    position: absolute;
+    top: 0px;
+    left: 35px;
 }
 
 .menu-box {
@@ -314,8 +331,6 @@
         justify-content: center;
         align-items: center;
     }
-
-   
 
 }
 

@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject, OnChanges, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent, Params } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent, Params, NavigationEnd } from '@angular/router';
 import { UsersService } from '../users.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { UploadingService } from '../shared/uploading.service';
-import { finalize } from "rxjs/operators";
+import { filter, finalize } from "rxjs/operators";
 import { UserContextService } from '../shared/user-context.service';
 
 
@@ -14,6 +14,7 @@ import { UserContextService } from '../shared/user-context.service';
   providers: [UsersService, UploadingService, UserContextService]
 })
 export class ProfileComponent implements OnInit {
+
 
   routeName:any;
   userComment:any;
@@ -29,6 +30,8 @@ export class ProfileComponent implements OnInit {
   curFriends = this.currentUser.friends 
   profilePicArr = [];
   currentFriend: any;
+  showBtn:boolean = true;
+  routerSubscription: any;
  
   
 
@@ -44,8 +47,9 @@ export class ProfileComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.fileService.getImageDetailList();
+    this.recallHideBtn();
     this.parseUrl();
+    this.fileService.getImageDetailList();
     this.assignImages();
     this.assignAvatars();
     window.scrollTo(0, 0);
@@ -95,6 +99,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+ 
   showPreview(event: any) {
     this.selectedImage = event.target.files[0];
     var dataId = event.target.dataset.id;
@@ -128,4 +133,19 @@ export class ProfileComponent implements OnInit {
     }
   }
   
+  hideProfileBtn(){
+    if (this.profileUrl != `${this.currentUser.firstname} ${this.currentUser.surname}`) {
+      this.showBtn = false;
+    } else {
+      this.showBtn = true;
+    }
+  }
+
+  recallHideBtn() {
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(event => {
+        this.hideProfileBtn();
+      });
+  }
 }

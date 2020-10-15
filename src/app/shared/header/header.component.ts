@@ -15,17 +15,19 @@ export class HeaderComponent implements OnInit {
 
 
   @ViewChild('search') searchInput;
+  @ViewChild('searchBar') searchBar;
+
 
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   wall = window.location.href.indexOf('wall') > -1;
   showDrop = false;
   showCreateDrop = false;
-  activeSearch = false;
   result: Subject<any> = new Subject;
   valueToChild: Observable<any> = new Observable<any>((observer)=>{
     observer.next(this.searchInput.nativeElement.value);
   });
   show;
+  searchDisplay:boolean = false;
 
   constructor(private router:Router,
               public usersList: UsersService,
@@ -61,7 +63,11 @@ export class HeaderComponent implements OnInit {
     this.showCreateDrop = !this.showCreateDrop;
   }
 
-  onToggleSearch(){
-    this.activeSearch = !this.activeSearch;    
-  }
+  onToggleSearchBar(){
+    console.log('Anda');
+    this.searchDisplay = true;
+    this.searchBar.nativeElement.classList.add("toggle-search")
+    document.getElementById('search').style.display = "flex";
+    console.log(this.searchBar.nativeElement.classList);
+  }  
 }
