@@ -13,6 +13,7 @@ export class AddFriendsComponent implements OnInit {
   next = false;
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   arrFriends = [];
+  
 
   constructor(private userList:UsersService,
               private router: Router) { }

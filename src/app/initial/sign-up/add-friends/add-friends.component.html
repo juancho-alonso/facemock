@@ -1,45 +1,36 @@
 <app-header></app-header>
 <div class="friends-mobile-container">
-    <div *ngIf="!next">
+    <div>
         <div class="header">
             <span>Friend Requests</span>
             <p (click)="nextPage()">Next</p>
         </div>
-        <p id="subtitle">{{ usersArray.users[1].firstname }} and {{ usersArray.users[0].firstname }} want to be your friends on facemock.</p>
-        <div class="friends-box">
-            <div class="request-box">
-                <div class="avatar-box">
-                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                </div>
-                <div class="friend-details">
-                    <span>{{ usersArray.users[1].firstname }} {{ usersArray.users[1].surname }}</span><br>
-                    <span>{{ usersArray.users[1].school }}</span>
-                    <div class="btn-box">
-                        <button class="btn btn-confirm" (click)="addFriend()">Confirm</button>
-                        <button class="btn btn-delete">Delete</button>
+        <p id="subtitle"> These people want to be your friends on facemock.</p>
+        <div *ngFor="let friend of usersArray.users; let i">
+            <div *ngIf="!friend.request">
+                <div class="friends-box">
+                    <div class="request-box">
+                        <div class="avatar-box">
+                            <img src="../assets/{{ friend.firstname }}{{ friend.surname }}/profile.jpg" alt="Anonymous avatar">
+                        </div>
+                        <div class="friend-details">
+                            <span>{{ friend.firstname }} {{ friend.surname }}</span><br>
+                            <span>{{ friend.school }}</span>
+                            <div class="btn-box">
+                                <button class="btn btn-confirm" (click)="addFriend()">Confirm</button>
+                                <button class="btn btn-delete">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="request-box">
-                <div class="avatar-box">
-                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                </div>
-                <div class="friend-details">
-                    <span>{{ usersArray.users[0].firstname }} {{ usersArray.users[0].surname }}</span><br>
-                    <span>{{ usersArray.users[0].school }}</span>
-                    <div class="btn-box">
-                        <button class="btn btn-confirm" (click)="addFriend()">Confirm</button>
-                        <button class="btn btn-delete">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>    
+            </div>            
+        </div>
     </div>
-    <div *ngIf="next" class="mobile-add-friends">
-        <div class="header">
+    <div class="mobile-add-friends">
+        <!-- <div class="header">
             <span>Add Friends</span>
             <p (click)="onSkip()">Skip</p>
-        </div>
+        </div> -->
         <div class="title">
             <p>Add your friends</p>
             <span>Choose the people you want to add as friends on Facemock</span>
@@ -47,7 +38,7 @@
         <div *ngFor="let friend of usersArray.users; let i" class="suggestions">
             <div *ngIf="friend.request" class="suggestions-if">
                 <div class="avatar-box">
-                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                    <img src="../assets/{{ friend.firstname }}{{ friend.surname }}/profile.jpg" alt="Anonymous avatar">
                 </div>
                 <div class="name-box">
                     <p>{{ friend.firstname }} {{ friend.surname }}</p>
@@ -81,7 +72,7 @@
                             <div class="requests-if">
                                 <div class="name-and-pic">
                                     <div class="avatar-box">
-                                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                                        <img src="../assets/{{ friend.firstname }}{{ friend.surname }}/profile.jpg" alt="Anonymous avatar">
                                     </div>
                                     <div class="name-box">
                                         <p><b>{{ friend.firstname }} {{ friend.surname }}</b> wants to be your friend.</p>
@@ -102,7 +93,7 @@
                             <div class="requests-if">
                                 <div class="name-and-pic">
                                     <div class="avatar-box">
-                                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                                        <img src="../assets/{{ friend.firstname }}{{ friend.surname }}/profile.jpg" alt="Anonymous avatar">
                                     </div>
                                     <div class="name-box">
                                         <p><b>{{ friend.firstname }} {{ friend.surname }}</b> is someone you may know.</p>
@@ -120,3 +111,4 @@
         </div>
     </section>
 </div>
+<app-footer></app-footer>

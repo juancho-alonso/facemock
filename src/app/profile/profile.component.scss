@@ -534,6 +534,7 @@ div:empty {
     .cover-box {
         position: relative;
         padding: 0 15px;
+        min-width: -webkit-fill-available;
     }
     
     .cover-pic {
@@ -754,7 +755,7 @@ div:empty {
     
     .cover-box {
         position: relative;
-        max-width: 960px;
+        min-width: -webkit-fill-available;
     }
     
     .cover-pic {
@@ -894,5 +895,16 @@ div:empty {
     
     .col-2.col {
         padding-right: 0;
+    }
+
+    .cover-box {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .cover-box {
+        min-width: 930px;
     }
 }
