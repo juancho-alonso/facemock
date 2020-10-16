@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header (toggleColumn)='showColumn($event)'></app-header>
 <main>
     <div class="main-container">
-        <div class="col col-1 scroll">
+        <div class="col scroll" id="column-1" [ngClass]="showCol? 'show-col-1': 'col-1'">
             <div class="col-box-1">
                 <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
                     <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">

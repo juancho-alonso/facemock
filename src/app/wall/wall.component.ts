@@ -17,7 +17,7 @@ export class WallComponent implements OnInit {
   curFriends = this.currentUser.friends 
   profilePic = [];
   currentFriend: any;
-  
+  showCol:boolean;
 
   constructor(public usersList: UsersService,
               public userCtx: UserContextService) { }
@@ -37,5 +37,9 @@ export class WallComponent implements OnInit {
 
   onComment(message){
     this.userComment = message;
+  }
+
+  showColumn(toggle){
+    this.showCol = toggle;
   }
 }

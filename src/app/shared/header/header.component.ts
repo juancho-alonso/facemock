@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/users.service';
 import { SearchService } from 'src/app/shared/header/search-view/search.service';
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('search') searchInput;
   @ViewChild('searchBar') searchBar;
-
+  @Output() toggleColumn = new EventEmitter();
 
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   wall = window.location.href.indexOf('wall') > -1;
@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
   });
   show;
   searchDisplay:boolean = false;
+  matchesFound = 0;
+  matched = false;
+  showColumn = false;
 
   constructor(private router:Router,
               public usersList: UsersService,
@@ -45,6 +48,25 @@ export class HeaderComponent implements OnInit {
     }
     this.result = this.searchInput.nativeElement.value
     this.searchService.searchValue.next(this.searchInput.nativeElement.value)
+    
+    for (let i= 0; i < this.usersList.users.length; i++) {
+      if(this.usersList.users[i].firstname.includes(this.searchInput.nativeElement.value) ||
+       this.usersList.users[i].firstname.toUpperCase().includes(this.searchInput.nativeElement.value)|| 
+       this.usersList.users[i].firstname.toLowerCase().includes(this.searchInput.nativeElement.value) ||
+      this.usersList.users[i].surname.includes(this.searchInput.nativeElement.value) || 
+      this.usersList.users[i].surname.toUpperCase().includes(this.searchInput.nativeElement.value)|| 
+      this.usersList.users[i].surname.toLowerCase().includes(this.searchInput.nativeElement.value)) {
+        this.matchesFound++;
+
+      } 
+    }
+
+    if(this.matchesFound != 0) {
+      this.matched = true;
+      this.matchesFound = 0;
+    } else {
+      this.matched = false;
+    }
   }
 
   navHome() {
@@ -64,10 +86,14 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggleSearchBar(){
-    console.log('Anda');
     this.searchDisplay = true;
-    this.searchBar.nativeElement.classList.add("toggle-search")
-    document.getElementById('search').style.display = "flex";
-    console.log(this.searchBar.nativeElement.classList);
-  }  
+    document.getElementById('search').style.display = "flex";  
+  }
+  
+  onShowMenuMbl() {
+    // document.getElementById('column-1').classList.add('menu-mbl')
+    this.showColumn = !this.showColumn;
+    console.log(this.showColumn)
+    this.toggleColumn.emit(this.showColumn)
+  }
 }
