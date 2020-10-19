@@ -13,7 +13,7 @@ export class AddFriendsComponent implements OnInit {
   next = false;
   currentUser = JSON.parse(localStorage.getItem('curUser'));
   arrFriends = [];
-  
+  deletedRequest:boolean;
 
   constructor(private userList:UsersService,
               private router: Router) { }
@@ -52,17 +52,35 @@ export class AddFriendsComponent implements OnInit {
     this.router.navigate(["/wall"])
   }
 
-  addFriend(friend){
+  confirmFriend(friend, resolution, index){
     var addedFriend = `${friend.firstname} ${friend.surname}`;
-    
+    console.log(friend)
     // Avoids duplicating friends
     if(!this.arrFriends.includes(addedFriend)){
       this.arrFriends.push(addedFriend)
+      friend.isFriend = true;
+      console.log(friend)
     }
     
     this.currentUser.friends = this.arrFriends
     var userFriends = this.currentUser
     localStorage.setItem("curUser", JSON.stringify(userFriends))
-    
+    console.log(resolution + " res")
+    if(resolution === 'mbl'){
+      document.getElementById('data'+ index).style.display = "none";
+
+    }
+  }
+
+  deleteRequest(index) {
+    document.getElementById('data'+ index).style.display = "none";
+  }
+
+  removeRequest(index) {
+    document.getElementById('req'+ index).style.display = "none"
+  }
+
+  onToggleCheckbox(index) {
+    console.log(document.querySelector<HTMLInputElement>('#checkbox'+ index).checked)
   }
 }

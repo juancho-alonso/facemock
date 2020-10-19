@@ -34,7 +34,7 @@
                 <div *ngFor="let contact of usersList.users; let i = index">
                     <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
                         <div class="name-and-avatar" [routerLink]="['/profile', contact.firstname + '.' + contact.surname]">
-                            <img [src]="profilePic[i]" alt="Anonymous avatar">
+                            <img src="../../assets/{{contact.firstname}}{{contact.surname}}/profile.jpg" alt="Anonymous avatar">
                             <div>{{ contact.firstname }} {{ contact.surname }}</div>
                         </div>
                     </div>
