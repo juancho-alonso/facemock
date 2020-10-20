@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   currentFriend: any;
   showBtn:boolean = true;
   routerSubscription: any;
- 
+  showAddFriendCard:boolean = false;
   
 
   constructor(private route: ActivatedRoute,
@@ -47,11 +47,12 @@ export class ProfileComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.recallHideBtn();
+    this.recallFunctions();
     this.parseUrl();
     this.fileService.getImageDetailList();
     this.assignImages();
     this.assignAvatars();
+    this.hideAddFriendCard();
     window.scrollTo(0, 0);
   }
 
@@ -141,11 +142,27 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  recallHideBtn() {
+  hideAddFriendCard() {
+    if(!this.curFriends.includes(this.profileUrl)) {
+      this.showAddFriendCard = true;
+    } else {
+      this.showAddFriendCard = false;
+    }
+  }
+
+  recallFunctions() {
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
         this.hideProfileBtn();
+        this.hideAddFriendCard();
       });
+  }
+
+  addFriend(){
+    this.curFriends.push(this.profileUrl)
+    var newUserFriends = this.currentUser
+    localStorage.setItem("curUser", JSON.stringify(newUserFriends))
+    this.showAddFriendCard = false;
   }
 }

@@ -28,6 +28,16 @@
         </div>
     </div>
     <main>
+        <div *ngIf="showAddFriendCard && profileUrl != currentUser.firstname + ' ' + currentUser.surname" class="add-friend-box">
+            <div class="add-friend-text">
+                <h3>Do you know {{ curProfile.firstname }}?</h3>
+                <span>To see what they share with friends, send them a friend request</span>
+            </div>
+            <div class="add-friend-btn-box" (click)="addFriend()">
+                <i class="fas fa-user-plus"></i>
+                <button>Add Friend</button>
+            </div>
+        </div>
         <div class="main-container">
             <div class="col col-1 scroll">
                 <div class="bio">
