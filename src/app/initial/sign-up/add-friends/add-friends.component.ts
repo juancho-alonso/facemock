@@ -83,4 +83,21 @@ export class AddFriendsComponent implements OnInit {
   onToggleCheckbox(index) {
     console.log(document.querySelector<HTMLInputElement>('#checkbox'+ index).checked)
   }
+
+  addFriendsMbl() {
+    var checkList = document.querySelectorAll<HTMLInputElement>('.inputs')
+    var checkboxArr = Array.from(checkList)
+    console.log(checkboxArr)
+    for (let i = 0; i < checkboxArr.length; i++) {
+     if(checkboxArr[i].checked == true){
+       this.arrFriends.push(checkboxArr[i].parentNode.parentNode.firstChild.childNodes[0].nodeValue)
+     }
+    }
+    this.currentUser.friends = this.arrFriends
+    console.log(this.currentUser.friends + " fijate")
+    var newUserFriends = this.currentUser
+    localStorage.setItem("curUser", JSON.stringify(newUserFriends))
+    console.log(this.arrFriends)
+    this.router.navigate(["/wall"])
+  }
 }

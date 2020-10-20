@@ -39,14 +39,14 @@
                 <div class="name-box">
                     <p>{{ friend.firstname }} {{ friend.surname }}</p>
                     <div class="checkbox">
-                        <input type="checkbox" id="checkbox{{j}}" checked="checked" (click)="onToggleCheckbox(j)">
+                        <input type="checkbox" class="inputs" id="checkbox{{j}}" checked="checked" (click)="onToggleCheckbox(j)">
                         <label for="checkbox"></label>
                     </div>
                 </div>
             </div>           
         </div>
         <div class="btn-container">
-            <button>Add friends</button>
+            <button (click)="addFriendsMbl()">Add friends</button>
         </div>
     </div>
 </div>
