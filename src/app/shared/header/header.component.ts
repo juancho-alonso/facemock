@@ -43,8 +43,11 @@ export class HeaderComponent implements OnInit {
 
   searchCall(e){
     this.show = true;
+    document.getElementById('search-box').style.display = "none";
     if (this.searchInput.nativeElement.value == "") {
       this.show = false;
+      document.getElementById('search-box').style.display = "flex";
+
     }
     this.result = this.searchInput.nativeElement.value
     this.searchService.searchValue.next(this.searchInput.nativeElement.value)
@@ -57,7 +60,6 @@ export class HeaderComponent implements OnInit {
       this.usersList.users[i].surname.toUpperCase().includes(this.searchInput.nativeElement.value)|| 
       this.usersList.users[i].surname.toLowerCase().includes(this.searchInput.nativeElement.value)) {
         this.matchesFound++;
-
       } 
     }
 
@@ -86,14 +88,33 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggleSearchBar(){
-    this.searchDisplay = true;
-    document.getElementById('search').style.display = "flex";  
+    this.searchDisplay = !this.searchDisplay;
+    if(this.searchDisplay == true){
+      document.getElementById('search-icon-and-input').style.width = '290px';  
+
+      setTimeout(() => {
+        document.getElementById('search').style.display = "flex";
+      }, 300);
+      
+    } else if (this.searchDisplay == false) {
+      document.getElementById('search').style.display = "none";
+      document.getElementById('search-icon-and-input').style.width = '40px';  
+
+    }
   }
   
+  closeSearch(){
+    this.searchInput.nativeElement.value = "";
+      this.show = false;
+      document.getElementById('search-box').style.display = "flex";
+  }
+
   onShowMenuMbl() {
     // document.getElementById('column-1').classList.add('menu-mbl')
     this.showColumn = !this.showColumn;
     console.log(this.showColumn)
     this.toggleColumn.emit(this.showColumn)
   }
+
+  
 }

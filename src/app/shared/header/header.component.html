@@ -22,11 +22,16 @@
                 <div class="search-container" #searchBar>
                     <div class="input-and-icon"> 
                         <div *ngIf="searchDisplay && show == true">
-                            <div class="close-search">
+                            <div class="close-search" id="close-search" (click)="closeSearch()">
                                 <i class="fas fa-arrow-left"></i>
                             </div>
                         </div>
-                        <input (click)="onToggleSearchBar()" (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
+                        <div class="search-icon-and-input" id="search-icon-and-input">
+                            <div class="search-box" id="search-box" (click)="onToggleSearchBar()">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <input (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
+                        </div>
                     </div>
                     <div [ngClass]="show? 'results-top-pad':'results-box'">
                         <div class="results-drop">
@@ -52,9 +57,7 @@
                         </div>
                     </div>        
                 </div>
-                <div class="search-box" (click)="onToggleSearchBar()">
-                    <i class="fas fa-search"></i>
-                </div>
+                
                 <div class="menu-box" (click)="onShowMenuMbl()">
                     <svg viewBox="0 0 28 28" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv" height="28" width="28">
                         <path
