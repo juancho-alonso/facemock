@@ -1,0 +1,12 @@
+<div id="column-1" [ngClass]="showCol? 'show-col-1 col scroll': 'col-1 col scroll'">
+    <div class="col-box-1">
+        <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
+            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+            <a class="username" >{{ currentUser.firstname }} {{ currentUser.surname }}</a>
+        </div>
+        <div class="name-and-avatar">
+            <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
+            <a class="username" >Friends</a>
+        </div>    
+    </div>
+</div>

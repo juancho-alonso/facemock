@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/users.service';
 import { SearchService } from 'src/app/shared/header/search-view/search.service';
 import { Observable, Subject } from 'rxjs';
 import { ApplicationRef } from '@angular/core'
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
@@ -31,14 +32,20 @@ export class HeaderComponent implements OnInit {
   matchesFound = 0;
   matched = false;
   showColumn = false;
+  mobile:boolean;
 
   constructor(private router:Router,
               public usersList: UsersService,
+              private bpo: BreakpointObserver,
               public searchService: SearchService,
               public ref: ApplicationRef) { }
 
   ngOnInit(): void {
-    
+    if (this.bpo.isMatched('(max-width: 490px)')) {
+      this.mobile = true;
+    } else {
+      this.mobile = false;
+    }
   }
 
   searchCall(e){
@@ -95,11 +102,16 @@ export class HeaderComponent implements OnInit {
       setTimeout(() => {
         document.getElementById('search').style.display = "flex";
       }, 300);
-      
+      if(this.mobile == true) {
+        console.log('log')
+        document.getElementById('search-box').style.paddingLeft = "5px"
+      }
     } else if (this.searchDisplay == false) {
       document.getElementById('search').style.display = "none";
       document.getElementById('search-icon-and-input').style.width = '40px';  
-
+      if(this.mobile == true) {
+        document.getElementById('search-box').style.paddingLeft = "0px"
+      }
     }
   }
   
@@ -110,9 +122,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onShowMenuMbl() {
-    // document.getElementById('column-1').classList.add('menu-mbl')
     this.showColumn = !this.showColumn;
-    console.log(this.showColumn)
     this.toggleColumn.emit(this.showColumn)
   }
 
