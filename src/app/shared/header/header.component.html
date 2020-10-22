@@ -18,7 +18,7 @@
                 </path>
             </svg>
             </div>
-            <div [ngClass]="searchDisplay && show == true? 'main-query-container-show':'main-query-container'">
+            <div id="query-container-show-mbl" [ngClass]="searchDisplay && show == true? 'main-query-container-show':'main-query-container'">
                 <div class="search-container" #searchBar>
                     <div class="input-and-icon"> 
                         <div *ngIf="searchDisplay && show == true">
@@ -40,7 +40,7 @@
                                     <div
                                         *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
                                     user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
-                                        <div class="name-and-avatar"  [routerLink]="['/profile', user.firstname + '.' + user.surname]">
+                                        <div class="name-and-avatar"  [routerLink]="['/profile', user.firstname + '.' + user.surname]" (click)="onResultClick()">
                                             <div class="avatar-box">
                                                 <img src="../../../../assets/{{user.firstname}}{{user.surname}}/profile.jpg">
                                             </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ActivatedRoute, Router, NavigationStart, Event as NavigationEvent, Params, NavigationEnd } from '@angular/router';
 import { UsersService } from '../users.service';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
   showBtn:boolean = true;
   routerSubscription: any;
   showAddFriendCard:boolean = false;
+  showCol:boolean;
   
 
   constructor(private route: ActivatedRoute,
@@ -164,5 +165,9 @@ export class ProfileComponent implements OnInit {
     var newUserFriends = this.currentUser
     localStorage.setItem("curUser", JSON.stringify(newUserFriends))
     this.showAddFriendCard = false;
+  }
+
+  showColumn(toggle){
+    this.showCol = toggle;
   }
 }

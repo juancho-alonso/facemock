@@ -1,19 +1,10 @@
 <app-header (toggleColumn)='showColumn($event)'></app-header>
 <main>
     <div class="main-container">
-        <div class="col scroll" id="column-1" [ngClass]="showCol? 'show-col-1': 'col-1'">
-            <div class="col-box-1">
-                <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
-                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                    <a class="username" >{{ currentUser.firstname }} {{ currentUser.surname }}</a>
-                </div>
-                <div class="name-and-avatar">
-                    <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
-                    <a class="username" >Friends</a>
-                </div>    
-            </div>
+        <div id="column-one">
+            <app-side-column [showCol]='showCol'></app-side-column>
         </div>
-        <div class="col-2 col">
+        <div [ngClass]="showCol? 'hide-col-2': 'col-2 col'">
             <div class="col-2-pre">
                 <app-create-post (comment)="onComment($event)"></app-create-post>
             </div>

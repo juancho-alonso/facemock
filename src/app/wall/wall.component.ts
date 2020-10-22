@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { UserContextService } from '../shared/user-context.service';
 import { from } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 
 @Component({
@@ -18,12 +19,19 @@ export class WallComponent implements OnInit {
   profilePic = [];
   currentFriend: any;
   showCol:boolean;
+  mobile:boolean;
 
   constructor(public usersList: UsersService,
+              private bpo: BreakpointObserver,
               public userCtx: UserContextService) { }
 
   ngOnInit(): void {
    this.assignPics();
+   if (this.bpo.isMatched('(max-width: 768px)')) {
+    this.mobile = true;
+  } else {
+    this.mobile = false;
+  }
   }
 
   assignPics(){
@@ -41,5 +49,11 @@ export class WallComponent implements OnInit {
 
   showColumn(toggle){
     this.showCol = toggle;
+    if(this.mobile == true && toggle == true) {
+      document.getElementById('column-one').style.display = "flex"
+      document.getElementById('column-one').style.width = "100%"
+    } else if (this.mobile == true && toggle == false) {
+      document.getElementById('column-one').style.display = "none"
+    }
   }
 }

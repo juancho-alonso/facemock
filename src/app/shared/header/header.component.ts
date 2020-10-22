@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   valueToChild: Observable<any> = new Observable<any>((observer)=>{
     observer.next(this.searchInput.nativeElement.value);
   });
-  show;
+  show: boolean = false;
   searchDisplay:boolean = false;
   matchesFound = 0;
   matched = false;
@@ -54,7 +54,10 @@ export class HeaderComponent implements OnInit {
     if (this.searchInput.nativeElement.value == "") {
       this.show = false;
       document.getElementById('search-box').style.display = "flex";
-
+      if(this.mobile == true) {
+        document.getElementById('search-icon-and-input').style.width = '40px';
+        document.getElementById('search').style.display = 'none';  
+      }
     }
     this.result = this.searchInput.nativeElement.value
     this.searchService.searchValue.next(this.searchInput.nativeElement.value)
@@ -68,6 +71,11 @@ export class HeaderComponent implements OnInit {
       this.usersList.users[i].surname.toLowerCase().includes(this.searchInput.nativeElement.value)) {
         this.matchesFound++;
       } 
+    }
+
+    if(this.mobile == true && this.searchDisplay == true) {
+      document.getElementById('search-icon-and-input').style.position = 'unset';
+      document.getElementById('query-container-show-mbl').style.width = '97vw'  
     }
 
     if(this.matchesFound != 0) {
@@ -103,22 +111,25 @@ export class HeaderComponent implements OnInit {
         document.getElementById('search').style.display = "flex";
       }, 300);
       if(this.mobile == true) {
-        console.log('log')
-        document.getElementById('search-box').style.paddingLeft = "5px"
+        document.getElementById('search-icon-and-input').style.width = 'calc(100% - 75px)';
+        document.getElementById('search-icon-and-input').style.position = 'fixed';  
       }
     } else if (this.searchDisplay == false) {
       document.getElementById('search').style.display = "none";
       document.getElementById('search-icon-and-input').style.width = '40px';  
       if(this.mobile == true) {
-        document.getElementById('search-box').style.paddingLeft = "0px"
+        document.getElementById('search-icon-and-input').style.position = 'unset';  
       }
     }
   }
   
   closeSearch(){
     this.searchInput.nativeElement.value = "";
-      this.show = false;
-      document.getElementById('search-box').style.display = "flex";
+    this.show = false;
+    document.getElementById('search-box').style.display = "flex";
+    document.getElementById('search-icon-and-input').style.width = '40px';
+    document.getElementById('search').style.display = 'none';  
+    
   }
 
   onShowMenuMbl() {
@@ -126,5 +137,8 @@ export class HeaderComponent implements OnInit {
     this.toggleColumn.emit(this.showColumn)
   }
 
-  
+  onResultClick() {
+    this.closeSearch();
+    this.searchDisplay = false;
+  }
 }

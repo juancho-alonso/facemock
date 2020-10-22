@@ -26,6 +26,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 
 import { environment} from '../environments/environment';
+import { SideColumnComponent } from './shared/side-column/side-column.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { environment} from '../environments/environment';
     CreatePostComponent,
     PostTileComponent,
     UploadComponent,
+    SideColumnComponent,
   ],
   imports: [
     BrowserModule,
