@@ -86,7 +86,7 @@ export class ProfileComponent implements OnInit {
         return
       } else {
         this.profilePic = "../../assets/avatar-anonym.jpg"
-        this.coverPic = "../../assets/avatar-anonym.jpg"
+        this.coverPic = "../../assets/skyline.jpg"
       } 
     }
 

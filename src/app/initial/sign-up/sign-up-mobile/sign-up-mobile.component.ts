@@ -172,12 +172,12 @@ public screen:number = 0;
     localStorage.setItem(this.signupFormMbl.value.email, JSON.stringify(this.signupFormMbl.value));
     localStorage.setItem('curUser', JSON.stringify(this.signupFormMbl.value));
     var currentUser = JSON.parse(localStorage.getItem('curUser')); 
-    currentUser.relationship = "";
-    currentUser.birthplace = "";
-    currentUser.work = "";
-    currentUser.school = "";
+    currentUser.relationship = "Single";
+    currentUser.birthplace = "Birthplace";
+    currentUser.work = "Workplace";
+    currentUser.school = "School";
     currentUser.about = "";
-    currentUser.currentCity = "";
+    currentUser.currentCity = "City";
     currentUser.friends = [];
 
     localStorage.setItem("curUser", JSON.stringify(currentUser))

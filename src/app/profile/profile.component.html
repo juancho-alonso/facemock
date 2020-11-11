@@ -81,18 +81,18 @@
                 <div class="friends main-tile">
                     <h3>Friends</h3>
                     <p>{{ curProfile.friends.length }}</p>
-                    <div class="friends-grid">
-                        <div *ngFor="let contact of usersList.users">
-                            <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
-                                <div class="name-and-avatar" >
-                                    <div class="img-box">
-                                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                        <div class="friends-grid">
+                            <div *ngFor="let contact of usersList.users">
+                                <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
+                                    <div class="name-and-avatar" >
+                                        <div class="img-box">
+                                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                                        </div>
+                                        <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
                                     </div>
-                                    <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
                                 </div>
-                            </div>
-                        </div>        
-                    </div>
+                            </div>        
+                        </div>    
                 </div>
                 <div class="create-box-mobile">
                     <app-create-post (comment)="onComment($event)"></app-create-post>
