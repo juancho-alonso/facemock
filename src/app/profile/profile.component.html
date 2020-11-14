@@ -85,9 +85,9 @@
                             <div *ngFor="let contact of usersList.users">
                                 <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
                                     <div class="name-and-avatar" >
-                                        <div class="img-box">
-                                            <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                                        </div>
+                                            <div class="img-box">
+                                                <img src="../assets/{{ contact.firstname }}{{ contact.surname }}/profile.jpg" alt="Anonymous avatar">
+                                            </div>    
                                         <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
                                     </div>
                                 </div>
