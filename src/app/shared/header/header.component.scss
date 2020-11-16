@@ -97,11 +97,12 @@
 
 .results-box {
     height: auto;
-    // width: -webkit-fill-available;
     max-width: 280px;
 }
 
 .results-drop {
+    max-height: 46vh;
+    overflow: auto;
     .name-and-avatar{
         height: auto;
         margin-bottom: 12px;
