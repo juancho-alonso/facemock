@@ -312,10 +312,6 @@ main {
         -webkit-transition: -webkit-transform .8s ease-in-out;
         -ms-transition: -ms-transform .2s ease-in-out;
         transition: transform .2s ease-in-out;
-        // transition: cubic-bezier(0,1,1,1);
-        transform:rotate(-20deg) scale(1.1,1.1) !important;
-        -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
-        -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
     }
 
     @keyframes animation-like {
@@ -341,8 +337,6 @@ main {
         transform:rotate(-20deg) scale(1.1,1.1) !important;
         -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
         -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
-        //animation: animation-like .4s ;
-
     }
 
     .comment-display-box {
