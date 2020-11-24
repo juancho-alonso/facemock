@@ -16,6 +16,7 @@ import { UserContextService } from '../shared/user-context.service';
 export class ProfileComponent implements OnInit {
 
 
+  // Route name variable
   routeName:any;
   userComment:any;
   profileUrl:any;
@@ -32,7 +33,9 @@ export class ProfileComponent implements OnInit {
   currentFriend: any;
   showBtn:boolean = true;
   routerSubscription: any;
+  // Add a friend card boolean
   showAddFriendCard:boolean = false;
+  // Side column boolean
   showCol:boolean;
   
 
@@ -48,31 +51,47 @@ export class ProfileComponent implements OnInit {
                }
 
   ngOnInit(): void {
+    // Recall functions to subscribe to route changes
     this.recallFunctions();
+    // Parse url
     this.parseUrl();
+    // Get image details using the file service
     this.fileService.getImageDetailList();
+    // Assign profile and cover images
     this.assignImages();
+    // Assign avatars to users
     this.assignAvatars();
+    // Hides the add friend card if the current user is already a friend of that user
     this.hideAddFriendCard();
+    // Scrolls to the top
     window.scrollTo(0, 0);
   }
 
   parseUrl(){
+    // Takes the url name
     this.routeName = this.route.snapshot.params['name'];
+    // Splits the url in two strings, divided by the dot
     var urlSplit = this.routeName.split(".")
+    // Adds a space in between the name and the surname of the url
     urlSplit.splice(1, 0, ' ')
+    // Joins the first name and surname into a single string
     this.profileUrl = urlSplit.join('')
   }
 
   onComment(message){
+    // Assigns the comment message to the var 'userComment'
     this.userComment = message;
   }
 
   assignImages(){
+    // Checks if the current url corresponds to the current user or to some other user
     if (this.profileUrl == this.currentUser.firstname + " " + this.currentUser.surname) {
+      // Assigns the 'curProfile' to the current user
       this.curProfile = this.currentUser;
     } else {
+      // Assigns the 'curProfile' to some other user
       for (let i = 0; i < this.usersList.users.length; i++) {
+        // Loops over the users list and assigns the current user to 'curProfile'
        if (this.usersList.users[i].firstname + " " + this.usersList.users[i].surname == this.profileUrl) {
         this.curProfile = this.usersList.users[i];
        }    
@@ -80,11 +99,14 @@ export class ProfileComponent implements OnInit {
     }
 
     for (let i = 0; i < this.usersList.users.length; i++) {
+      // Loops over the list of users to assign the corresponding profile and cover pictures, stored in 'assets'
       if (this.profileUrl == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
+        // Assigns the pictures to users other than the current user
         this.profilePic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/profile.jpg"
         this.coverPic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/cover.jpg"
         return
       } else {
+        // Assigns default pictures to the current user
         this.profilePic = "../../assets/avatar-anonym.jpg"
         this.coverPic = "../../assets/skyline.jpg"
       } 
@@ -93,7 +115,7 @@ export class ProfileComponent implements OnInit {
   }
 
   assignAvatars(){
-    //Go through current frineds array
+    //Go through current friends array
     for (let i = 0; i < this.curFriends.length; i++) {
       //Passes array's elements one by one to the service
       this.currentFriend = this.userCtx.createProfilePic(this.curFriends[i]);

@@ -27,6 +27,7 @@ export class AddFriendsComponent implements OnInit {
   othersArray = []
 
   arrayF() {
+    // Loop over users array pushing them to corresponding arrays depending if they sent a request or not
     for(let i = 0; i < this.userList.users.length ; i++){
       if(!this.userList.users[i].request){
         this.requestsArray.push(this.userList.users[i])
@@ -37,67 +38,72 @@ export class AddFriendsComponent implements OnInit {
   }
 
   nextPage(){
+    // Moves onto next page
     this.next = true;
   }
 
   navHome() {
+    // Navigates to wall
     this.router.navigate(["/wall"])
   }
 
   navProfile() {
+    // Navigates to profile
     this.router.navigate(["/profile"])
   }
   
   onSkip(){
+    // Navigates to wall
     this.router.navigate(["/wall"])
   }
 
   confirmFriend(friend, resolution, index){
+    // Takes three arguments
+    // 1 - Name and surname of the friend
+    // 2 - Screen resolution
+    // 3 - Index number 
     var addedFriend = `${friend.firstname} ${friend.surname}`;
-    console.log(friend)
     // Avoids duplicating friends
     if(!this.arrFriends.includes(addedFriend)){
       this.arrFriends.push(addedFriend)
       friend.isFriend = true;
-      console.log(friend)
     }
-    
+    // Add a friend to the arrFriends array, stored in the currentUser friends array
     this.currentUser.friends = this.arrFriends
     var userFriends = this.currentUser
+    // Overwrites 'curUser', adding the friend to its friends array
     localStorage.setItem("curUser", JSON.stringify(userFriends))
-    console.log(resolution + " res")
+    // Hides the corresponding friend request element, on mobile resolution 
     if(resolution === 'mbl'){
       document.getElementById('data'+ index).style.display = "none";
-
     }
   }
 
   deleteRequest(index) {
+    // Deletes friend requests
     document.getElementById('data'+ index).style.display = "none";
   }
 
   removeRequest(index) {
+    // Deletes friend suggestion
     document.getElementById('req'+ index).style.display = "none"
   }
 
-  onToggleCheckbox(index) {
-    console.log(document.querySelector<HTMLInputElement>('#checkbox'+ index).checked)
-  }
-
   addFriendsMbl() {
+    // Add friend on mobile version
     var checkList = document.querySelectorAll<HTMLInputElement>('.inputs')
     var checkboxArr = Array.from(checkList)
-    console.log(checkboxArr)
+    // Loops over the checkboxes. If checked, the selected friend is pushed to arrFriends
     for (let i = 0; i < checkboxArr.length; i++) {
      if(checkboxArr[i].checked == true){
        this.arrFriends.push(checkboxArr[i].parentNode.parentNode.firstChild.childNodes[0].nodeValue)
      }
     }
     this.currentUser.friends = this.arrFriends
-    console.log(this.currentUser.friends + " fijate")
     var newUserFriends = this.currentUser
+    // Overwrites 'curUser', including the added friends to its friends array
     localStorage.setItem("curUser", JSON.stringify(newUserFriends))
-    console.log(this.arrFriends)
+    // Navigates to wall
     this.router.navigate(["/wall"])
   }
 }

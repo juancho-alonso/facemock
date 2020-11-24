@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyAt9LlVxg3USq_OvR6-v3uu8fed4cQ-bJE",
-    authDomain: "facemockv01.firebaseapp.com",
-    databaseURL: "https://facemockv01.firebaseio.com",
-    projectId: "facemockv01",
-    storageBucket: "facemockv01.appspot.com",
-    messagingSenderId: "1054649660668",
-    appId: "1:1054649660668:web:7bd6763e0722eff1c2d379",
-    measurementId: "G-KKRFH562ZH"
+    apiKey: "AIzaSyBSnpUbLchJRuT4UEBfby7iKL58SZvW0do",
+    authDomain: "facemockv02.firebaseapp.com",
+    databaseURL: "https://facemockv02.firebaseio.com",
+    projectId: "facemockv02",
+    storageBucket: "facemockv02.appspot.com",
+    messagingSenderId: "937429645274",
+    appId: "1:937429645274:web:edbcc43c5b63f787c372e3",
+    measurementId: "G-HMWZYHDY43"
   }
 };
 
