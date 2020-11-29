@@ -15,7 +15,7 @@
             margin-bottom: 25px;
             margin-top: 12px;
             img {
-                height: 20px;
+                height: 38px;
             }
         }
         .login-form-box {
@@ -148,8 +148,8 @@
     }
     .login-nav-box{
         background-color: #f0f2f5;
-        padding: 92px 23.5px 132px 23.5px;
-        height: 720px;
+        padding: 0 23.5px;
+        height: 594px;
         flex-direction: row;
         .content-login-box {
             display: flex;
@@ -166,7 +166,8 @@
                 .login-logo-box {
                     display: block;
                     img {
-                        height: 36px;
+                        height: 54px;
+                        margin-bottom: -22px;
                     }
                 }
                 h3 {

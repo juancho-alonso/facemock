@@ -1,144 +1,171 @@
-// .friends-box {
-//     display: flex;
-//     align-items: center;
-//     flex-direction: column;
-//     .request-box {
-//         display: flex;
-//         justify-content: space-between;
-//         margin: 10px;
-//         .avatar-box {
-//             height: 92px;
-//             width: 92px;
-//             margin-right: 12px;
-//             img {
-//                 width: 100%;
-//                 border-radius: 50%;
-//             }
-//         }
-//         .friend-details {
-//             width: 235px;
-//             .btn-box {
-//                 margin-top: 10px;
-//                 font-weight: bold;
-//                 .btn {
-//                     height: 36px;
-//                     border: none;
-//                     border-radius: 5px;
-//                     font-weight: bold;
-//                     width: 112px;
-//                     font-size: 15px;
-//                 }
-//                 .btn-confirm {
-//                     color: white;
-//                     background-color: #1A77F2;
-//                     margin-right: 8px;
-//                 }
-//                 .btn-delete{
-//                     background-color: #F0F2F5;
-//                     color: #323436;
-//                 }
+.friends-box {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    .request-box {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+        .avatar-box {
+            height: 92px;
+            width: 92px;
+            margin-right: 12px;
+            img {
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+        .friend-details {
+            width: 235px;
+            .btn-box {
+                margin-top: 10px;
+                font-weight: bold;
+                .btn {
+                    height: 36px;
+                    border: none;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    width: 112px;
+                    font-size: 15px;
+                }
+                .btn-confirm {
+                    color: white;
+                    background-color: #1A77F2;
+                    margin-right: 8px;
+                }
+                .btn-delete{
+                    background-color: #F0F2F5;
+                    color: #323436;
+                }
                 
-//             }
-//             span:last-of-type {
-//                 color: #8E8E8E;
-//             }
-//             span:first-of-type{
-//                 font-weight: bold;
-//                 font-size: 17px;
-//             }
-//         }
-//     }
-// }
+            }
+            span:last-of-type {
+                color: #8E8E8E;
+            }
+            span:first-of-type{
+                font-weight: bold;
+                font-size: 17px;
+            }
+        }
+    }
+}
 
-// #subtitle {
-//     margin-left: 10px;
-//     margin-top: 8px;
-//     font-size: 15px;
-// }
+#subtitle {
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 15px;
+}
 
-// .mobile-add-friends {
-//     .title {
-//         text-align: center;
-//         border-bottom: 1px solid #E5E5E5;
-//         padding-bottom: 19px;
-//         p {
-//             font-size: 19px;
-//         }
-//         span {
-//             font-size: 15px;
-//         }
-//     }
-//    .suggestions {
-//        .suggestions-if {
-//         display: flex;
-//         border-bottom: 1px solid #E5E5E5; 
-//             .avatar-box {
-//                 height: 92px;
-//                 width: 92px;
-//                 img {
-//                     width: 100%;
-//                 }
-//             }
-//             .name-box {
-//                 display: flex;
-//                 align-items: center;
-//                 padding: 0px 10px;
-//                 width: 75%;
-//                 justify-content: space-between;
-//                 .checkbox {
-//                     input {
-//                         height: 18px;
-//                         width: 18px;
-//                     }
-//                 }
-//             }
-//        }
-//    }
-// }
+.mobile-add-friends {
+    .title {
+        text-align: center;
+        border-bottom: 1px solid #E5E5E5;
+        padding-bottom: 19px;
+        p {
+            font-size: 19px;
+        }
+        span {
+            font-size: 15px;
+        }
+    }
+   .suggestions {
+       .suggestions-if {
+        display: flex;
+        border-bottom: 1px solid #E5E5E5; 
+            .avatar-box {
+                height: 92px;
+                width: 92px;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 0;
+                    object-fit: cover;
+                }
+            }
+            .name-box {
+                display: flex;
+                align-items: center;
+                padding: 0px 10px;
+                width: 75%;
+                justify-content: space-between;
+                .checkbox {
+                    input {
+                        height: 18px;
+                        width: 18px;
+                    }
+                }
+            }
+       }
+   }
+}
 
-// .requests-if {
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-//         .name-and-pic {
-//             display: flex;
-//             align-items: center;
-//         } 
-//         .avatar-box {
-//             height: 62px;
-//             width: 62px;
-//             img {
-//                 width: 100%;
-//                 border-radius: 50%;
-//             }
-//         }
-//         p {
-//             font-size: 12px;
-//             margin-left: 5px;
-//         }
-//         .btn-box {
-//             display: flex;
+.requests-if {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+        .name-and-pic {
+            display: flex;
+            align-items: center;
+        } 
+        .avatar-box {
+            height: 62px;
+            width: 62px;
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        p {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .btn-box {
+            display: flex;
           
-//             .btn-confirm {
-//                 color: white;
-//                 background-color: #1A77F2;
-//                 margin-right: 8px;
-//             }
-//             .btn-delete{
-//                 background-color: #F0F2F5;
-//                 color: #323436;
-//             }
-//         }
-// }
-// .ngfordiv {
-//     border-top: 1px solid #CCCCCC;
-//     padding: 10px 0px;
-// }
+            .btn-confirm {
+                color: white;
+                background-color: #1A77F2;
+                margin-right: 8px;
+            }
+            .btn-delete{
+                background-color: #F0F2F5;
+                color: #323436;
+            }
+        }
+}
+.ngfordiv {
+    border-top: 1px solid #CCCCCC;
+    padding: 10px 0px;
+}
 
 
-// .friends-mobile-container {
-//     display: none;
-// }
+.friends-mobile-container {
+    display: block;
+}
+
+.friends-desktop-container {
+    display: none;
+}
+
+.btn-container {
+    margin-top: 16px;
+    text-align: center;
+    button {
+        color: white;
+        background-color: #1A77F2;
+        margin-right: 8px;
+        height: 36px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        width: 112px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 576px) {    
 
 .friends-mobile-container {
     display: none;
@@ -146,6 +173,7 @@
 
 .friends-desktop-container {
     display: block;
+    margin-top: 60px;
     section {
         background: #E9EBEE;
         display: flex;
@@ -154,6 +182,9 @@
     .desktop-main-box {
         background: white;
         border-radius: 8px;
+        margin: 45px 0;
+        width: 88%;
+        padding: 20px;
         .btn {
             height: 36px;
             border: none;
@@ -192,7 +223,8 @@
                     height: 62px;
                     width: 62px;
                     img {
-                        width: 100%;
+                        object-fit: cover;
+                        height: 100%;
                         border-radius: 50%;
                     }
                 }
@@ -232,6 +264,17 @@ overflow-y: auto;
 padding-right: 10px;
 }
 
+.name-box {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    p {
+        margin-right: 3px;
+    }
+}
+
+}
+
 @media screen and (min-width: 768px){
     .friends-mobile-container {
         display: none;
@@ -239,6 +282,7 @@ padding-right: 10px;
 
     .friends-desktop-container {
         display: block;
+        margin-top: 60px;
         section {
             background: #E9EBEE;
             display: flex;
@@ -289,7 +333,8 @@ padding-right: 10px;
                         height: 62px;
                         width: 62px;
                         img {
-                            width: 100%;
+                            object-fit: cover;
+                            height: 100%;
                             border-radius: 50%;
                         }
                     }

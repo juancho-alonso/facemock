@@ -16,10 +16,11 @@
 }
 
 main {
-    display: flex;
-    justify-content: center;
     background-color: #F0F2F5;
     height: calc(100% - 60px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .main-container {
@@ -30,6 +31,51 @@ main {
     height: 100%;
     .col {
         overflow: unset;
+    }
+}
+
+.add-friend-box {
+    @include card-info;
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0px;
+}
+
+.add-friend-text {
+    h3 {
+        margin-bottom: 5px;
+    }
+    span {
+        color: $main-dark-gray;
+        font-size: 17px;
+    }
+}
+
+.add-friend-btn-box {
+    padding: 0 10px;
+    height: 36px;
+    width: 125px;
+    min-width: 125px;
+    background-color: $main-blue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    button {
+        background-color: $main-blue;
+        color: white;
+        border-style: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0;
+        font-family: inherit;
+        margin-left: 5px;
+        cursor: pointer;
     }
 }
 
@@ -49,16 +95,15 @@ main {
         color: black;
         text-decoration: none;
     }
+    
     .img-box {
-        height: 102px;
-        width: 102px;
+        width: 100%;
+
         img {      
-            height: 100%; 
+            width: 100%; 
             border-radius: 8px;
- 
         }
     }
-    
 }
 
 .bio {
@@ -102,9 +147,9 @@ main {
     }
     .friends-grid {
         display: grid;
-        grid-template-columns: max-content max-content max-content;
+        grid-template-columns: 32% 32% 32%;
         grid-template-rows: auto;
-        gap: 0px 14px;
+        gap: 0px 7px;
 
     }
 
@@ -115,6 +160,7 @@ main {
         line-height: 1.2308;
     }
 }
+
 
 div:empty {
     display: none;
@@ -264,16 +310,6 @@ div:empty {
             color: black;
             text-decoration: none;
         }
-        .img-box {
-            height: 102px;
-            width: 102px;
-            img {      
-                height: 100%; 
-                border-radius: 8px;
-     
-            }
-        }
-        
     }
     
     
@@ -312,19 +348,17 @@ div:empty {
             color: $main-dark-gray;
             margin: 6px 0;
         }
-        .friends-grid {
-            display: grid;
-            grid-template-columns: max-content max-content max-content;
-            grid-template-rows: auto;
-            gap: 0px 14px;
-    
-        }
+       
     
         .friend-name {
             font-size: .8125rem;
             font-weight: 600;
             color: $text-color;
             line-height: 1.2308;
+        }
+
+        .friends-grid {
+            gap: 0 8px;
         }
     }
     
@@ -452,6 +486,9 @@ div:empty {
         padding: 20px;
     }
     
+    .add-friend-box {
+        margin: 16px 20px 0px 20px;
+    }
     
     .name-and-avatar {
         margin-bottom: 15px;
@@ -460,16 +497,6 @@ div:empty {
             color: black;
             text-decoration: none;
         }
-        .img-box {
-            height: 102px;
-            width: 102px;
-            img {      
-                height: 100%; 
-                border-radius: 8px;
-     
-            }
-        }
-        
     }
     
     .bio {
@@ -511,19 +538,16 @@ div:empty {
             color: $main-dark-gray;
             margin: 6px 0;
         }
-        .friends-grid {
-            display: grid;
-            grid-template-columns: max-content max-content max-content;
-            grid-template-rows: auto;
-            gap: 0px 14px;
-    
-        }
     
         .friend-name {
             font-size: .8125rem;
             font-weight: 600;
             color: $text-color;
             line-height: 1.2308;
+        }
+
+        .friends-grid {
+            gap: 0 11px;
         }
     }
     
@@ -534,6 +558,7 @@ div:empty {
     .cover-box {
         position: relative;
         padding: 0 15px;
+        min-width: -webkit-fill-available;
     }
     
     .cover-pic {
@@ -655,6 +680,12 @@ div:empty {
         justify-content: center;
     }
     
+    .add-friend-box {
+        min-width: 635px;
+        max-width: 880px;
+        margin: 16px 20px 0px 20px;
+    }
+
     .col {
         padding: 20px;
     }
@@ -684,16 +715,6 @@ div:empty {
             color: black;
             text-decoration: none;
         }
-        .img-box {
-            height: 102px;
-            width: 102px;
-            img {      
-                height: 100%; 
-                border-radius: 8px;
-     
-            }
-        }
-        
     }
     
     
@@ -732,19 +753,16 @@ div:empty {
             color: $main-dark-gray;
             margin: 6px 0;
         }
-        .friends-grid {
-            display: grid;
-            grid-template-columns: max-content max-content max-content;
-            grid-template-rows: auto;
-            gap: 0px 14px;
-    
-        }
-    
+       
         .friend-name {
             font-size: .8125rem;
             font-weight: 600;
             color: $text-color;
             line-height: 1.2308;
+        }
+
+        .friends-grid {
+            gap: 0 7px;
         }
     }
     
@@ -754,7 +772,7 @@ div:empty {
     
     .cover-box {
         position: relative;
-        max-width: 960px;
+        min-width: -webkit-fill-available;
     }
     
     .cover-pic {
@@ -820,7 +838,8 @@ div:empty {
     .profile-header {
         h2 {
             text-align: center;
-            margin-bottom: 11px;
+            margin-bottom: 5px;
+            margin-top: 30px;
         }
         p {
             text-align: center;
@@ -894,5 +913,16 @@ div:empty {
     
     .col-2.col {
         padding-right: 0;
+    }
+
+    .cover-box {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .cover-box {
+        min-width: 930px;
     }
 }

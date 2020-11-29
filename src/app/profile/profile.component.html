@@ -1,6 +1,9 @@
 <div class="profile-main-box">
-    <app-header></app-header>
-    <div class="profile-header">
+    <app-header (toggleColumn)='showColumn($event)'></app-header>
+    <div *ngIf="showCol">
+        <app-side-column [showCol]="showCol"></app-side-column>
+    </div>
+    <div *ngIf="!showCol" class="profile-header">
         <div class="cover-box">
             <div class="cover-pic">
                 <img [src]="coverPic" alt="">
@@ -10,13 +13,13 @@
                     <div class="profile-pic">
                         <img [src]="profilePic">
                     </div>
-                    <div class="icon-profile-box" >
+                    <div class="icon-profile-box" id="icon-profile-box" *ngIf="showBtn">
                         <input data-id="profile" type="file" class="icon-profile-box input-upload" (change)="showPreview($event)" >
                         <i class="fas fa-camera"></i>
                     </div> 
                 </div>
             </div>
-            <div class="edit-cover-box">
+            <div class="edit-cover-box" id="edit-cover-box" *ngIf="showBtn">
                 <input data-id="cover" type="file" class="icon-profile-box input-cover" (change)="showPreview($event)" id="cover-input">
                 <i class="fas fa-camera"></i>
                 <span>Edit Cover Photo</span>
@@ -27,7 +30,17 @@
             <p><a>Add Bio</a></p>    
         </div>
     </div>
-    <main>
+    <main *ngIf="!showCol">
+        <div *ngIf="showAddFriendCard && profileUrl != currentUser.firstname + ' ' + currentUser.surname" class="add-friend-box">
+            <div class="add-friend-text">
+                <h3>Do you know {{ curProfile.firstname }}?</h3>
+                <span>To see what they share with friends, send them a friend request</span>
+            </div>
+            <div class="add-friend-btn-box" (click)="addFriend()">
+                <i class="fas fa-user-plus"></i>
+                <button>Add Friend</button>
+            </div>
+        </div>
         <div class="main-container">
             <div class="col col-1 scroll">
                 <div class="bio">
@@ -68,18 +81,18 @@
                 <div class="friends main-tile">
                     <h3>Friends</h3>
                     <p>{{ curProfile.friends.length }}</p>
-                    <div class="friends-grid">
-                        <div *ngFor="let contact of usersList.users">
-                            <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
-                                <div class="name-and-avatar" >
-                                    <div class="img-box">
-                                        <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
+                        <div class="friends-grid">
+                            <div *ngFor="let contact of usersList.users">
+                                <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
+                                    <div class="name-and-avatar" >
+                                            <div class="img-box">
+                                                <img src="../assets/{{ contact.firstname }}{{ contact.surname }}/profile.jpg" alt="Anonymous avatar">
+                                            </div>    
+                                        <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
                                     </div>
-                                    <div class="friend-name">{{ contact.firstname }} {{ contact.surname }}</div>
                                 </div>
-                            </div>
-                        </div>        
-                    </div>
+                            </div>        
+                        </div>    
                 </div>
                 <div class="create-box-mobile">
                     <app-create-post (comment)="onComment($event)"></app-create-post>

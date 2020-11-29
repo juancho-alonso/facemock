@@ -1,7 +1,8 @@
 <div class="header">
     <div class="logo-search-box">
         <div class="logo-box">
-            <svg [routerLink]="['/wall']" viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
+            <div class="svg-logo"> 
+                <svg [routerLink]="['/wall']" viewBox="0 0 36 36" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4"
                 fill="url(#jsc_s_2)" height="40" width="40">
                 <defs>
                     <linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2">
@@ -16,33 +17,48 @@
                     d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4z">
                 </path>
             </svg>
-            <div class="search-container">
-                <input (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
-                <div class="results-box">
-                    <div class="results-drop">
-                        <div *ngFor="let user of usersList.users">
-                            <div *ngIf="show">
-                                <div
-                                    *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
-                                user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
-                                    <div class="name-and-avatar"  [routerLink]="['/profile', user.firstname + '.' + user.surname]">
-                                        <div class="avatar-box">
-                                            <img src="../../../../assets/avatar-anonym.jpg">
-                                        </div>
-                                        <div class="username-drop-box">
-                                            <a class="username">{{ user.firstname }} {{ user.surname }}</a>
+            </div>
+            <div id="query-container-show-mbl" [ngClass]="searchDisplay && show == true? 'main-query-container-show':'main-query-container'">
+                <div class="search-container" #searchBar>
+                    <div class="input-and-icon"> 
+                        <div *ngIf="searchDisplay && show == true">
+                            <div class="close-search" id="close-search" (click)="closeSearch()">
+                                <i class="fas fa-arrow-left"></i>
+                            </div>
+                        </div>
+                        <div class="search-icon-and-input" id="search-icon-and-input">
+                            <div class="search-box" id="search-box" (click)="onToggleSearchBar()">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <input (keyup)="searchCall($event)" type="text" placeholder="Search in Facemock" #search id="search">
+                        </div>
+                    </div>
+                    <div [ngClass]="show? 'results-top-pad':'results-box'">
+                        <div class="results-drop">
+                            <div *ngFor="let user of usersList.users">
+                                <div *ngIf="show">
+                                    <div
+                                        *ngIf="user.firstname.includes(result) || user.firstname.toUpperCase().includes(result)|| user.firstname.toLowerCase().includes(result) ||
+                                    user.surname.includes(result) || user.surname.toUpperCase().includes(result)|| user.surname.toLowerCase().includes(result)">
+                                        <div class="name-and-avatar"  [routerLink]="['/profile', user.firstname + '.' + user.surname]" (click)="onResultClick()">
+                                            <div class="avatar-box">
+                                                <img src="../../../../assets/{{user.firstname}}{{user.surname}}/profile.jpg">
+                                            </div>
+                                            <div class="username-drop-box">
+                                                <a class="username">{{ user.firstname }} {{ user.surname }}</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div *ngIf="show && matched == false && matchesFound == 0" class="username-drop-box">
+                                <a class="username no-results">No results found.</a>
+                            </div>
                         </div>
-                    </div>
-                </div>        
+                    </div>        
+                </div>
             </div>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-            </div>
-            <div class="menu-box">
+            <div class="menu-box" (click)="onShowMenuMbl()">
                 <svg viewBox="0 0 28 28" class="a8c37x1j ms05siws hwsy1cff b7h9ocf4 em6zcovv" height="28" width="28">
                     <path
                         d="M23.5 4a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0 18a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0-9a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19z">
@@ -103,15 +119,16 @@
                         <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
                     </div>
                     <div class="username-drop-box">
-                        <a class="username"><b>{{ currentUser.firstname }} {{ currentUser.surname }}</b></a>
+                        <a class="username"><span class="username-bold">{{ currentUser.firstname }} {{ currentUser.surname }}</span></a>
                         <span>See your profile</span>
                     </div>
                 </div>
-                <div class="logout-box">
+                <div class="line"></div>   
+                <div class="logout-box" [routerLink]="['/']">
                     <div class="logout-icon-box">
                         <i class="fas fa-door-open"></i>
                     </div>
-                    <h5 [routerLink]="['/']">Log out</h5>
+                    <h5 >Log out</h5>
                 </div>
             </div>
         </div>

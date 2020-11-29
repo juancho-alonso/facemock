@@ -11,9 +11,12 @@ import { UsersService } from 'src/app/users.service';
 })
 export class SignUpComponent implements OnInit {
 
+  // Toggle variable for signup modal  
   toggleRegister = true;
+  // View customInput form
   @ViewChild('customInput') customInput;
 
+  // Defined form variables
   signupForm: FormGroup;
   days = [];
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -46,6 +49,7 @@ export class SignUpComponent implements OnInit {
               public usersList: UsersService) {}
 
   ngOnInit(): void {
+    // Defined reactive form 
     this.signupForm = new FormGroup({
         'firstname': new FormControl(null, Validators.required),
         'surname': new FormControl(null, Validators.required),
@@ -59,32 +63,38 @@ export class SignUpComponent implements OnInit {
         'password': new FormControl(null, Validators.required),
     })
 
-
+    // Create days dropdown
     for (let i = 1; i < 32; i++){
       this.days.push(i);
     };
-
+    // Create years dropdown
     for (let j = 2020; j > 1900; j--){
       this.years.push(j);
     }
   }
 
   onSubmit(){
+    // Stores the current user in localStorage, using its email as name
     localStorage.setItem(this.signupForm.value.email, JSON.stringify(this.signupForm.value));
+    // Sets the current user's form object as 'curUser'
     localStorage.setItem('curUser', JSON.stringify(this.signupForm.value));
-    var currentUser = JSON.parse(localStorage.getItem('curUser')); 
-    currentUser.relationship = "";
-    currentUser.birthplace = "";
-    currentUser.work = "";
-    currentUser.school = "";
+    // Assigns 'curUser' to var 'currentUser'
+    var currentUser = JSON.parse(localStorage.getItem('curUser'));
+    // Set default values for everal currentUser fields 
+    currentUser.relationship = "Single";
+    currentUser.birthplace = "Birthplace";
+    currentUser.work = "Workplace";
+    currentUser.school = "School";
     currentUser.about = "";
-    currentUser.currentCity = "";
+    currentUser.currentCity = "City";
     currentUser.friends = [];
+    // Overwrites 'curUser'
     localStorage.setItem("curUser", JSON.stringify(currentUser))
 
   }
 
   onGenderChange(e) {
+    // Toggles gender display
     if(e.target.value === 'custom'){
       this.displayGender = !this.displayGender;
   
@@ -94,6 +104,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onValidateForm(){
+    // Validates and verifies every input in the form    // Create days dropdown
     var inputs = document.querySelectorAll<HTMLInputElement>(".signup-input");
     var inputsArr = Array.from(inputs)
     var dateInputs = document.querySelectorAll<HTMLOptionElement>(".date-input")
@@ -134,6 +145,7 @@ export class SignUpComponent implements OnInit {
   }
 
   closeForm(){
+    // Toggles form display
     this.toggleRegister = !this.toggleRegister
   }
   

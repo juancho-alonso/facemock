@@ -7,9 +7,21 @@
 
 .post-header {
     img {
-        height: 40px !important;
-        width: 40px !important;
+        height: 40px ;
+        width: 40px ;
     }
+}
+
+.post-img {
+    width: 100%;
+    img {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+.post-img-empty {
+    height: 0;
 }
 
 .avatar-box {
@@ -161,6 +173,7 @@ main {
 .comment-number {
     display: flex;
     justify-content: flex-end;
+    padding-top: 5px;
 }
 
 .comments-amount {
@@ -179,8 +192,8 @@ main {
 
     .post-header {
         img {
-            height: 40px !important;
-            width: 40px !important;
+            height: 40px ;
+            width: 40px ;
         }
     }
 
@@ -215,7 +228,8 @@ main {
     }
 
     .publisher-name, .post-content {
-        font-size: 15px;
+        font-size: .9375rem;
+        line-height: 1.3;
     }
 
     .publisher-name {
@@ -298,10 +312,6 @@ main {
         -webkit-transition: -webkit-transform .8s ease-in-out;
         -ms-transition: -ms-transform .2s ease-in-out;
         transition: transform .2s ease-in-out;
-        // transition: cubic-bezier(0,1,1,1);
-        transform:rotate(-20deg) scale(1.1,1.1) !important;
-        -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
-        -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
     }
 
     @keyframes animation-like {
@@ -327,8 +337,6 @@ main {
         transform:rotate(-20deg) scale(1.1,1.1) !important;
         -ms-transform:rotate(-20deg) scale(1.1,1.1)!important;
         -webkit-transform:rotate(-20deg) scale(1.1,1.1)!important;
-        //animation: animation-like .4s ;
-
     }
 
     .comment-display-box {

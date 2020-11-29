@@ -16,8 +16,11 @@ export class LoginComponent implements OnInit {
   newRegister = false;
   wrongPass = false;
   unexistingUser = false;
+  // Access the form
   @ViewChild('formSignUp') signupForm: NgForm;
+  // Access the email input
   @ViewChild('email') email;
+  // Access the password input
   @ViewChild('pass') pass;
   
 
@@ -26,6 +29,7 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // Sets the mobile property depending on the resolution
     if (this.bpo.isMatched('(max-width: 768px)')) {
       this.mobile = true;
     } else {
@@ -43,30 +47,28 @@ export class LoginComponent implements OnInit {
   };
 
   onLogin(){
+    // Checks if the username corresponds to its password, based on the user's email address
     var curEmail = this.email.nativeElement.value;
     var curPass = this.pass.nativeElement.value;
     var curUser = JSON.parse(localStorage.getItem(curEmail))
 
     if (this.mobile && curEmail === '' || this.mobile && curEmail !== curUser){
+      // Non existing user
       this.unexistingUser = true;
       this.email.nativeElement.style.border = "1px red solid";
     } else if (!this.mobile && curEmail === '' || !this.mobile && curEmail !== curUser) {
       this.router.navigate(['/user-not-found']);
     }
 
-    
-    
     var localPass = curUser.password
-    
-
 
     if(curUser != null){
-      // Existe el usuario
+      // Existing user
       if(curPass == localPass) {
-        // Navegar al componente 'wall'
+        // Navigate to 'wall'
         this.router.navigate(['/wall'])
       } else if(curPass !== localPass){
-        // Contrasena incorrecta
+        // Wrong password
         if(this.mobile){
           this.wrongPass = true
           this.unexistingUser = false;
@@ -74,9 +76,7 @@ export class LoginComponent implements OnInit {
           this.email.nativeElement.style.border = "1px #ededed solid"
         } else if(!this.mobile){
           this.router.navigate(['/login-failed'])
-          // this.router.navigate(['/ERROR'])
         }
-        // Mostrar pagina o mensaje de error
       } 
     } 
   }

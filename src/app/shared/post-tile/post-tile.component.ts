@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, ViewChild, ɵCodegenComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserContextService } from '../user-context.service';
 import { UsersService } from 'src/app/users.service';
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeScript, SafeStyle, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-post-tile',
@@ -24,7 +27,7 @@ export class PostTileComponent implements OnInit {
   commentAvatar:any;
   profilePic = [];
   commentPic = [];
-
+  
 
   parsedUrl:any;
 
@@ -102,4 +105,10 @@ export class PostTileComponent implements OnInit {
   onCommentToggle(){
     this.insertComment = !this.insertComment;
   }
+
+  createURL() {
+    //Create your URL
+    return "https://player.vimeo.com/video/67929145?title=0&byline=0&portrait=0"
+    // return your URL
+   }
 }

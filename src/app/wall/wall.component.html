@@ -1,19 +1,10 @@
-<app-header></app-header>
+<app-header (toggleColumn)='showColumn($event)'></app-header>
 <main>
     <div class="main-container">
-        <div class="col col-1 scroll">
-            <div class="col-box-1">
-                <div class="name-and-avatar" [routerLink]="['/profile', currentUser.firstname + '.' + currentUser.surname]">
-                    <img src="../assets/avatar-anonym.jpg" alt="Anonymous avatar">
-                    <a class="username" >{{ currentUser.firstname }} {{ currentUser.surname }}</a>
-                </div>
-                <div class="name-and-avatar">
-                    <img id="friends-img" src="../../assets/iconfriends.png" alt="friends icon">
-                    <a class="username" >Friends</a>
-                </div>    
-            </div>
+        <div id="column-one">
+            <app-side-column [showCol]='showCol'></app-side-column>
         </div>
-        <div class="col-2 col">
+        <div [ngClass]="showCol? 'hide-col-2': 'col-2 col'">
             <div class="col-2-pre">
                 <app-create-post (comment)="onComment($event)"></app-create-post>
             </div>
@@ -34,7 +25,7 @@
                 <div *ngFor="let contact of usersList.users; let i = index">
                     <div *ngIf="currentUser.friends.includes(contact.firstname + ' ' + contact.surname)">
                         <div class="name-and-avatar" [routerLink]="['/profile', contact.firstname + '.' + contact.surname]">
-                            <img [src]="profilePic[i]" alt="Anonymous avatar">
+                            <img src="../../assets/{{contact.firstname}}{{contact.surname}}/profile.jpg" alt="Anonymous avatar">
                             <div>{{ contact.firstname }} {{ contact.surname }}</div>
                         </div>
                     </div>

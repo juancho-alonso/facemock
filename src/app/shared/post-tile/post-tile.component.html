@@ -7,6 +7,11 @@
             <span (click)='parseURL(post.author)' class="publisher-name">{{ post.author }}</span>
         </div>
         <p class="post-content">{{ post.post }}</p>
+        <div class="post-media-box">
+            <div class="post-img" *ngIf="post.img!=''">
+                <img src="{{ post.img }}">
+            </div>
+        </div>
         <div *ngIf="post.comments.length > 0" class="comment-number">
             <span (click)="onCommentToggle()" class="comments-amount">
                 {{ post.comments.length }} Comment<span *ngIf="post.comments.length > 1">s</span></span>    
