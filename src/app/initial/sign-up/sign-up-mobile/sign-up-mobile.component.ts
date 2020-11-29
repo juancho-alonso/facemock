@@ -36,7 +36,6 @@ export class SignUpMobileComponent implements OnInit {
 genders = ['Female', 'Male']
  
 
-customGender = true;
 displayGender = false;
 submitOk = false;
 public screen:number = 0;
@@ -159,14 +158,13 @@ public screen:number = 0;
     }
   }
 
-  onCustomChange() {
-    this.customGender = !this.customGender;
-    this.displayGender = !this.displayGender;
-  }
-
-  onGenderChange() {
-    console.log(this.customInput)
-  }
+  onGenderChange(e) {
+    if(e.target.value === 'custom'){
+      this.displayGender = !this.displayGender;
+  
+    } else {
+      this.displayGender = false;
+    }  }
 
   onSubmit(){
     localStorage.setItem(this.signupFormMbl.value.email, JSON.stringify(this.signupFormMbl.value));

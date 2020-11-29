@@ -47,14 +47,14 @@
             <div class="gender-box">
                 <div *ngFor="let gender of genders" class="gender-input radio-input">
                     <label>{{ gender }}</label>
-                    <input class="radio-gender" (change)="onGenderChange()" type="radio" name="gender" formControlName="gender" [value]='gender'> 
+                    <input class="radio-gender" (change)="onGenderChange($event)" type="radio" name="gender" formControlName="gender" [value]='gender'> 
                 </div>
                 <div class="gender-input radio-input">
                     <label>Custom</label>
                     <input #customInput type="radio" 
-                        name="gender" (change)="onCustomChange()" class="radio-gender" formControlName="gender" value='custom'>    
+                        name="gender" (change)="onGenderChange($event)" class="radio-gender" formControlName="gender" value='custom'>    
                 </div>
-                <p class="pronoun-title" *ngIf='customGender'>Select Custom to choose another gender, or if you'd rather not say</p>
+                <p class="pronoun-title" *ngIf='!displayGender'>Select Custom to choose another gender, or if you'd rather not say</p>
                 <div *ngIf='displayGender'>
                     <p class="pronoun-title">Your pronoun is visible to everyone</p>
                     <select class="custom-input" id="pronoun" name="pronoun" formControlName="pronoun" >
