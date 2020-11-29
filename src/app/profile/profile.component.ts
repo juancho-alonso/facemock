@@ -125,20 +125,28 @@ export class ProfileComponent implements OnInit {
 
  
   showPreview(event: any) {
+    // Get first image (last uploaded) on firebase database
     this.selectedImage = event.target.files[0];
+    // Save picture id
     var dataId = event.target.dataset.id;
+    // Save picture and show it 5 seconds after TO DO PROMISE
     this.save(dataId);
     setTimeout(() => {
       this.view(dataId)
     }, 5000);    
   }
 
+  // Store image in firebase database
   save(id) {
+    // Select name
     var name = this.selectedImage.name;
+    // Create filepath
     var filePath = `${this.currentUser.firstname}${this.currentUser.surname}/${name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`
-
+    // Assign filepath as reference for image
     const fileRef = this.storage.ref(filePath);
+    // Upload image with observable
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+      // Uses finalize to mirror snapshotChanges and complete the function
       finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
           this.url = url;
@@ -149,6 +157,7 @@ export class ProfileComponent implements OnInit {
     ).subscribe();
   }
 
+  // Show image
   view(id){
     if (id == 'profile' && this.url != undefined) {
       this.profilePic = this.url;
@@ -157,6 +166,7 @@ export class ProfileComponent implements OnInit {
     }
   }
   
+  // Hides uploading image buttons when the profile is not the current user's
   hideProfileBtn(){
     if (this.profileUrl != `${this.currentUser.firstname} ${this.currentUser.surname}`) {
       this.showBtn = false;
@@ -165,6 +175,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  // Hides the option to add a friend when the profile is not a friend of the current user
   hideAddFriendCard() {
     if(!this.curFriends.includes(this.profileUrl)) {
       this.showAddFriendCard = true;
@@ -173,6 +184,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+
+  // Recalls functions related to observable changes in the route
   recallFunctions() {
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -182,6 +195,8 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+
+  // Adds friend from profile to the current user's friend array
   addFriend(){
     this.curFriends.push(this.profileUrl)
     var newUserFriends = this.currentUser
@@ -189,6 +204,7 @@ export class ProfileComponent implements OnInit {
     this.showAddFriendCard = false;
   }
 
+  // Toggles column
   showColumn(toggle){
     this.showCol = toggle;
   }
