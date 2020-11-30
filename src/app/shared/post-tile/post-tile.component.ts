@@ -58,6 +58,7 @@ export class PostTileComponent implements OnInit {
             }
   }
 
+  // Creates new comment 
   newComment(event) {
     if(event.key === "Enter" && this.postComment.nativeElement.value !== ''){
       var comment = {
@@ -65,15 +66,16 @@ export class PostTileComponent implements OnInit {
         publisher:'',
         avatar: ''
       }
-
+      // Loops through the comments array
       for (let i = 0; i < this.userComment.length; i++) {
+        // Inserts comment on post if both ids are the same 
         if(event.target.dataset.n == this.userComment[i].id){
-          // Chimi
+          // New comment instance 
           comment.message = this.postComment.nativeElement.value;
           comment.publisher = this.currentUser.firstname + ' ' + this.currentUser.surname;
           this.userComment[i].comments.push(comment);
+          // Assigns avatars to comments
           for (let h = 0; h < this.userComment[i].comments.length; h++) {
-            
             this.commentAvatar = this.userCtx.createProfilePic(this.userComment[i].comments[h].publisher);
             this.userComment[i].comments[h].avatar = this.commentAvatar;
         }
@@ -83,6 +85,7 @@ export class PostTileComponent implements OnInit {
 
   }
 
+  // Parse URL for navigation
   parseURL(url){
     var urlSplit = url.split(" ")
     urlSplit.splice(1, 0, '.')
@@ -90,25 +93,17 @@ export class PostTileComponent implements OnInit {
     this.router.navigate([`profile/${this.parsedUrl}`])
   }
 
+  // Toggle like button
   onLike(e){
     this.like = !this.like;
-    if(!this.likeElement.classList.contains('filled-like')){
-    //   setTimeout(() => {this.likeIcon.classList.add('animated-like')
-    // }, 1500);
-
-    }
     setTimeout(() => {this.likeElement.classList.add('animated-like')
     }, 100);
-    //this.likeIcon.classList.add('animated-like');
   }
 
+  // Toggle comments
   onCommentToggle(){
     this.insertComment = !this.insertComment;
   }
 
-  createURL() {
-    //Create your URL
-    return "https://player.vimeo.com/video/67929145?title=0&byline=0&portrait=0"
-    // return your URL
-   }
+
 }

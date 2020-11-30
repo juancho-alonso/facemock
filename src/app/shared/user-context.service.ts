@@ -36,7 +36,6 @@ export class UserContextService {
     }
 
     detectProfile(currentUser){
-
         if (this.profileUrl == currentUser.firstname + " " + currentUser.surname) {
             this.curProfile = currentUser;
           } else {
@@ -49,7 +48,6 @@ export class UserContextService {
         return this.curProfile;
     }
 
-    //Jack White parameter
     createProfilePic(user){
         //Goes through users array
         for (let i = 0; i < this.usersList.users.length; i++) {
@@ -61,16 +59,10 @@ export class UserContextService {
               return profilePic
              
             }
-            
-            if (user == `${this.currentUser.firstname} ${this.currentUser.surname}`) {
-                console.log(this.firebase.list('imageDetails/TiffaniNikolovski'))
-            }
           }
 
           //Sets image url using placeholder avatar 
-           var profileAvatar = "../../assets/avatar-anonym.jpg"
-           //   console.log(`${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}` + " user on user array")
-  
+           var profileAvatar = "../../assets/avatar-anonym.jpg"  
              return profileAvatar
           
       
@@ -78,26 +70,6 @@ export class UserContextService {
 
     createCoverPic(user){
         var pic = [];
-
-        // for (let i = 0; i < this.usersList.users.length; i++) {
-        //     if (user == `${this.usersList.users[i].firstname} ${this.usersList.users[i].surname}`) {
-        //       this.profilePic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/profile.jpg"
-        //       this.coverPic = "../../assets/" + this.usersList.users[i].firstname + this.usersList.users[i].surname + "/cover.jpg"
-        //       pic = pic[this.profilePic, this.coverPic]
-  
-        //       return pic
-             
-        //     } else {
-        //       this.profilePic = "../../assets/avatar-anonym.jpg"
-        //       this.coverPic = "../../assets/avatar-anonym.jpg"
-        //       pic.push(this.profilePic);
-        //       pic.push(this.coverPic);  
-
-        //       return pic
-
-        //     }
-        //   }
-      
     }
 
 

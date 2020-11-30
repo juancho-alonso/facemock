@@ -35,7 +35,7 @@ export class WallComponent implements OnInit {
   }
 
   assignPics(){
-    //Go through current frineds array
+    //Go through current friends array
     for (let i = 0; i < this.curFriends.length; i++) {
       //Passes array's elements one by one to the service
       this.currentFriend = this.userCtx.createProfilePic(this.curFriends[i]);

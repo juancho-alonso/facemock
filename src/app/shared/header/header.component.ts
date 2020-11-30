@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/users.service';
-import { SearchService } from 'src/app/shared/header/search-view/search.service';
 import { Observable, Subject } from 'rxjs';
 import { ApplicationRef } from '@angular/core'
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -10,7 +9,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers:[UsersService, SearchService]
+  providers:[UsersService]
 })
 export class HeaderComponent implements OnInit {
 
@@ -37,7 +36,6 @@ export class HeaderComponent implements OnInit {
   constructor(private router:Router,
               public usersList: UsersService,
               private bpo: BreakpointObserver,
-              public searchService: SearchService,
               public ref: ApplicationRef) { }
 
   ngOnInit(): void {
@@ -48,7 +46,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Search for users and display results
   searchCall(e){
+    // Display results, show and hide corresponding divs
     this.show = true;
     document.getElementById('search-box').style.display = "none";
     if (this.searchInput.nativeElement.value == "") {
@@ -60,8 +60,8 @@ export class HeaderComponent implements OnInit {
       }
     }
     this.result = this.searchInput.nativeElement.value
-    this.searchService.searchValue.next(this.searchInput.nativeElement.value)
-    
+
+    // Look for matches and render results
     for (let i= 0; i < this.usersList.users.length; i++) {
       if(this.usersList.users[i].firstname.includes(this.searchInput.nativeElement.value) ||
        this.usersList.users[i].firstname.toUpperCase().includes(this.searchInput.nativeElement.value)|| 
@@ -73,11 +73,13 @@ export class HeaderComponent implements OnInit {
       } 
     }
 
+    // Display for mobile resolution
     if(this.mobile == true && this.searchDisplay == true) {
       document.getElementById('search-icon-and-input').style.position = 'unset';
       document.getElementById('query-container-show-mbl').style.width = '97vw'  
     }
 
+    // Toggle search bar if matches were found
     if(this.matchesFound != 0) {
       this.matched = true;
       this.matchesFound = 0;
@@ -102,6 +104,7 @@ export class HeaderComponent implements OnInit {
     this.showCreateDrop = !this.showCreateDrop;
   }
 
+  // Toggle and expand search bar
   onToggleSearchBar(){
     this.searchDisplay = !this.searchDisplay;
     if(this.searchDisplay == true){
@@ -123,6 +126,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   
+  // Close search bar 
   closeSearch(){
     this.searchInput.nativeElement.value = "";
     this.show = false;
@@ -132,11 +136,13 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  // Toggle column on mobile resolution
   onShowMenuMbl() {
     this.showColumn = !this.showColumn;
     this.toggleColumn.emit(this.showColumn)
   }
 
+  // Collapses search bar when clicking on a result
   onResultClick() {
     this.closeSearch();
     this.searchDisplay = false;
